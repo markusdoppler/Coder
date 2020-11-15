@@ -38,7 +38,7 @@ copyright: Markus Doppler
 # Build settings
 # theme: minima
 plugins:
-#   - jekyll-feed
+  - jekyll-feed
   - jekyll-sitemap
   - jekyll-seo-tag
 

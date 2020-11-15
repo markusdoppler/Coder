@@ -2,13 +2,13 @@
 layout: home
 ---
 
-# Coder - Cheatsheets of My Favourite Programming Languages and Tools
+# Coder
 
 ## Languages
 
-* [JavaScript](/Web/JavaScript)
+* [JavaScript](JavaScript/README)
 * PHP
-* [Python](/Python)
+* Python
 * C
 * C++
 * Java
@@ -17,11 +17,11 @@ layout: home
 
 ## Web
 **Web Technologies**
-* [HTML](/Web/HTML)
-* [CSS](/Web/CSS)
-* [JavaScript](/Web/JavaScript)
-* [SVG](/Web/svg.md)
-* [Markdown](/Web/markdown.md)
+* [HTML](HTML/README)
+* [CSS](CSS/README)
+* [JavaScript](JavaScript/README)
+* [SVG](Web/svg.md)
+* [Markdown](Web/markdown.md)
 
 **Web Frameworks**
 * Vue

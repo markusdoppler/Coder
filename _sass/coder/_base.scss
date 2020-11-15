@@ -8,6 +8,17 @@ dl, dd, ol, ul, figure {
   padding: 0;
 }
 
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+::-moz-selection {
+  background-color: $text-selection-bg-color;
+}
+::selection {
+	background-color: $text-selection-bg-color;
+}
+
 
 
 /**
@@ -23,11 +34,13 @@ body {
        -o-font-feature-settings: "kern" 1;
           font-feature-settings: "kern" 1;
   font-kerning: normal;
-  display: flex;
   min-height: 100vh;
-  flex-direction: column;
+  transition: color background-color 0.3s ease;
 }
-
+body.dark {
+  color: $text-color--dark;
+  background-color: $background-color--dark;
+}
 
 
 /**
@@ -105,14 +118,21 @@ h1, h2, h3, h4, h5, h6 {
 a {
   color: $brand-color;
   text-decoration: none;
+  font-weight: bold;
 
   &:visited {
-    color: darken($brand-color, 15%);
+    // color: darken($brand-color, 15%);
   }
 
   &:hover {
-    color: $text-color;
-    text-decoration: underline;
+    color: darken($brand-color, 15%);
+    // text-decoration: underline;
+  }
+
+  .social-media-list & {
+    .username {
+      display: none;
+    }
   }
 
   .social-media-list &:hover {
@@ -149,9 +169,9 @@ blockquote {
 pre,
 code {
   @include relative-font-size(0.9375);
-  border: 1px solid $grey-color-light;
   border-radius: 3px;
-  background-color: #eef;
+  background-color: $code-bg-color;
+  color: $code-text-color;
 }
 
 code {
@@ -175,23 +195,11 @@ pre {
  * Wrapper
  */
 .wrapper {
-  max-width: -webkit-calc(#{$content-width} - (#{$spacing-unit} * 2));
-  max-width:         calc(#{$content-width} - (#{$spacing-unit} * 2));
-  margin-right: auto;
-  margin-left: auto;
-  padding-right: $spacing-unit;
-  padding-left: $spacing-unit;
-  @extend %clearfix;
-
-  @include media-query($on-laptop) {
-    max-width: -webkit-calc(#{$content-width} - (#{$spacing-unit}));
-    max-width:         calc(#{$content-width} - (#{$spacing-unit}));
-    padding-right: $spacing-unit / 2;
-    padding-left: $spacing-unit / 2;
-  }
+  max-width: $content-width;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 $spacing-unit;
 }
-
-
 
 /**
  * Clearfix
@@ -209,7 +217,7 @@ pre {
  */
 
 .svg-icon {
-    width: 16px;
+    width: 30px;
     height: 16px;
     display: inline-block;
     fill: #{$grey-color};

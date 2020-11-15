@@ -28,8 +28,8 @@ baseurl: "/Coder" # the subpath of your site, e.g. /blog
 url: "https://markusdoppler.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 markdown: GFM
 twitter_username: dopplermarkus
-github_username:  markusdoppler
-linkedin_username:  markusdoppler
+github_username: markusdoppler
+linkedin_username: markus-doppler-94469265
 author: Markus Doppler
 
 # custom variables

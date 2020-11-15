@@ -1,5 +1,5 @@
 ---
-title:  "Github Pages: Static Site generation with Jeykll"
+title:  "Jekyll"
 # layout: post
 # layout: page
 # permalink: /about/

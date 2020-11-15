@@ -11,9 +11,10 @@
       <div class="wrapper">
         {{ content }}
       </div>
+      {%- include navfooter.html dir=page.dir -%}
     </main>
-
-    {%- include footer.html dir=page.dir -%}
+    
+    {%- include footer.html -%}
 
   </body>
 

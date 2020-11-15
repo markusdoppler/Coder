@@ -1,7 +1,3 @@
----
-layout: home
----
-
 # Coder - Cheatsheets of My Favourite Programming Languages and Tools
 
 ## Languages

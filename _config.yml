@@ -27,6 +27,13 @@ description: >- # this means to ignore newlines until "baseurl:"
 baseurl: "/Coder" # the subpath of your site, e.g. /blog
 url: "https://markusdoppler.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 markdown: GFM
+# markdown: redcarpet
+# markdown: kramdown
+# highlighter: rouge
+# kramdown:
+#   input: GFM
+#   syntax_highlighter_opts:
+#     disable : true
 twitter_username: dopplermarkus
 github_username: markusdoppler
 linkedin_username: markus-doppler-94469265

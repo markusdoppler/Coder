@@ -27,7 +27,7 @@ dl, dd, ol, ul, figure {
 body {
   font: $base-font-weight #{$base-font-size}/#{$base-line-height} $base-font-family;
   color: $text-color;
-  background-color: $background-color;
+  background-color: $grey-color-light;
   -webkit-text-size-adjust: 100%;
   -webkit-font-feature-settings: "kern" 1;
      -moz-font-feature-settings: "kern" 1;
@@ -109,8 +109,9 @@ li {
 h1, h2, h3, h4, h5, h6 {
   font-weight: $base-font-weight;
 }
-
-
+h1 {
+  @include relative-font-size(2);
+}
 
 /**
  * Links
@@ -168,10 +169,15 @@ blockquote {
  */
 pre,
 code {
-  @include relative-font-size(0.9375);
-  border-radius: 3px;
+  @include relative-font-size(0.8);
+  border-radius: $border-radius;
   background-color: $code-bg-color;
   color: $code-text-color;
+
+  .dark & {
+    background-color: $code-bg-color--dark;
+    color: $code-text-color--dark;
+  }
 }
 
 code {
@@ -189,7 +195,26 @@ pre {
   }
 }
 
+hr {
+  display: none;
+}
 
+section {
+  margin-bottom: $spacing-unit;
+  padding: $spacing-unit / 2;
+  border-radius: $border-radius;
+  background-color: #fdfdfd;
+  border: 1px solid rgba(0,0,0,0.2);
+
+  .dark & {
+    background-color: rgba(0,0,0,0.5);
+    border: 1px solid rgba(0,0,0,0.8);
+  }
+
+  @media only screen and (min-width: 767px) {
+    padding: $spacing-unit / 2 $spacing-unit;
+  }
+}
 
 /**
  * Wrapper
@@ -198,7 +223,11 @@ pre {
   max-width: $content-width;
   width: 100%;
   margin: 0 auto;
-  padding: 0 $spacing-unit;
+  padding: 0 $spacing-unit / 4;
+
+  @media only screen and (min-width: 800px) {
+    padding: 0 $spacing-unit / 2;
+  }
 }
 
 /**

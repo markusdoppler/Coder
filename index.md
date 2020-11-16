@@ -4,6 +4,8 @@ layout: home
 
 # Coder
 
+<section>
+
 ## Languages
 
 * [JavaScript](JavaScript/README)
@@ -14,6 +16,11 @@ layout: home
 * Java
 * Swift
 
+</section>
+
+---
+
+<section>
 
 ## Web
 **Web Technologies**
@@ -31,3 +38,5 @@ layout: home
 * Green Web Design
 * Responsive Web Design
 * Art of Programming
+
+</section>

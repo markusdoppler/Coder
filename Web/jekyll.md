@@ -28,7 +28,7 @@ jekyll new . --force
 Start local server
 ```zsh
 bundle exec jekyll serve
-bundle exec jekyll serve --livereload
+bundle exec jekyll serve --livereload --incremental
 ```
 
 

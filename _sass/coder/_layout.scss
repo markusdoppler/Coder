@@ -7,9 +7,10 @@
   min-height: $spacing-unit * 1.865;
   border-bottom: 1px solid $grey-color-light;
   background-color: $background-color;  
+  user-select: none;
 
   .dark & {
-    border-bottom: 1px solid $grey-color-dark;
+    border-bottom: 1px solid darken($background-color--dark, 20%);
     background-color: $background-color--dark;  
   }
 }
@@ -88,17 +89,42 @@
 
   .dark & {
     background-color: $background-color--dark;
-    border-top: 1px solid $grey-color-dark;
-    border-bottom: 1px solid $grey-color-dark;
+    border-top: 1px solid darken($background-color--dark, 20%);
+    border-bottom: 1px solid darken($background-color--dark, 20%);
+
   }
 }
 .wrapper--fullwidth {
   width: 100%;
   padding: 0 $spacing-unit;
+  overflow-x: scroll;
+}
+.site-nav {
+  line-height: $base-line-height * $base-font-size * 2.25;
+  min-width: min-content;
   display: flex;
   justify-content: center;
-}
 
+  .page-link {
+    color: $text-color;
+
+    &:hover {
+      color: lighten($text-color, 15%);
+    }
+
+    .dark & {
+      color: $text-color--dark;
+    }
+    .dark &:hover {
+      color: lighten($text-color--dark, 15%);
+    }
+
+    // Gaps between nav items
+    & {
+      margin-right: 20px;
+    }
+  }
+}
 
 
 /**
@@ -131,13 +157,22 @@
   max-width: $content-width;
   margin: 0 auto $spacing-unit auto;
   padding: $spacing-unit / 2;
-  background: rgba(255,255,255,0.3);
-  font-size: 0.6rem;
-  display: none;
+  border-radius: $border-radius;
 
   ul {
-    margin-left: 0;
     list-style: none;
+  }
+  li {
+    position: relative;
+  }
+  li::before {
+    content: "➜";
+    position: absolute;
+    left: -1.5rem;
+
+  }
+  li ~ li {
+    margin-top: $spacing-unit / 8;
   }
 
   @media only screen and (min-width: 1000px) {
@@ -146,9 +181,17 @@
     max-height: 50vh;
     overflow-y: scroll;
     position: fixed;
-    left: $spacing-unit;
+    left: $spacing-unit / 2;
     top: 3 * $spacing-unit;
-    font-size: 0.8rem;
+    font-size: 0.6rem;
+
+    ul {
+      margin-left: 0;
+    }  
+
+    & * {
+      font-size: 0.6rem;
+    }
   }
 }
 
@@ -165,102 +208,14 @@
 
 
 
-
-
-.site-nav {
-  // float: right;
-  line-height: $base-line-height * $base-font-size * 2.25;
-
-  .nav-trigger {
-    display: none;
-  }
-
-  .menu-icon {
-    display: none;
-  }
-
-  .page-link {
-    color: $text-color;
-
-    &:hover {
-      color: lighten($text-color, 15%);
-    }
-
-    .dark & {
-      color: $text-color--dark;
-    }
-    .dark &:hover {
-      color: lighten($text-color--dark, 15%);
-    }
-
-    // Gaps between nav items, but not on the last one
-    &:not(:last-child) {
-      margin-right: 20px;
-    }
-  }
-
-  @include media-query($on-palm) {
-    position: absolute;
-    top: 9px;
-    right: $spacing-unit / 2;
-    background-color: $background-color;
-    border: 1px solid $grey-color-light;
-    border-radius: 5px;
-    text-align: right;
-
-    label[for="nav-trigger"] {
-      display: block;
-      float: right;
-      width: 36px;
-      height: 36px;
-      z-index: 2;
-      cursor: pointer;
-    }
-
-    .menu-icon {
-      display: block;
-      float: right;
-      width: 36px;
-      height: 26px;
-      line-height: 0;
-      padding-top: 10px;
-      text-align: center;
-
-      > svg {
-        fill: $grey-color-dark;
-      }
-    }
-
-    input ~ .trigger {
-      clear: both;
-      display: none;
-    }
-
-    input:checked ~ .trigger {
-      display: block;
-      padding-bottom: 5px;
-    }
-
-    .page-link {
-      display: block;
-      padding: 5px 10px;
-
-      &:not(:last-child) {
-        margin-right: 0;
-      }
-      margin-left: 20px;
-    }
-  }
-}
-
-
-
-
-
-
 /**
  * Page content
  */
+
+.post {
+  min-height: calc(100vh - #{$spacing-unit * 5});
+}
+
 .page-content {
   padding: $spacing-unit 0 0 0;
   flex: 1;
@@ -316,7 +271,7 @@
   margin-bottom: $spacing-unit;
 
   h2 {
-    @include relative-font-size(2);
+    @include relative-font-size(1.8);
 
     @include media-query($on-laptop) {
       @include relative-font-size(1.75);

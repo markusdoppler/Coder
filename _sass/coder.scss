@@ -10,28 +10,38 @@ $small-font-size:  $base-font-size * 0.875 !default;
 $base-line-height: 1.5 !default;
 
 $spacing-unit:     30px !default;
+$border-radius:    6px;
 
 // Width of the content area
 $content-width:    800px !default;
 
+
+
+
 // Colours
-$text-color:       #111 !default;
-$background-color: #fdfdfd !default;
-$brand-color:      #2a7ae2 !default;
-$text-selection-bg-color: rgba(150,150,150,0.5);
-
-$text-color--dark:       #9c9c9c !default;
-$background-color--dark: #111 !default;
-$brand-color--dark:      #2a7ae2 !default;
-
 $grey-color:       #828282 !default;
 $grey-color-light: lighten($grey-color, 40%) !default;
 $grey-color-dark:  darken($grey-color, 25%) !default;
 
-$code-bg-color: #272626;
-$code-text-color: #f1f1f1;
-$code-bg-color--dark: #161616;
-$code-text-color--dark: #d4d4d4;
+
+$text-color:       #111 !default;
+$background-color: #fdfdfd !default;
+$brand-color:      #2a7ae2 !default;
+$text-selection-bg-color: #2a7ae2;
+
+$code-bg-color: lighten($grey-color, 40%);
+$code-text-color: #353535;
+
+
+$text-color--dark:       #d4dde9 !default;
+$background-color--dark: #192f4d !default;
+$brand-color--dark:      #2a7ae2 !default;
+
+$code-bg-color--dark: #192f4d;
+$code-text-color--dark: #d3d3d3;
+
+
+
 
 
 $table-text-align: left !default;

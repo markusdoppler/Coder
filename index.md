@@ -2,41 +2,24 @@
 layout: home
 ---
 
-# Coder
+# Coder | Cheatsheets
 
 <section>
 
-## Languages
+## Latest Cheatsheets
 
-* [JavaScript](JavaScript/README)
-* PHP
-* Python
-* C
-* C++
-* Java
-* Swift
+* [Git](Tools/git)
 
-</section>
-
----
-
-<section>
-
-## Web
-**Web Technologies**
+<!-- 
 * [HTML](HTML/README)
 * [CSS](CSS/README)
+
+* [SVG](Web/svg)
+
 * [JavaScript](JavaScript/README)
-* [SVG](Web/svg.md)
-* [Markdown](Web/markdown.md)
 
-**Web Frameworks**
-* Vue
-* Nuxt
-
-**Web Paradigms**
-* Green Web Design
-* Responsive Web Design
-* Art of Programming
+* [Vue](JavaScript/library-vue)
+* [Nuxt](JavaScript/library-nuxt)
+-->
 
 </section>

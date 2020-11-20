@@ -1,29 +1,60 @@
-# Coder - Cheatsheets of My Favourite Programming Languages and Tools
+---
+layout: home
+---
+
+# Coder | Cheatsheets
+
+<section>
 
 ## Languages
 
-* [JavaScript](/Web/JavaScript)
+* [JavaScript](JavaScript/README)
 * PHP
-* [Python](/Python)
+* Python
 * C
 * C++
 * Java
 * Swift
 
+</section>
+
+---
+
+<section>
 
 ## Web
 **Web Technologies**
-* [HTML](/Web/HTML)
-* [CSS](/Web/CSS)
-* [JavaScript](/Web/JavaScript)
-* [SVG](/Web/svg.md)
-* [Markdown](/Web/markdown.md)
+* [HTML](HTML/README)
+* [CSS](CSS/README)
+* [JavaScript](JavaScript/README)
+* [SVG](Web/svg)
+* [Markdown](Web/markdown)
+* [Jekyll](Web/jekyll)
 
 **Web Frameworks**
-* Vue
-* Nuxt
+* [Vue](JavaScript/library-vue)
+* [Nuxt](JavaScript/library-nuxt)
 
 **Web Paradigms**
 * Green Web Design
 * Responsive Web Design
 * Art of Programming
+
+</section>
+
+---
+<section>
+
+## Tools
+
+**Command Line**
+* Bash
+* Zsh
+* [Git](Tools/git)
+
+**Editors**
+* VIM
+* Atom
+* VSCode
+
+</section>

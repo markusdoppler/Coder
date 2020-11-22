@@ -10,6 +10,7 @@ layout: home
 
 * [Git](Tools/git)
 * [SVG](SVG/README)
+* [JavaScript](JavaScript/README)
 
 <!-- 
 * [HTML](HTML/README)

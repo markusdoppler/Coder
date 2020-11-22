@@ -9,6 +9,7 @@ layout: home
 ## Latest Cheatsheets
 
 * [Git](Tools/git)
+* [SVG](SVG/README)
 
 <!-- 
 * [HTML](HTML/README)

@@ -2,7 +2,7 @@
 title: Git
 ---
 
-<link href="style.css" rel="stylesheet">
+<link href="../assets/style.css" rel="stylesheet">
 
 # Git
 
@@ -34,7 +34,7 @@ A local repository consists of three "trees" maintained by Git.
 
 ## Configure Git
 
-<figure class="fig-code-1-2">
+<figure class="fig-1-2">
 
 Configure Git
 ```shell
@@ -56,7 +56,7 @@ git config format.pretty oneline
 
 ## Initialize Git Repository
 
-<figure class="fig-code-1-2">
+<figure class="fig-1-2">
 
 
 Initialize Git repository
@@ -73,7 +73,7 @@ git init
 
 ## Remote
 
-<figure class="fig-code-1-2">
+<figure class="fig-1-2">
 
 Add remote origin
 ```shell
@@ -89,7 +89,7 @@ git remote add origin [url]
 
 ## Clone repository
 
-<figure class="fig-code-1-2">
+<figure class="fig-1-2">
 
 ![clone](../assets/Git/clone.jpg)
 
@@ -121,7 +121,7 @@ git clone --recursive https://gitlab.cern.ch/tdr/notes/AN-19-031.git
 
 ## Add
 
-<figure class="fig-code-1-2">
+<figure class="fig-1-2">
 
 
 ![add](../assets/Git/add.jpg)
@@ -151,7 +151,7 @@ git add -i
 
 ## Status
 
-<figure class="fig-code-1-2">
+<figure class="fig-1-2">
 
 ![status](../assets/Git/status.jpg)
 
@@ -172,7 +172,7 @@ git status
 
 ## (Re)move files
 
-<figure class="fig-code-1-2">
+<figure class="fig-1-2">
 
 Move / Remove / Rename
 
@@ -203,7 +203,7 @@ git rm --cached [file]
 
 ## Ignore
 
-<figure class="fig-code-1-2">
+<figure class="fig-1-2">
 
 Create a `.gitignore` file
 
@@ -222,7 +222,7 @@ assets/*
 
 ## Commit
 
-<figure class="fig-code-1-2">
+<figure class="fig-1-2">
 
 ![commit](../assets/Git/commit.jpg)
 
@@ -241,7 +241,7 @@ git commit -am "checked in everything"
 
 ## Branch
 
-<figure class="fig-code-1-2">
+<figure class="fig-1-2">
 
 ![branch](../assets/Git/branch.jpg)
 
@@ -274,7 +274,7 @@ git checkout -b [new-branch-name]
 
 ## Checkout
 
-<figure class="fig-code-1-2">
+<figure class="fig-1-2">
 
 ![checkout-branch](../assets/Git/checkout-branch.jpg)
 ![checkout-head](../assets/Git/checkout-head.jpg)
@@ -310,7 +310,7 @@ git checkout -- [file]
 
 ## Merge
 
-<figure class="fig-code-1-2">
+<figure class="fig-1-2">
 
 ![merge](../assets/Git/merge.jpg)
 
@@ -351,7 +351,7 @@ git commit -m "resolved merge conflicts"
 
 ## Rebase
 
-<figure class="fig-code-1-2">
+<figure class="fig-1-2">
 
 ![rebase](../assets/Git/rebase.jpg)
 
@@ -369,7 +369,7 @@ git rebase master
 
 ## Fetch
 
-<figure class="fig-code-1-2">
+<figure class="fig-1-2">
 
 ![fetch+merge](../assets/Git/fetch+merge.jpg)
 ![fetch+reset](../assets/Git/fetch+reset.jpg)
@@ -396,7 +396,7 @@ git reset --hard origin/main
 
 ## Pull
 
-<figure class="fig-code-1-2">
+<figure class="fig-1-2">
 
 ![pull](../assets/Git/pull.jpg)
 
@@ -413,7 +413,7 @@ git pull
 
 ## Push
 
-<figure class="fig-code-1-2">
+<figure class="fig-1-2">
 
 ![push](../assets/Git/push.jpg)
 
@@ -433,7 +433,7 @@ git push origin [branch]
 
 ## Log 
 
-<figure class="fig-code-1-2">
+<figure class="fig-1-2">
 
 Log
 ```shell
@@ -456,7 +456,7 @@ git log --help
 
 ## Diff
 
-<figure class="fig-code-1-2">
+<figure class="fig-1-2">
 
 ![diff](../assets/Git/diff-branch.jpg)
 ![diff](../assets/Git/diff-index.jpg)
@@ -482,7 +482,7 @@ git diff [source_branch] [target_branch]
 
 ## Show Commit
 
-<figure class="fig-code-1-2">
+<figure class="fig-1-2">
 
 Show
 ```shell
@@ -498,7 +498,7 @@ git show [commit]
 
 ## Reset
 
-<figure class="fig-code-1-2">
+<figure class="fig-1-2">
 
 ![reset](../assets/Git/reset.jpg)
 
@@ -531,7 +531,7 @@ git reset HEAD file
 
 ## Clean
 
-<figure class="fig-code-1-2">
+<figure class="fig-1-2">
 
 
 Clean
@@ -550,7 +550,7 @@ git clean -f
 
 ## Stash
 
-<figure class="fig-code-1-2">
+<figure class="fig-1-2">
 
 ![stash push](../assets/Git/stash-push.jpg)
 ![stash pop](../assets/Git/stash-pop.jpg)
@@ -571,7 +571,7 @@ git stash pop
 
 ## Tagging
 
-<figure class="fig-code-1-2">
+<figure class="fig-1-2">
 
 Create tags for software releases
 

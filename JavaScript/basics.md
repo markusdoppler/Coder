@@ -163,6 +163,13 @@ parseFloat(e.offsetX).toFixed(2)
 var myString = "Hello World".
 ```
 
+
+**Find and replace with RegEx**
+```js
+let lunch = "Pizzapie";
+lunch = lunch.replace(/Pizza/g, "Broccoli");
+```
+
 </section>
 
 ---

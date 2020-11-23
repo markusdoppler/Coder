@@ -27,3 +27,70 @@ document.querySelectorAll('ul li')
 
 </figure>
 </section>
+
+---
+
+<section>
+
+## DOM Loaded
+
+<figure>
+
+<div>
+
+```js
+$(document).ready(function() {
+  // Handler
+});
+```
+
+```js
+$(function() {
+  // Handler
+});
+```
+
+</div>
+<div>
+
+```js
+window.onload = function() {
+  // Handler
+}
+```
+
+```js
+window.addEventListener("load", function() {
+  // Handler
+});
+```
+
+</div>
+</figure>
+
+</section>
+
+---
+
+<section>
+
+## Event Handler
+
+<figure>
+
+```js
+function handler() {
+  $(this)
+}
+```
+
+```js
+function handler() {
+  this
+}
+```
+
+</figure>
+
+</section>
+

@@ -20,6 +20,28 @@ document.ontouchstart = function(e){  }
 
 <section>
 
+## Load Events
+
+`DOMContentLoaded` – after DOM is loaded (before `img` and CSS)
+```js
+document.addEventListener("DOMContentLoaded", function(){
+    //....
+});
+```
+
+`load` – after everything is loaded and parsed
+```js
+window.addEventListener("load", function(){
+    // ....
+});
+```
+
+<section>
+
+---
+
+<section>
+
 ## Mouse 
 
 * [Mouse Events](https://javascript.info/mouse-events-basics#coordinates-clientx-y-pagex-y)

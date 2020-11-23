@@ -15,7 +15,7 @@ title: JavaScript
 
 ## Frameworks
 * [jQuery](library-jquery)
-<!--* [jQuery vs. Vanilla JavaScript](jquery-vs-vanilla)-->
+* [jQuery vs. Vanilla JavaScript](jquery-vs-vanilla)
 * [Vue.js](library-vue)
 * [Nuxt.js](library-nuxt)
 * React

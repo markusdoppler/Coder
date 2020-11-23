@@ -9,12 +9,12 @@ layout: home
 ## Latest Cheatsheets
 
 * [Git](Tools/git)
-* [SVG](SVG/README)
 * [JavaScript](JavaScript/README)
+* [SVG](SVG/README)
+* [CSS](CSS/README)
 
 <!-- 
 * [HTML](HTML/README)
-* [CSS](CSS/README)
 
 * [SVG](Web/svg)
 

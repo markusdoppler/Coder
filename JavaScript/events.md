@@ -14,7 +14,7 @@ image.addEventListener('load', function(e) { newPhotoIsDoneLoading(e); }, false)
 document.ontouchstart = function(e){  }
 ```
 
-<section>
+</section>
 
 ---
 
@@ -36,7 +36,7 @@ window.addEventListener("load", function(){
 });
 ```
 
-<section>
+</section>
 
 ---
 

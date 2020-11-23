@@ -1,5 +1,5 @@
 
-window.addEventListener("load", function () {
+window.addEventListener("DOMContentLoaded", function () {
 
   /* Dark mode */
   if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {

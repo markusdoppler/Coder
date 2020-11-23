@@ -16,3 +16,13 @@ figure {
 
 }
 
+
+
+
+
+
+
+/* Styles for Examples */
+
+.css-transition-box { width: 100%; height: 100%; background-color: navy; transition: background-color 1s ease; }
+.css-transition-box:hover { background-color: aqua; }

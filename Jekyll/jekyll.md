@@ -70,7 +70,7 @@ site.title
 
 ## Custom Theme
 
-1. Copy theme folders from e.g. the `minima` theme
+1. **Copy theme folders** from e.g. the `minima` theme
 ```zsh
 open $(bundle info --path minima)
 ```

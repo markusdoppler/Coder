@@ -151,6 +151,7 @@
 }
 
 
+/* Table of Contents */
 
 .toc {
   width: 100%;
@@ -158,6 +159,13 @@
   margin: 0 auto $spacing-unit auto;
   padding: $spacing-unit / 2;
   border-radius: $border-radius;
+  background: black;
+
+  h3 {
+    padding: 1rem 0;
+    font-size: 1.3rem;
+    font-weight: bold;
+  }
 
   ul {
     list-style: none;
@@ -166,32 +174,49 @@
     position: relative;
   }
   li::before {
-    content: "➜";
+    content: "→";
     position: absolute;
     left: -1.5rem;
-
+    top: 0.15rem;
+    font-size: 0.8rem;
   }
   li ~ li {
     margin-top: $spacing-unit / 8;
   }
 
   @media only screen and (min-width: 1000px) {
-    margin: 0;
-    width: calc(calc(50% - #{$content-width / 2}) - #{$spacing-unit});
-    max-height: 50vh;
-    overflow-y: scroll;
     position: fixed;
-    left: $spacing-unit / 2;
-    top: 3 * $spacing-unit;
-    font-size: 0.6rem;
+    left: - 17rem;
+    top: 4rem;
+    margin: 0;
+    padding: 0.5rem 2rem 0.5rem 4rem;
+    width: 20rem;
+    max-height: calc(100vh - 8rem);
+    overflow-y: scroll;
+    border-radius: 0 $border-radius $border-radius 0;
+
+    transition: 0.5s ease;
+
+    &:hover {
+      left: 0;
+    }
+
+    &::after {
+      content: "❖";
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      color: white;
+    }
 
     ul {
       margin-left: 0;
+      padding-bottom: 5rem;
     }  
 
-    & * {
-      font-size: 0.6rem;
-    }
+    li ~ li {
+      margin-top: $spacing-unit / 2;
+    }  
   }
 }
 

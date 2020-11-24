@@ -6,22 +6,43 @@ layout: home
 
 <section>
 
-## Latest Cheatsheets
+## My Cheatsheets
 
-* [Git](Tools/git)
+### Programming Languages
+* Python
 * [JavaScript](JavaScript/README)
-* [SVG](SVG/README)
-* [CSS](CSS/README)
+* Swift
+* Java
+* C
+* C++
+* Fortran
 
-<!-- 
+
+### Web Technologies
 * [HTML](HTML/README)
-
-* [SVG](Web/svg)
-
+* [CSS](CSS/README)
+* [SVG](SVG/README)
 * [JavaScript](JavaScript/README)
+* [Vue.js](JavaScript/library-vue)
+* [Nuxt.js](JavaScript/library-nuxt)
+* [Jekyll](Jekyll/jekyll)
 
-* [Vue](JavaScript/library-vue)
-* [Nuxt](JavaScript/library-nuxt)
--->
+
+### Tools
+* [Git](Tools/git)
+* Linux / Bash
+* Zsh
+* RegEx
+* SQL
+* LaTeX
+* Gnuplot
+* ROOT
+
+
+### Code Editors
+* VSCode
+* Atom
+* VIM
+* Emacs
 
 </section>

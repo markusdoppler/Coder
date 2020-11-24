@@ -576,6 +576,109 @@ box-shadow: 3px 6px 2px rgba(100, 100, 100, .3);
 
 <section>
 
+## Transforms
+
+Scale
+<figure class="fig-1-3">
+
+<div style="width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; border: 2px solid maroon;">
+    <div style="border: 2px solid green; transform: scale(2);">200%</div>
+</div>
+
+```css
+transform: scale(2);
+```
+
+</figure>
+
+Translate
+<figure class="fig-1-3">
+
+<div style="width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; border: 2px solid maroon;">
+    <div style="border: 2px solid green; transform: translate(10px, -10px);">➶</div>
+</div>
+
+```css
+transform: translate(10px, -10px);
+```
+
+</figure>
+
+Rotate
+<figure class="fig-1-3">
+
+<div style="width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; border: 2px solid maroon;">
+    <div style="border: 2px solid green; transform: rotate(30deg);">↻</div>
+</div>
+
+```css
+transform: rotate(30deg);
+```
+
+</figure>
+
+Skew
+<figure class="fig-1-3">
+
+<div style="width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; border: 2px solid maroon;">
+    <div style="border: 2px solid green; transform: skew(30deg);">ABC</div>
+</div>
+
+```css
+transform: skew(30deg);
+```
+
+</figure>
+
+
+</section>
+
+---
+
+<section>
+
+## Filter
+
+* Brightness
+* Contrast
+* Drop Shadow
+* Grayscale
+* Hue-Rotate
+* Opacity
+* Saturate
+* Sepia
+* Blur
+
+
+Blur
+<figure class="fig-1-3">
+
+<div style="width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; background: rgb(50,100,150); filter: blur(1px);">Blur</div>
+
+```css
+filter: blur(1px);
+```
+
+</figure>
+
+Hue Rotation
+<figure class="fig-1-3">
+
+<div style="width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; background: rgb(50,100,150); filter: hue-rotate(180deg);">Hue</div>
+
+```css
+filter: hue-rotate(180deg);
+```
+
+</figure>
+
+
+</section>
+
+---
+
+<section>
+
 ## Text selection
 
 ```css

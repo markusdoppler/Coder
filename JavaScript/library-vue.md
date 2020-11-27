@@ -68,11 +68,14 @@ export default {
 ### Vue instance
 
 <figure>
+{% raw %}
 ```html
 <section id="cv">
   {{title}}
 </section>
 ```
+{% endraw %}
+
 
 ```js
 var vm = new Vue({
@@ -110,20 +113,23 @@ vm.$watch
 
 #### using template string
 
+{% raw %}
 ```js
 let titleComponent = {
-	template: '<div :style="myStyle"><h3>{{title}}</h3></div>',
-	data() {
-		return {
+  template: '<div :style="myStyle"><h3>{{title}}</h3></div>',
+  data() {
+    return {
       title: "CV"
-		}
+	  }
   },
-	props: ['id']
+  props: ['id']
 }
 ```
+{% endraw %}
 
 #### using x-template definition
 
+{% raw %}
 ```html
 <script type="text/x-template" id="component-id">
   <div :style="myStyle">
@@ -131,16 +137,17 @@ let titleComponent = {
   </div>
 </script>
 ```
+{% endraw %}
 
 ```js
 let titleComponent = {
-	template: '#component-id',
-	data() {
-		return {
+  template: '#component-id',
+  data() {
+    return {
       title: "CV"
-		}
+    }
   },
-	props: ['id']
+  props: ['id']
 }
 ```
 
@@ -152,9 +159,9 @@ Vue.component(titleComponent);
 ### Registering local component
 ```js
 var vm = new Vue({
-	el: "#cv",
-	data: {
-		title: "CV"
+  el: "#cv",
+  data: {
+    title: "CV"
   },
   components: [
     titleComponent
@@ -165,10 +172,12 @@ var vm = new Vue({
 
 ### Data bindings
 
+{% raw %}
 ```html
 <h3>{{ ok ? 'YES' : 'NO' }}</h3>
 <code>{{ var }}</code>
 ```
+{% endraw %}
 
 ### Directives
 * start with `v-`

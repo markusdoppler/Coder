@@ -2,14 +2,14 @@
 layout: home
 ---
 
-# Coder | Cheatsheets
+# Coder
 
 <section>
 
 ## My Cheatsheets
 
 ### Programming Languages
-* Python
+* [Python](Python/README)
 * [JavaScript](JavaScript/README)
 * Swift
 * Java

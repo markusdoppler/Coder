@@ -2,19 +2,22 @@
 layout: home
 ---
 
-# Coder | Cheatsheets
+# Coder
 
 <section>
 
 ## Languages
 
+* [Python](Python/README)
 * [JavaScript](JavaScript/README)
-* PHP
-* Python
+* Swift
 * C
 * C++
 * Java
-* Swift
+* Fortran
+* Objective-C
+* PHP
+* Ruby
 
 </section>
 
@@ -28,21 +31,24 @@ layout: home
 * [CSS](CSS/README)
 * [JavaScript](JavaScript/README)
 * [SVG](Web/svg)
-* [Markdown](Web/markdown)
-* [Jekyll](Web/jekyll)
+* [Markdown](Markdown/markdown)
+* [Jekyll](Jekyll/jekyll)
+* PHP
 
 **Web Frameworks**
 * [Vue](JavaScript/library-vue)
 * [Nuxt](JavaScript/library-nuxt)
 
 **Web Paradigms**
-* Green Web Design
-* Responsive Web Design
+* [Accessibility](HTML/webdesign-accessibility)
+* [Responsive Web Design](HTML/webdesign-responsive)
+* [Green Web Design](HTML/webdesign-green)
 * Art of Programming
 
 </section>
 
 ---
+
 <section>
 
 ## Tools
@@ -56,5 +62,21 @@ layout: home
 * VIM
 * Atom
 * VSCode
+
+**Databases**
+* MySQL
+* SQL
+* sqlite3
+* JSON
+* XML
+* CSV
+* RegExp
+
+
+<!-- 
+* Perl
+* ASP
+* AJAX
+-->
 
 </section>

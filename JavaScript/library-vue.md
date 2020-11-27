@@ -6,6 +6,251 @@ title: Vue
 
 <section>
 
+## Overview
+
+### Resources
+* [Vue Documentation](https://vuejs.org/v2/guide/class-and-style.html)
+* [Vue I18n](http://kazupon.github.io/vue-i18n/started.html#javascript)
+* [Vue School Courses](https://vueschool.io/courses)
+
+
+### Quick setup into existing HTML file
+
+```html
+<script src="vue.js"></script>
+```
+
+* There are 
+
+
+### Vue CLI
+
+Vue CLI
+```bash
+npm install -g @vue/cli @vue/cli-service-global
+yarn global add @vue/cli @vue/cli-service-global
+
+vue create my-project
+```
+
+* In this case you work with `.vue` files, structured as follows:
+
+## Refs
+```html
+<template>
+  <div>
+  </div>
+</template>
+
+<script>
+export default {
+}
+</script>
+
+<style scoped>
+
+</style>
+```
+
+
+### Nuxt.js
+
+* Similar work environment as with VueCLI, but more customisablity. More information about [Nuxt.js](library-nuxt).
+
+</section>
+
+---
+
+<section>
+
+## Basics
+
+### Vue instance
+
+<figure>
+```html
+<section id="cv">
+  {{title}}
+</section>
+```
+
+```js
+var vm = new Vue({
+	el: "#cv",
+	data: {
+		title: "CV"
+	}
+});
+```
+</figure>
+
+Vue Object Properties and Methods:
+* `el`
+* `data`
+Custom Methods
+* `methods`
+Watched Properties
+* `watch`
+Computed Properties
+* `computed`
+Life cycle methods
+* `created`
+* `mounted`
+* `updated`
+* `destroyed`
+
+Properties of the Vue instance
+```js
+vm.$data
+vm.$el
+vm.$watch
+```
+
+### Components
+
+#### using template string
+
+```js
+let titleComponent = {
+	template: '<div :style="myStyle"><h3>{{title}}</h3></div>',
+	data() {
+		return {
+      title: "CV"
+		}
+  },
+	props: ['id']
+}
+```
+
+#### using x-template definition
+
+```html
+<script type="text/x-template" id="component-id">
+  <div :style="myStyle">
+    <h3>{{title}}</h3>
+  </div>
+</script>
+```
+
+```js
+let titleComponent = {
+	template: '#component-id',
+	data() {
+		return {
+      title: "CV"
+		}
+  },
+	props: ['id']
+}
+```
+
+### Registering a global component
+```js
+Vue.component(titleComponent);
+```
+
+### Registering local component
+```js
+var vm = new Vue({
+	el: "#cv",
+	data: {
+		title: "CV"
+  },
+  components: [
+    titleComponent
+  ]
+});
+```
+
+
+### Data bindings
+
+```html
+<h3>{{ ok ? 'YES' : 'NO' }}</h3>
+<code>{{ var }}</code>
+```
+
+### Directives
+* start with `v-`
+* can take arguments after the colon `:`
+
+v-once
+```html
+v-once
+```
+
+v-if
+```html
+v-if="seen"
+```
+
+v-for
+```html
+v-for=""
+```
+
+v-bind
+```html
+v-bind:id="myVar"
+v-bind:href="url"
+v-bind:[attributeName]="url"
+
+shorthand
+:href="url"
+```
+
+v-model
+```html
+<input type="text" v-model="title" />
+```
+
+
+### Event Listeners
+
+```html
+v-on
+
+v-on:click="doSomething"
+
+shorthand
+@click="url"
+```
+
+**Modifier**
+```html
+v-on:submit.prevent="onSubmit"
+```
+
+### Slots
+
+
+
+### Custom events
+
+
+
+### Custom directives
+
+```js
+Vue.directive('scroll', {
+  inserted: function (el, binding) {
+    let f = function (evt) {
+      if (binding.value(evt, el)) {
+        window.removeEventListener('scroll', f)
+      }
+    }
+    window.addEventListener('scroll', f)
+  }
+});
+```
+
+
+</section>
+
+---
+
+<section>
+
 ## Refs
 ```html
 <template>
@@ -29,7 +274,7 @@ export default {
 
 <section>
 
-## Vuex
+## VueCLI: Vuex
 `store.js`
 ```js
 import Vue from "vue";
@@ -56,7 +301,7 @@ this.$store.commit("myFunction");
 
 <section>
 
-## Router
+## VueCLI: Router
 ```js
 this.$router.replace("/");
 ```

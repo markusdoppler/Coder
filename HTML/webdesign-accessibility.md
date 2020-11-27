@@ -6,17 +6,68 @@ title: Accessibility
 
 <section>
 
-# ARIA – Accessible Rich Internet Applications
+## Accessibility topics
+
+- Semantic HTML
+- Colour, Contrast
+- Aria Labels
+- `tab-index="1"`
+- `.sr-only` class
+
+</section>
+
+---
+
+<section>
+
+## Tabindex
+
+* link
+* button
+* inputs
+
+Programmatically set `tab-index="-1"` to take element out of tab order.
+
+Deque website --> skip to content
+
+[Skip Nav](https://webaim.org/techniques/skipnav/)
+
+</section>
+
+---
+
+<section>
+
+## ARIA – Accessible Rich Internet Applications
+
+* a11y = a*ccessibilit*y
+
+### Resources
+* [Semantics and ARIA by Google](https://developers.google.com/web/fundamentals/accessibility/semantics-aria/)
+* [ARIA Techniques by Mozilla](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques)
+
 
 `aria-label`
+
 `aria-labelledby`
+
 `aria-describedby`
 
-`aria-expaned="false"`
 `aria-controls="sect-id"`
 
+Aria Roles
+`aria-expanded="true"`
+`aria-expanded="false"`
+`aria-checked`
+`aria-label="label"`
 
-Roles
+
+```css
+div[aria-expanded="true"]
+```
+
+
+### Roles
 `role="button"`
 `role="group"`
 `role="region"`
@@ -47,12 +98,35 @@ Roles
 
 <section>
 
-## Accessibility topics
+## Semantic HTML
 
-- Aria Labels
-- `tab-index="1"`
-- `.sr-only` class
-- `alt` attribute for images
+### HTML
+* `lang` attribute on `<html>`
+
+### Headings
+* `<h1>` to `<h6>` accordingly
+* only one `<h1>` per page
+
+### Structure
+* `<header>`
+* `<main>`
+* `<article>`
+* `<section>`
+* `<aside>`
+* `<footer>`
+
+### Buttons and Links
+* decide `button` vs. `a`
+* `a` leads somewhere
+
+### Inputs
+* `input` type
+
+### Images
+* `alt` attribute on image
+
+### Style
+* flexbox and grid order property should not change logical order
 
 </section>
 

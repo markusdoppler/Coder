@@ -11,4 +11,10 @@
     {%- include google-analytics.html -%}
   {%- endif -%}
   <script src="{{ '/assets/coder.js' | relative_url }}"></script>
+  {%- for style in page.styles -%}
+    <link rel="stylesheet" href="{{ style }}" />
+  {%- endfor -%}
+  {%- for script in page.scripts -%}
+    <script src="{{ script }}" async></script>
+  {%- endfor -%}
 </head>

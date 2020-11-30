@@ -26,6 +26,7 @@ layout: home
 * [Vue.js](JavaScript/library-vue)
 * [Nuxt.js](JavaScript/library-nuxt)
 * [Jekyll](Jekyll/jekyll)
+* [MathJAX](math/mathjax)
 
 
 ### Tools
@@ -34,7 +35,7 @@ layout: home
 * Zsh
 * RegEx
 * SQL
-* LaTeX
+* [LaTeX](math/latex)
 * Gnuplot
 * ROOT
 

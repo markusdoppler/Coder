@@ -30,10 +30,11 @@ layout: home
 * [HTML](HTML/README)
 * [CSS](CSS/README)
 * [JavaScript](JavaScript/README)
+* PHP
 * [SVG](Web/svg)
 * [Markdown](Markdown/markdown)
 * [Jekyll](Jekyll/jekyll)
-* PHP
+* [MathJAX](math/mathjax)
 
 **Web Frameworks**
 * [Vue](JavaScript/library-vue)
@@ -62,6 +63,10 @@ layout: home
 * VIM
 * Atom
 * VSCode
+
+**Math**
+* [LaTeX](math/latex)
+* [MathJAX](math/mathjax)
 
 **Databases**
 * MySQL

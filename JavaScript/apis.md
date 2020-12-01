@@ -8,14 +8,62 @@ title: Browser APIs
 
 ## History API
 
-
+### History
 ```js
 const historyLength = window.history.length;
 window.history.back();
 window.history.forward();
 window.history.go(-2);
+history.state
 ```
 
+Events
+```js
+window.addEventListener("hashchange", function() {
+  e.newURL
+  e.oldURL
+  history.state
+  location.hash
+});
+window.addEventListener("popstate", function() {
+  e.state
+});
+```
+
+
+### Location
+
+```js
+window.location
+```
+
+`href` = entire URL
+```js
+location.href
+```
+```
+https:// developer.markusdoppler.at         :80     /path/filename.html#hash?query=string&num=1
+protocol subdomain domain        superdomain port   pathname           hash  query
+```
+
+```js
+location.reload()
+location.replace()
+location.replace('http://www.ecosia.com')
+```
+
+</section>
+
+---
+
+<section>
+
+## JSON
+
+```js
+let string = JSON.stringify(history.state)
+let data = JSON.parse(historyState)
+```
 </section>
 
 ---

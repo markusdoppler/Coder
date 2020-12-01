@@ -28,7 +28,4 @@ Elements in detail
 * [W3 HTML Validator](http://validator.w3.org)
 * [W3 CSS Validator](http://jigsaw.w3.org/css-validator/)
 
-
-
-
 </section>

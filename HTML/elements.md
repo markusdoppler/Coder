@@ -157,6 +157,28 @@ Combining Viewport Values
 
 <section>
 
+## Scripts
+
+Attributes
+* `async`: no guarantee which file with `async` attribute loads first
+```html
+<script async src="external-js.js"></script>
+<script async src="other-external-js.js"></script>
+```
+
+* `defer`: would not run until the page was ready
+* execute in order, but still not block the rest of the page while the files are being downloaded to the browser. Usecase: a script that needs to synchronize with any other script, i.e. load before or after
+```html
+<script defer src="external-js.js"></script>
+<script defer src="other-external-js.js"></script>
+```
+
+</section>
+
+---
+
+<section>
+
 ## Anchor link
 * `inline`-level (may wrap block-level elements)
 
@@ -999,5 +1021,39 @@ identifies the closing or end of a page, article, section, or other segment of a
 * `<sub>`
 * `<sup>`
 * `<meta>`
+
+</section>
+
+---
+
+<section>
+
+## Custom Tags and Attributes
+
+* [Web Components](https://developers.google.com/web/fundamentals/web-components)
+
+```html
+<my-book data-pages="400" data-author="Nietzsche">The Wanderer and His Shadow</my-book>
+```
+
+```js
+var myBook = document.createElement('my-book');
+myBook.addEventListener('click', function(e) {
+  alert('Thanks!');
+});
+```
+
+Use the new operator:
+```js
+var myBook = new myBook();
+document.body.appendChild(myBook);
+```
+
+* **Hyphenation!** Custom elements should consist of at least one - like my-book or app-menu or header-title etc. Just, don't use `data-*` since it's reserved for data-attributes.
+* All custom elements have a display of `inline` by default. You can change that with CSS or JavaScript, however.
+* Internet Explorer does not recognize any of these elements unless you first "create" them with JavaScript:
+```js
+document.createElement('my-book');
+```
 
 </section>

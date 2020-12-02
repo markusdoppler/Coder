@@ -18,7 +18,7 @@ The **convention** around naming variables is to use `camelCase`
 
 ```js
 var theStarterLeague = 125;
-var food_truck = 'Coffee';
+var food_truck = "Coffee";
 var mixtape01 = true;
 var vinyl = ['Miles Davis', 'Frank Sinatra', 'Ray Charles'];
 ```
@@ -56,6 +56,19 @@ log(polaroid);
 return('bicycle lane');
 alert('Congratulations, you ' + outcome);
 ```
+
+</section>
+
+---
+
+<section>
+
+## Debugging
+
+Pause the flow of JavaScript
+* `alert`
+* `prompt`
+* `confirm`
 
 </section>
 
@@ -136,6 +149,17 @@ switch (food) {
 }
 ```
 
+### Try catch
+
+```js
+try {
+
+} catch {
+
+}
+```
+
+
 </section>
 
 ---
@@ -165,9 +189,17 @@ var myString = "Hello World".
 
 
 **Find and replace with RegEx**
+* [Mozilla: RegExp](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp)
+* [Mozilla: Regular Expressions Guide](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions)
 ```js
 let lunch = "Pizzapie";
 lunch = lunch.replace(/Pizza/g, "Broccoli");
+```
+
+**Split**
+
+```js
+var pathArray = window.location.pathname.split('/');
 ```
 
 </section>
@@ -182,12 +214,12 @@ lunch = lunch.replace(/Pizza/g, "Broccoli");
 var myArray = [5, 10, 15];
 ```
 
-get array element at index
+Get array element at index
 ```js
 myArray[2]; // 15
 ```
 
-get array length
+Get array length
 ```js
 myArray.length
 ```
@@ -424,6 +456,12 @@ var school = {
 };
 school['name'];
 school.name;
+```
+
+Create object via `new`
+```js
+wordData = new Object();
+wordData.wordType = 4;
 ```
 
 

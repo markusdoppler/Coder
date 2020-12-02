@@ -173,6 +173,22 @@ Attributes
 <script defer src="other-external-js.js"></script>
 ```
 
+### Event Listeners in HTML
+Simple Script that is runw when the HTML finished loading
+
+```html 
+<body onload="init();">
+  <!-- all the HTML content ... -->
+  <script>
+    function init() {
+      document.body.innerHTML = "HTML Loaded";
+    }
+  </script>
+</body>
+ 
+*/
+
+
 </section>
 
 ---

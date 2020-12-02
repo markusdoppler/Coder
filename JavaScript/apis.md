@@ -39,7 +39,13 @@ window.location
 
 `href` = entire URL
 ```js
-location.href
+window.location.href // https://css-tricks.com/example/index.html?s=flexbox
+window.location.protocol // https:
+window.location.host // css-tricks.com
+window.location.pathname // example/index.html
+window.location.search // ?s=flexbox
+
+let newURL = window.location.protocol + "//" + window.location.host + "/" + window.location.pathname + window.location.search
 ```
 ```
 https:// developer.markusdoppler.at         :80     /path/filename.html#hash?query=string&num=1
@@ -50,6 +56,26 @@ protocol subdomain domain        superdomain port   pathname           hash  que
 location.reload()
 location.replace()
 location.replace('http://www.ecosia.com')
+```
+
+### URL
+
+```js
+const url = new URL('../cats', 'http://www.example.com/dogs');
+
+console.log(url.hostname); // "www.example.com"
+console.log(url.pathname); // "/cats"
+
+url.hash = 'tabby';
+console.log(url.href); // "http://www.example.com/cats#tabby"
+
+url.pathname = 'démonstration.html';
+console.log(url.href); // "http://www.example.com/d%C3%A9monstration.html"
+
+// search parameters
+// https://some.site/?id=123
+var parsedUrl = new URL(window.location.href);
+console.log(parsedUrl.searchParams.get("id")); // "123"
 ```
 
 </section>

@@ -43,10 +43,11 @@ setTimeout(() => {
 
 ### Get Element
 
+Get element nodes for tag, class, or id
 ```js
-document.getElementById("id");
-document.getElementsByClassName("class");
 document.getElementsByTagName("p");
+document.getElementsByClassName("class");
+document.getElementById("id");
 ```
 
 
@@ -60,6 +61,37 @@ returns a node list of elements for this query
 ```js
 document.querySelectorAll(".selected")
 ```
+
+</section>
+
+---
+
+<section>
+
+## Accessing element node's properties
+
+```js
+element.style.display = "block";
+element.style.border = "1px solid blue";
+element.value
+element.className
+element.classList.add
+element.classList.remove
+element.parentNode
+```
+
+</section>
+
+---
+
+<section>
+
+## DOM Traversal
+
+```js
+element.parentNode
+```
+
 
 </section>
 

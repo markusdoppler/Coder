@@ -9,12 +9,19 @@ title: Canvas
 ## Canvas and Context
 
 ```html
-<canvas></canvas>
+<canvas width="300" height="300"></canvas>
 ```
 
-```
+```js
 let canvas = document.querySelector('canvas');
 let c = canvas.getContext('2d');
+```
+
+or in older browsers
+```js
+if (canvas.getContext) {
+  var c = canvas.getContext('2d');
+}
 ```
 
 </section>
@@ -111,5 +118,15 @@ function animateCanvas() {
   // drawing code
 }
 ```
+
+</section>
+
+---
+
+<section>
+
+## Canvas Cheat Sheet
+
+![Canvas Cheat Sheet](../assets/HTML/Canvas-Cheat-Sheet.png)
 
 </section>

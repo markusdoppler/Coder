@@ -35,12 +35,68 @@ JSON.parse(text)
 * `request()` (returns Promise)
 * `axios`
 
-
-
 * Synchronous JavaScript
 * Asynchronous JavaScript
 * Callbacks
 * Promises
+
+</section>
+
+---
+
+<section>
+
+## XML HTTP Request
+
+```js
+var request = new XMLHttpRequest();
+request.open('GET', 'http://www.markusdoppler.at/documentation/', false);
+request.send(null);
+if(request.status == 200) {
+  dump(request.responseText);
+}
+```
+
+### HTTP Request
+```js
+if (window.XMLHttpRequest) {
+  httpRequest = new XMLHttpRequest();
+}
+```
+
+```js
+httpRequest.onreadystatechange = handlerFunction;
+httpRequest.open('POST', 'http://latin.markusdoppler.at/search.php', true);
+httpRequest.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+httpRequest.setRequestHeader('Cache-Control', 'no-cache');
+httpRequest.send('verbum='+verbum+'&type='+wordData.wordType);
+
+httpRequest.send("jsonData=" + JSON.stringify(wordData));
+wordData = JSON.parse(httpRequest.responseText, function(k, v) {
+
+  if (httpRequest.readyState === 4) {
+    if (httpRequest.status === 200) {
+      alert("Input successful. Reload page prompt?");
+    } else {
+      alert("Save not successful: "+httpRequest.responseText);
+    }
+  }
+
+  if (httpRequest.readyState === 4 && httpRequest.status === 200) {
+    if (httpRequest.responseText != "false") {
+      wordData = JSON.parse(httpRequest.responseText, function(k, v) {
+          if (k === "") {
+              return v;
+          } else if (!isNaN(parseInt(v))) {
+              return parseInt(v);
+          } else {
+              return v;
+          }
+      });
+    }
+  }
+}
+```
 
 </section>
 
@@ -103,6 +159,10 @@ Promise.all([promise1, promise2])
   .then(result => console.log(result))
 ```
 
+```js
+const [weather, store] = Promise.all(getWeather(), getStores());
+```
+
 
 ### Async + Await
 Let synchronous code look like synchronous code
@@ -128,6 +188,30 @@ displayUser('email@me.com', "12345");
 
 ## Async / Await
 
+### How was it done before
+
+Callback
+```js
+function manageTheWeather() {
+  getTheWeather(..., showGraphsCallback(weather))
+}
+```
+
+Promises
+```js
+function manageTheWeather() {
+  getTheWeather().then(weather => showGraphs).catch(err => handleErrors)
+}
+```
+
+Async/await
+```js
+async function manageTheWeather() {
+  var weather = await getTheWeather()
+  showGraphs(weather)
+}
+```
+
 ### Let asynchronous code look like synchronous code!
 ```js
 async function getData() {
@@ -147,7 +231,16 @@ getData()
 
 <section>
 
-## Fetch Request Example
+## Fetch
+
+```js
+await fetch('https://api.github.com/users/wesbos').then(data => data.json())
+
+await (await fetch('https://api.github.com/users/wesbos')).json()
+```
+
+
+### Fetch Request Example
 
 Example from Design+Code
 ```html
@@ -201,6 +294,18 @@ export default {
   }
 };
 </script>
+```
+
+</section>
+
+---
+
+<section>
+
+## Axios library
+
+```js
+await axios.someFunc()
 ```
 
 </section>

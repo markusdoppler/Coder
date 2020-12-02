@@ -65,6 +65,13 @@ window.addEventListener("load", function() {
 });
 ```
 
+Attention: executes immediately, not on page load!
+```js
+(function () {
+  // Handler
+})();
+```
+
 </div>
 </figure>
 

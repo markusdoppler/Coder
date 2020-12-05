@@ -11,6 +11,7 @@ layout: home
 ### Programming Languages
 * [Python](Python/README)
 * [JavaScript](JavaScript/README)
+* [PHP](PHP/README)
 * Swift
 * Java
 * C
@@ -25,25 +26,27 @@ layout: home
 * [JavaScript](JavaScript/README)
 * [Vue.js](JavaScript/library-vue)
 * [Nuxt.js](JavaScript/library-nuxt)
+* React
 * [Jekyll](Jekyll/jekyll)
 * [MathJAX](math/mathjax)
 
 
 ### Tools
 * [Git](Tools/git)
-* Linux / Bash
+* [Linux / Bash](Tools/bash)
+* [LaTeX](math/latex)
+* Markdown
 * Zsh
 * RegEx
 * SQL
-* [LaTeX](math/latex)
 * Gnuplot
 * ROOT
 
 
 ### Code Editors
-* VSCode
+* [VIM](Editors/vim)
+* [VSCode](Editors/vscode)
 * Atom
-* VIM
 * Emacs
 
 </section>

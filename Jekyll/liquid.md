@@ -1,6 +1,22 @@
+---
+title: Liquid Template Language
+---
+
 # Liquid Template Language
 
+<section>
+
+## Overview
+
 * [Liquid Documentation](https://shopify.github.io/liquid/)
+
+</section>
+
+---
+
+<section>
+
+## Usage example
 
 ```html
   {%- if site.posts.size > 0 -%}
@@ -25,3 +41,5 @@
     <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | relative_url }}">via RSS</a></p>
   {%- endif -%}
 ```
+
+</section>

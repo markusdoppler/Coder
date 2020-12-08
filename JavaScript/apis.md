@@ -84,6 +84,23 @@ console.log(parsedUrl.searchParams.get("id")); // "123"
 
 <section>
 
+## Do not track
+
+* If these do *not* hold true, one could e.g. instantiate Google analytics.
+
+```js
+window.doNotTrack === "1"
+navigator.doNotTrack === "1"
+navigator.doNotTrack === "yes"
+navigator.msDoNotTrack === "1"
+```
+
+</section>
+
+---
+
+<section>
+
 ## JSON
 
 ```js
@@ -153,6 +170,7 @@ observer.observe(section);
 persists locally on this machine (for all browsers)
 ```js
 localStorage.setItem('name', 'Melanie')
+localStorage.getItem('name')
 localStorage.removeItem('name')
 ```
 
@@ -162,7 +180,9 @@ localStorage.removeItem('name')
 persists only for this session (i.e. as long as this tab is open)
 ```js
 sessionStorage.setItem('name', 'Jacob')
+sessionStorage.getItem('name')
 sessionStorage.removeItem('name')
+sessionStorage.clear()
 ```
 
 

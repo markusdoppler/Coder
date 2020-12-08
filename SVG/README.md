@@ -184,3 +184,120 @@ A curve takes three parameters:
 ```
 
 </section>
+
+---
+
+<section>
+
+## SVG Gradient
+
+### Radial Gradient
+
+<figure class="fig-1-3">
+
+<svg width="100" height="100" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <radialGradient id="redish-radial-gradient" cx="40%" cy="40%" r="90%" fx="10%" fy="20%">
+    <stop offset="20%" stop-color="#FFEFCB" />
+    <stop offset="50%" stop-color="#F0846A" />
+    <stop offset="70%" stop-color="#FF5699" />
+    <stop offset="90%" stop-color="#C5363F" />
+  </radialGradient>
+  <g>
+    <path fill="url(#redish-radial-gradient)" d="M0 0 L30 100 L 100 10 Z">
+  </g>
+</svg>
+
+
+<div style="overflow-x: scroll">
+
+```xml
+<radialGradient id="redish-radial-gradient" cx="40%" cy="40%" r="90%" fx="10%" fy="20%">
+  <stop offset="20%" stop-color="#FFEFCB" />
+  <stop offset="50%" stop-color="#F0846A" />
+  <stop offset="70%" stop-color="#FF5699" />
+  <stop offset="90%" stop-color="#C5363F" />
+</radialGradient>
+```
+
+apply via `fill` attribute
+```xml
+<path fill="url(#redish-radial-gradient)" class="path" d="M0 0 L30 100 L 100 10 Z">
+```
+
+or via CSS
+```css
+.path {
+  fill: url(#redish-radial-gradient);
+}
+```
+
+</div>
+</figure>
+
+</section>
+
+---
+
+<section>
+
+## SVG Filter
+
+### Drop shadow
+
+<figure class="fig-1-3">
+
+<svg width="100" height="100" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="dropshadow">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="9" />
+      <feOffset dx="10" dy="10" result="offsetblur" />
+      <feFlood flood-color="#6F327F" flood-opacity="0.5" result="offsetColor" />
+      <feComposite in="offsetColor" in2="offsetblur" operator="in" result="offsetBlur" />
+      <feMerge>
+        <feMergeNode />
+        <feMergeNode in="offsetBlur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+  <g>
+    <path filter="url(#dropshadow)" fill="#6F327F" d="M20 10 L50 70 L 90 20 Z">
+  </g>
+</svg>
+
+<div style="overflow-x: scroll">
+
+```xml
+<defs>
+  <filter id="dropshadow">
+    <feGaussianBlur in="SourceAlpha" stdDeviation="9" />
+    <feOffset dx="10" dy="10" result="offsetblur" />
+    <feFlood flood-color="#6F327F" flood-opacity="0.5" result="offsetColor" />
+    <feComposite in="offsetColor" in2="offsetblur" operator="in" result="offsetBlur" />
+    <feMerge>
+      <feMergeNode />
+      <feMergeNode in="offsetBlur" />
+      <feMergeNode in="SourceGraphic" />
+    </feMerge>
+  </filter>
+</defs>
+```
+
+apply filter via `filter` attribute
+```xml
+<path filter="url(#dropshadow)" fill="#6F327F" class="path-with-shadow" d="M20 10 L50 70 L 90 20 Z">
+```
+
+or via CSS
+```css
+.path-with-shadow {
+  fill: #6F327F;
+  filter: url(#dropshadow);
+}
+```
+
+</div>
+
+</figure>
+
+</section>

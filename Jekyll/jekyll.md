@@ -1,5 +1,5 @@
 ---
-title:  "Jekyll"
+title:  Jekyll
 # layout: post
 # layout: page
 # permalink: /about/
@@ -7,9 +7,17 @@ title:  "Jekyll"
 
 # Github Pages: Static Site generation with Jeykll
 
+<section>
+
+## Jekyll Overview
+
 * [Jekyll Documentation](https://jekyllrb.com)
 
+</section>
 
+---
+
+<section>
 
 ## Local Preview using Jekyll
 
@@ -32,7 +40,7 @@ bundle exec jekyll serve --livereload --incremental
 ```
 
 
-## File Structure
+### File Structure
 
 Priority
 * `index.html`
@@ -40,10 +48,13 @@ Priority
 * `README.md`
 
 
+</section>
 
+---
 
+<section>
 
-## Configuration
+## Jekyll Configuration
 
 `_config.yml`
 
@@ -52,7 +63,11 @@ baseurl: "/Coder"
 url: "https://markusdoppler.github.io"
 ```
 
+</section>
 
+---
+
+<section>
 
 ## YAML Front Matter
 
@@ -68,7 +83,13 @@ use data in Fluid template as such
 site.title
 ```
 
-## Custom Theme
+</section>
+
+---
+
+<section>
+
+## Custom Jekyll Theme
 
 1. **Copy theme folders** from e.g. the `minima` theme
 ```zsh
@@ -84,3 +105,5 @@ open $(bundle info --path minima)
 ```
 4. type `bundle update`
 5. type `bundle exec jekyll serve --livereload`
+
+</section>

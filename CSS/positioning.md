@@ -316,6 +316,12 @@ Set `overflow: auto;` or `overflow: hidden;` on the parent element containing th
 
 ## Example: Box centered in body / container
 
+```html
+<div class="container">
+  <div class="box"></div>
+</div>
+```
+
 Flexbox
 ```css
 .container {
@@ -324,6 +330,20 @@ Flexbox
    align-items: center;
    width: 100%;
    height: 100%;
+}
+.box {
+   width: var(--pu_width);
+   height: var(--pu_height);
+   max-width: 100%;
+   max-height: 100%;
+}
+```
+
+Grid
+```css
+.container {
+  display: grid;
+  place-items: center;
 }
 .box {
    width: var(--pu_width);

@@ -1,5 +1,7 @@
 ---
 title: Styles
+styles:
+- ../assets/CSS/styles.css
 ---
 
 # Styles
@@ -413,19 +415,10 @@ background-size: contain;
 background-clip: border-box;
 ```
 
-* `border-box` (default)
+* `border-box` (default)
 * `padding-box`
 * `content-box`
 
-#### Background Clip (CSS3)
-
-```css
-background-origin: padding-box;
-```
-
-* `border-box`
-* `padding-box` (default)
-* `content-box`
 
 ### Multiple Backgrounds
 
@@ -671,6 +664,57 @@ filter: hue-rotate(180deg);
 ```
 
 </figure>
+
+</section>
+
+---
+
+<section>
+
+## Backdrop Filter
+
+* **Note**: currently not supported by Firefox!
+
+
+<figure class="fig-1-3">
+
+<div style="width: 50%; height: 100%; display: flex; justify-content: center; align-items: center; background: purple;">
+    <div class="glass-backdrop">I'm foggy glass</div>
+</div>
+
+```css
+.glass {
+  background: rgba(200,200,200,0.2);
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+}
+```
+
+</figure>
+
+</section>
+
+---
+
+<section>
+
+## Clip Path
+
+<figure class="fig-1-3">
+
+<p class="clip-path">Hover me</p>
+
+```css
+clip-path: inset(0 0 50% 0);
+```
+
+</figure>
+
+Options
+* `inset()`
+* `circle()`
+* `ellipse()`
+* `polygon()`
 
 
 </section>

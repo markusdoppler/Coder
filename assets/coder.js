@@ -2,14 +2,14 @@
 window.addEventListener("DOMContentLoaded", function () {
 
   /* Dark mode */
-  if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-    console.log(document.querySelector('#darkmode-input'));
+  const isDarkMode = sessionStorage.getItem('darkmode') == "true";
+  const systemDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+  if (systemDarkMode && isDarkMode) {
     document.querySelector('#darkmode-input').checked = true;
-    changeColorMode();
   } else {
     document.querySelector('#darkmode-input').checked = false;
-    changeColorMode();
   }
+  changeColorMode();
   document.querySelector('#darkmode-input').addEventListener("change", changeColorMode);
 
 
@@ -30,7 +30,9 @@ window.addEventListener("DOMContentLoaded", function () {
 function changeColorMode() {
   if (document.querySelector('#darkmode-input').checked) {
     document.querySelector('body').classList.add('dark');
+    sessionStorage.setItem('darkmode', true);
   } else {
     document.querySelector('body').classList.remove('dark');
+    sessionStorage.setItem('darkmode', false);
   }
 }

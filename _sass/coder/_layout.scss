@@ -5,13 +5,16 @@
   position: sticky;
   top: 0;
   min-height: $spacing-unit * 1.865;
-  border-bottom: 1px solid $grey-color-light;
-  background-color: $background-color;  
+  border-bottom: 2px solid lighten($section-color, 20%);
+  background: $header-color;
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+  z-index: 100;
   user-select: none;
 
   .dark & {
-    border-bottom: 1px solid darken($background-color--dark, 20%);
-    background-color: $background-color--dark;  
+    border-bottom: 2px solid darken($background-color--dark, 20%);
+    background-color: $header-color--dark;
   }
 }
 
@@ -23,15 +26,13 @@
 }
 
 .site-title {
-  @include relative-font-size(1.625);
-  font-weight: 300;
+  @include relative-font-size(1.75);
+  font-weight: 600;
   line-height: $base-line-height * $base-font-size * 2.25;
   letter-spacing: -1px;
   margin-bottom: 0;
-  float: left;
-
-  background-color: #7074ff;
-  background: linear-gradient(94deg, #ff2a2a, #7074ff);
+  
+  @include gradient;
   -webkit-background-clip: text;
           background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -44,6 +45,8 @@
 }
 
 
+/* Darkmode toggle */
+
 #darkmode-input {
   display: none;
 }
@@ -55,7 +58,11 @@
   z-index: 5;
   cursor: pointer;
   border-radius: 18px;
-  background-color: #cacaca;
+  background-color: $section-color;
+
+  .dark & {
+    background-color: $section-color--dark;
+  }
 }
 .darkmode-toggle-slider {
   display: inline-block;
@@ -63,15 +70,15 @@
   width: 30px;
   height: 30px;
   border-radius: 100%;
-  background-color: #ecf0f1;
-  box-shadow: 0px 0px 5px rgba(5,6,32,0.15);
+  background-color: $background-color;
+  box-shadow: 0px 0px 5px $shadow-color;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
 }
 #darkmode-input:checked + .darkmode-toggle .darkmode-toggle-slider {
   transform: translate(20px, 0px);
-  background-color: rgba(5,6,32,1.0);
-  box-shadow: 0px 0px 5px rgba(5,6,32,0.35);
+  background-color: $background-color--dark;
+  box-shadow: 0px 0px 5px $shadow-color;
 }
 
 
@@ -83,12 +90,14 @@
 .nav-footer {
   position: sticky;
   bottom: 0;
-  background-color: $background-color;
   border-top: 1px solid $grey-color-light;
   border-bottom: 1px solid $grey-color-light;
+  background: $header-color;
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
 
   .dark & {
-    background-color: $background-color--dark;
+    background: $header-color--dark;
     border-top: 1px solid darken($background-color--dark, 20%);
     border-bottom: 1px solid darken($background-color--dark, 20%);
 
@@ -107,6 +116,7 @@
 
   .page-link {
     color: $text-color;
+    white-space: nowrap;
 
     &:hover {
       color: lighten($text-color, 15%);
@@ -152,14 +162,21 @@
 
 
 /* Table of Contents */
-
 .toc {
   width: 100%;
   max-width: $content-width;
-  margin: 0 auto $spacing-unit auto;
+  margin: $spacing-unit auto $spacing-unit auto;
   padding: $spacing-unit / 2;
   border-radius: $border-radius;
-  background: black;
+  border: 2px solid darken($section-color, 20%);
+  background: transparentize($section-color, 0.2);
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+        
+  .dark & {
+    background: transparentize($section-color--dark, 0.2);
+    border: 2px solid darken($section-color--dark, 20%);
+  }
 
   h3 {
     padding: 1rem 0;
@@ -187,7 +204,7 @@
   @media only screen and (min-width: 1000px) {
     position: fixed;
     left: - 17rem;
-    top: 4rem;
+    top: 4 * $spacing-unit;
     margin: 0;
     padding: 0.5rem 2rem 0.5rem 4rem;
     width: 20rem;
@@ -224,98 +241,27 @@
 
 
 
+/* Fork me on Github */
+.fork-me-on-github {
+  position: fixed;
+  right: 0;
+  top: 4 * $spacing-unit;
+  width: 14rem;
+  max-width: $content-width;
+  margin: $spacing-unit auto $spacing-unit auto;
+  padding: $spacing-unit / 2;
+  border-radius: $border-radius 0 0 $border-radius;
+  transform: translateX(11rem);
+  transition: transform 0.5s ease;
+  background: lighten($section-color, 20%);
+  border: 2px solid darken($section-color, 20%);
 
-/**
- * ----------------------------------------
- */
-
-
-
-
-
-/**
- * Page content
- */
-
-.post {
-  min-height: calc(100vh - #{$spacing-unit * 5});
-}
-
-.page-content {
-  padding: $spacing-unit 0 0 0;
-  flex: 1;
-}
-
-.page-heading {
-  @include relative-font-size(2);
-}
-
-.post-list-heading {
-  @include relative-font-size(1.75);
-}
-
-.post-list {
-  margin-left: 0;
-  list-style: none;
-
-  > li {
-    margin-bottom: $spacing-unit;
-  }
-}
-
-.post-meta {
-  font-size: $small-font-size;
-  color: $grey-color;
-}
-
-.post-link {
-  display: block;
-  @include relative-font-size(1.5);
-}
-
-
-
-/**
- * Posts
- */
-.post-header {
-  margin-bottom: $spacing-unit;
-}
-
-.post-title {
-  @include relative-font-size(2.625);
-  letter-spacing: -1px;
-  line-height: 1;
-
-  @include media-query($on-laptop) {
-    @include relative-font-size(2.25);
-  }
-}
-
-.post-content {
-  margin-bottom: $spacing-unit;
-
-  h2 {
-    @include relative-font-size(1.8);
-
-    @include media-query($on-laptop) {
-      @include relative-font-size(1.75);
-    }
+  .dark & {
+    background: lighten($section-color--dark, 20%);
+    border: 2px solid darken($section-color--dark, 20%);
   }
 
-  h3 {
-    @include relative-font-size(1.625);
-
-    @include media-query($on-laptop) {
-      @include relative-font-size(1.375);
-    }
-  }
-
-  h4 {
-    @include relative-font-size(1.25);
-
-    @include media-query($on-laptop) {
-      @include relative-font-size(1.125);
-    }
+  &:hover {
+    transform: translateX(1rem);
   }
 }

@@ -9,12 +9,15 @@
 
     <main class="page-content" aria-label="Content">
       <div class="wrapper">
-        <div class="toc">
+        <aside class="toc">
           <h3>Table of Contents</h3>
           <ul></ul>
-        </div>
+        </aside>
       </div>
       <div class="wrapper">
+        <aside>
+          <a href="https://github.com/markusdoppler/Coder" class="fork-me-on-github"><svg class="svg-icon"><use xlink:href="{{ '/assets/social-icons.svg#github' | relative_url }}"></use></svg> <span class="username">Fork on Github</span></a>
+        </aside>
         {{ content }}
       </div>
       {%- include navfooter.html dir=page.dir -%}

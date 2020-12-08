@@ -7,64 +7,70 @@ $base-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvet
 $base-font-size:   16px !default;
 $base-font-weight: 400 !default;
 $small-font-size:  $base-font-size * 0.875 !default;
-$base-line-height: 1.5 !default;
+$base-line-height: 2 !default;
 
-$spacing-unit:     30px !default;
-$border-radius:    6px;
+@mixin relative-font-size($ratio) {
+  font-size: $base-font-size * $ratio;
+}
+
+$spacing-unit:     $base-font-size * 2 !default;
+$border-radius:    $base-font-size * 0.5 !default;
 
 // Width of the content area
 $content-width:    800px !default;
 
-
-
-
 // Colours
+/* general colors */
 $grey-color:       #828282 !default;
 $grey-color-light: lighten($grey-color, 40%) !default;
 $grey-color-dark:  darken($grey-color, 25%) !default;
 
+$text-selection-color: #2a7ae2;
+$shadow-color: rgba(0,0,0,0.2);
 
-$text-color:       #111 !default;
-$background-color: #fdfdfd !default;
-$brand-color:      #2a7ae2 !default;
-$text-selection-bg-color: #2a7ae2;
+/* lightmode */
+$text-color:     #050620 !default;
+$link-color:     #2a7ae2 !default;
 
-$code-bg-color: lighten($grey-color, 40%);
-$code-text-color: #353535;
+$background-color: #ecf0f1 !default;
+$section-color: darken($background-color, 10%);
+$header-color: transparentize($background-color, 0.2);
+
+$code-bg-color: $background-color;
+$code-text-color: lighten($text-color, 20%);
 
 
-$text-color--dark:       #d4dde9 !default;
+/* darkmode */
+$text-color--dark:      #ecf0f1 !default;
+$link-color--dark:      #2a7ae2 !default;
+
 $background-color--dark: #192f4d !default;
-$brand-color--dark:      #2a7ae2 !default;
+$section-color--dark: darken($background-color--dark, 20%);
+$header-color--dark: transparentize($background-color--dark, 0.2);
 
-$code-bg-color--dark: #192f4d;
-$code-text-color--dark: #d3d3d3;
-
-
-
+$code-bg-color--dark:    $background-color--dark;
+$code-text-color--dark:  #d3d3d3;
 
 
-$table-text-align: left !default;
+/* gradient */
+@mixin gradient {
+  background-color: #7074ff;
+  background: linear-gradient(94deg, #ff2a2a, #7074ff);
+}
 
-$on-palm:          600px !default;
-$on-laptop:        800px !default;
 
-// Use media queries like this:
-// @include media-query($on-palm) {
+// @include desktop-media-query {
 //   .wrapper {
 //     padding-right: $spacing-unit / 2;
 //     padding-left: $spacing-unit / 2;
 //   }
 // }
-@mixin media-query($device) {
-  @media screen and (max-width: $device) {
+@mixin desktop-media-query {
+  @media screen and (min-width: $content-width) {
     @content;
   }
 }
 
-@mixin relative-font-size($ratio) {
-  font-size: $base-font-size * $ratio;
-}
 
 // Import partials.
 @import

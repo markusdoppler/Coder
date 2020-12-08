@@ -14,31 +14,31 @@
     color: $code-text-color--dark;
   }  
 
-  $color-code-comment: #988;
-  $color-code-string: rgb(121, 41, 61);
-  $color-code-literal-number: rgb(2, 100, 100);
-  $color-code-variable: #008080;
-  $color-code-function: rgb(202, 65, 65);
-  $color-code-string: rgb(131, 26, 52);
-  $color-code-string-regex: #009926;
-  $color-code-string-symbol: #990073;
-  $color-code-class: #458;
-  $color-code-error: #a61717;
-  $color-code-entity: #800080;
-
-  .dark & {
+  :not(.dark) & {
     $color-code-comment: #988;
-    $color-code-string: rgb(221, 75, 111);
-    $color-code-literal-number: rgb(0, 155, 155);
+    $color-code-string: rgb(121, 41, 61);
+    $color-code-literal-number: rgb(2, 100, 100);
     $color-code-variable: #008080;
     $color-code-function: rgb(202, 65, 65);
-    $color-code-string: rgb(230, 73, 112);
+    $color-code-string: rgb(131, 26, 52);
     $color-code-string-regex: #009926;
     $color-code-string-symbol: #990073;
     $color-code-class: #458;
     $color-code-error: #a61717;
     $color-code-entity: #800080;
   }  
+
+  $color-code-comment: #988;
+  $color-code-string: rgb(221, 75, 111);
+  $color-code-literal-number: rgb(0, 155, 155);
+  $color-code-variable: #008080;
+  $color-code-function: rgb(202, 65, 65);
+  $color-code-string: rgb(230, 73, 112);
+  $color-code-string-regex: #009926;
+  $color-code-string-symbol: #990073;
+  $color-code-class: #458;
+  $color-code-error: #a61717;
+  $color-code-entity: #800080;
 
 
   .c     { color: $color-code-comment; font-style: italic } // Comment

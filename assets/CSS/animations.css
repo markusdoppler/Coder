@@ -1,0 +1,47 @@
+
+.overflow-box {
+  overflow-x: scroll;
+  overflow-y: visible;
+  height: 100%;
+  padding-bottom: 1rem;
+}
+
+/* Optimzing animations */
+
+.real-box-shadow {
+  margin: 0 auto;
+  width: 80%;
+  padding: 0.5rem;
+  box-shadow: 0 0.125rem 0.25rem 0 rgba(100,100,100,0.2);
+  transition: transform 1s ease, box-shadow 1s ease;
+}
+.real-box-shadow:hover {
+  transform: translateY(-0.3rem) scale(1.02);
+  box-shadow: 0 0.5rem 0.7rem -0.25rem rgba(100,100,100,0.5);
+}
+
+.pseudo-box-shadow {
+  position: relative;
+  margin: 0 auto;
+  width: 80%;
+  padding: 0.5rem;
+  box-shadow: 0 0.125rem 0.25rem 0 rgba(100,100,100,0.2);
+  transition: transform 1s ease;
+}
+.pseudo-box-shadow:hover {
+  transform: translateY(-0.3rem) scale(1.02);
+}
+.pseudo-box-shadow::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+  box-shadow: 0 0.5rem 0.7rem -0.25rem rgba(100,100,100,0.5);
+  transition: opacity 1s ease;
+}
+.pseudo-box-shadow:hover::after {
+  opacity: 1;
+}

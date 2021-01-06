@@ -44,8 +44,9 @@ $code-text-color: lighten($text-color, 20%);
 $text-color--dark:      #ecf0f1 !default;
 $link-color--dark:      #2a7ae2 !default;
 
-$background-color--dark: #192f4d !default;
-$section-color--dark: darken($background-color--dark, 20%);
+/* old blue: #192f4d */
+$background-color--dark: #000000 !default;
+$section-color--dark: #333333 !default;
 $header-color--dark: transparentize($background-color--dark, 0.2);
 
 $code-bg-color--dark:    $background-color--dark;

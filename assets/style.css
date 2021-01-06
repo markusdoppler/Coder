@@ -5,6 +5,10 @@ figure {
    align-items: center;   
 }
 
+figure div {
+  overflow-x: scroll;
+}
+
 .fig-1-2 {
    grid-template-columns: 1fr 2fr;
 }

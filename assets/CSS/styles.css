@@ -1,0 +1,32 @@
+
+
+
+
+/* Backdrop filter */
+
+.glass-backdrop {
+    width: 100%;
+    padding: 1rem;
+    transform: translateX(50%);
+    background: rgba(200,200,200,0.2);
+    border-radius: 1rem;
+    -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+    transition: transform 0.5s ease;
+}
+.glass-backdrop:hover {
+    transform: translateX(75%);
+}
+
+
+/* Clip Path */
+
+.clip-path {
+    clip-path: inset(0 0 50% 0);
+    transition: clip-path 0.3s ease;
+    background-color: tomato;
+}
+.clip-path:hover {
+    clip-path: inset(0 0 0 0);
+    clip-path: ;
+}

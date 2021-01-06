@@ -1,0 +1,17 @@
+#logo {
+  width: 5rem;
+  height: 5rem;
+  margin: 0 auto;
+  border-radius: 50%;
+  background-color: darkcyan;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+#needle {
+  width: 4rem;
+  height: 10px;
+  background-color: darkslateblue;
+  border-radius: 5px;
+}

@@ -16,7 +16,7 @@ window.addEventListener("DOMContentLoaded", function () {
 
   /* Table of Contents */
   for (let tapElement of document.querySelectorAll('.toc, .fork-me-on-github')) {
-    tapElement.addEventListener("touchstart", function() {
+    tapElement.addEventListener("click", function() {
       this.classList.toggle("tapped");
     });
   }

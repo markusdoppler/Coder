@@ -32,8 +32,8 @@ $shadow-color: rgba(0,0,0,0.2);
 $text-color:     #050620 !default;
 $link-color:     #2a7ae2 !default;
 
-$background-color: #ecf0f1 !default;
-$section-color: darken($background-color, 10%);
+$background-color: #fff !default;
+$section-color: darken($background-color, 2%);
 $header-color: transparentize($background-color, 0.2);
 
 $code-bg-color: $background-color;

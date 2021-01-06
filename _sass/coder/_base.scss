@@ -119,6 +119,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 h1 {
   @include relative-font-size(2);
+  padding: $spacing-unit / 2;
+  margin: 2 * $spacing-unit 0 $spacing-unit 0;
 }
 
 /**

@@ -14,6 +14,12 @@ window.addEventListener("DOMContentLoaded", function () {
 
 
   /* Table of Contents */
+  for (let tapElement of document.querySelectorAll('.toc, .fork-me-on-github')) {
+    tapElement.addEventListener("touchstart", function() {
+      this.classList.toggle("tapped");
+    });
+  }
+  
   const toc = document.querySelector('.toc ul');
   const headings = document.querySelectorAll('h2');
   headings.forEach((heading, h) => {

@@ -8,6 +8,11 @@ window.addEventListener("DOMContentLoaded", function () {
   updateBodyDarkmode(isStoredSetting ? darkModeSetting : systemDarkMode);
   document.querySelector('#darkmode-input').addEventListener("change", changeColorMode);
 
+  /* Page Path */
+  document.querySelector(".page-title").addEventListener("click", function(e) {
+    e.preventDefault();
+    navigator.clipboard.writeText(window.location.href);
+  })
 
   /* Table of Contents */
   for (let tapElement of document.querySelectorAll('.toc, .fork-me-on-github')) {
@@ -27,6 +32,15 @@ window.addEventListener("DOMContentLoaded", function () {
     toc.appendChild(listItem);
   });
 
+
+  /* Code */
+  document.querySelectorAll("pre").forEach((codeBlock, c) => {
+    codeBlock.addEventListener("touchstart", function() { this.classList.add("active"); });
+    codeBlock.addEventListener("mousedown", function() { this.classList.add("active"); });
+    codeBlock.addEventListener("mouseup", function() { this.classList.remove("active"); });
+    codeBlock.addEventListener("touchend", function() { this.classList.remove("active"); });
+    codeBlock.addEventListener("click", function() { navigator.clipboard.writeText(this.innerText); });
+  });
 });
 
 function changeColorMode() {

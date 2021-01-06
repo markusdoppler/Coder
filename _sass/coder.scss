@@ -27,6 +27,7 @@ $grey-color-dark:  darken($grey-color, 25%) !default;
 
 $text-selection-color: #2a7ae2;
 $shadow-color: rgba(0,0,0,0.2);
+$shadow-color--dark: rgba(100,100,100,0.2);
 
 /* lightmode */
 $text-color:     #050620 !default;
@@ -45,9 +46,9 @@ $text-color--dark:      #ecf0f1 !default;
 $link-color--dark:      #2a7ae2 !default;
 
 /* old blue: #192f4d */
-$background-color--dark: #000000 !default;
-$section-color--dark: #333333 !default;
-$header-color--dark: transparentize($background-color--dark, 0.2);
+$background-color--dark: #111 !default;
+$section-color--dark: #000 !default;
+$header-color--dark: transparentize($section-color--dark, 0.2);
 
 $code-bg-color--dark:    $background-color--dark;
 $code-text-color--dark:  #d3d3d3;

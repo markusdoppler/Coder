@@ -53,32 +53,35 @@
 .darkmode-toggle {
   display: inline-block;
   width:  56px;
-  height: 36px;
+  height: 38px;
   padding: 3px;
   z-index: 5;
   cursor: pointer;
   border-radius: 18px;
+  border: 0.5px solid darken($section-color, 20%);
   background-color: $section-color;
 
-  .dark & {
-    background-color: $section-color--dark;
+  .darkmode-toggle-slider {
+    display: inline-block;
+    /* position: relative; */
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+    background-color: $background-color;
+    box-shadow: 0px 0px 5px $shadow-color;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
   }
-}
-.darkmode-toggle-slider {
-  display: inline-block;
-  /* position: relative; */
-  width: 30px;
-  height: 30px;
-  border-radius: 100%;
-  background-color: $background-color;
-  box-shadow: 0px 0px 5px $shadow-color;
-  cursor: pointer;
-  transition: all 0.3s ease-in-out;
+
+  .dark & {
+    background-color: $background-color--dark;
+    border: 0.5px solid lighten($section-color--dark, 20%);
+  }
 }
 #darkmode-input:checked + .darkmode-toggle .darkmode-toggle-slider {
   transform: translate(20px, 0px);
-  background-color: $background-color--dark;
-  box-shadow: 0px 0px 5px $shadow-color;
+  background-color: $section-color--dark;
+  box-shadow: 0px 0px 5px $shadow-color--dark;
 }
 
 
@@ -176,11 +179,12 @@
   margin: 0;
   padding: 0.5rem 0.5rem 0.5rem 1.5rem;
   border-radius: 0 $border-radius $border-radius 0;
-  border: 2px solid darken($section-color, 20%);
+  border: 0.5px solid darken($section-color, 20%);
   background: transparentize($section-color, 0.05);
   -webkit-backdrop-filter: blur(40px);
           backdrop-filter: blur(40px);
   transition: 0.5s ease;
+  z-index: 10;
 
   &:hover, &.tapped {
     transform: translateX(0);
@@ -198,19 +202,19 @@
     align-items: center;
     color: $grey-color-dark;
     border-radius: 0 $border-radius $border-radius 0;
-    border: 2px solid darken($section-color, 20%);
+    border: 0.5px solid darken($section-color, 20%);
     border-left: none;  
     background: $section-color;
   }
 
   .dark & {
     background: transparentize($section-color--dark, 0.2);
-    border: 2px solid darken($section-color--dark, 20%);
+    border: 0.5px solid lighten($section-color--dark, 20%);
 
     &::after {
       color: $grey-color-light;
       background: $section-color--dark;
-      border: 2px solid darken($section-color--dark, 20%);
+      border: 0.5px solid lighten($section-color--dark, 20%);
     }
   }
 
@@ -269,14 +273,15 @@
   border-radius: $border-radius 0 0 $border-radius;
   transform: translateX(11rem);
   transition: transform 0.5s ease;
-  border: 2px solid darken($section-color, 20%);
+  border: 0.5px solid darken($section-color, 20%);
   background: transparentize($section-color, 0.2);
   -webkit-backdrop-filter: blur(10px);
           backdrop-filter: blur(10px);
+  z-index: 10;
 
   .dark & {
-    background: lighten($section-color--dark, 20%);
-    border: 2px solid darken($section-color--dark, 20%);
+    background: transparentize($section-color--dark, 0.2);
+    border: 0.5px solid lighten($section-color--dark, 20%);
   }
 
   &:hover, &.tapped {

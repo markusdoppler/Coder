@@ -3,7 +3,17 @@
   <div class="wrapper">
     <a class="site-title" rel="author" href="{{ '/' | relative_url }}">{{ site.title | escape }}</a>
 
-    <a class="page-title" href="{{ site.path | relative_url }}">{{ include.title }}</a>
+
+    {%- assign path_title = include.title -%}
+    {%- assign path_category = page.path | split: "/" | first -%}
+
+    {%- if path_category contains "index.md" -%}
+      {%- assign path_category = "" -%}
+    {% else %}
+      {%- assign path_category = path_category | append: " → " -%}
+    {%- endif -%}
+
+    <a class="page-title" href="{{ page.path | relative_url | split: '.md' | first }}">{{ path_category }}{{ path_title }}</a>
 
     <input type="checkbox" id="darkmode-input" />
     <label for="darkmode-input" class="darkmode-toggle">

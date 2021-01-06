@@ -136,7 +136,7 @@ section {
 
   .dark & {
     background-color: $section-color--dark;
-    border: 0.5px solid darken($section-color--dark, 10%);
+    border: 0.5px solid lighten($section-color--dark, 10%);
   }
 
   @media only screen and (min-width: 767px) {
@@ -209,8 +209,14 @@ code {
 
   .dark & {
     background-color: $code-bg-color--dark;
-    color: $code-text-color--dark;
+    color: $code-text-color--dark;  
   }
+}
+pre, :not(pre) code {
+  border: 0.5px solid darken($section-color, 20%);
+}
+.dark pre, :not(pre) code {
+  border: 0.5px solid lighten($section-color--dark, 20%);
 }
 
 code {
@@ -229,6 +235,45 @@ pre {
     padding-left: 0;
   }
 }
+
+/* copy styles */
+pre {
+  position: relative;
+  cursor: pointer;
+
+  &::before {
+    content: 'Copy';
+    display: block;
+    position: absolute;
+    top: 0.2rem;
+    right: 0.2rem;
+    padding: 0.3rem;
+    color: $text-color;
+    background: transparentize($section-color, 0.2);
+    border: 0.5px solid darken($section-color, 20%);
+    border-radius: $border-radius / 2;
+    transition: 0.3s ease;
+
+    .dark & {
+      color: $text-color--dark;
+      background: transparentize($section-color--dark, 0.2);
+      border: 0.5px solid lighten($section-color--dark, 20%);
+    }
+  }
+  &:hover::before {
+    background: darken($section-color, 5%);
+    .dark & {
+      background: lighten($background-color--dark, 5%);
+    }
+  }
+  &.active::before {
+    background: darken($section-color, 10%);
+    .dark & {
+      background: lighten($background-color--dark, 10%);
+    }
+  }
+}
+
 
 hr {
   display: none;

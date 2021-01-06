@@ -389,6 +389,12 @@ newServer = pc1
 ssh-keygen -t rsa
 ```
 
+Generate a private and public key
+```bash
+ssh-keygen -t rsa -b 4096 -C 'comment-markus' -N 'safeP@ssword' -f 'key-filename-markus'
+```
+
+
 2) openssh läuft auf newServer 
 am newServer ausführen: 
 ```bash

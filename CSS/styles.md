@@ -784,6 +784,14 @@ pointer-events: none;
 
 * [Apple Developer: Customizing Style Sheets](https://developer.apple.com/library/archive/documentation/AppleApplications/Reference/SafariWebContent/AdjustingtheTextSize/AdjustingtheTextSize.html)
 
+### System fonts
+```css
+font-family: system-ui;
+font-family: ui-sans-serif;
+font-family: ui-serif;
+font-family: ui-monospace;
+font-family: ui-rounded;
+```
 
 ### Text adjustments
 
@@ -805,6 +813,11 @@ pointer-events: none;
 
 ```html
 <button class="action" ontouchstart="" style="-webkit-tap-highlight-color: rgba(0,0,0,0);">Testing Touch on iOS</button>
+```
+
+### Keyboard Enter Key Title
+```html
+<div id="editor" contenteditable="true" enterkeyhint="send"></div>
 ```
 
 </section>

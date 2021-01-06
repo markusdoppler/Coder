@@ -28,13 +28,13 @@ layout: home
 * [Nuxt.js](JavaScript/library-nuxt)
 * React
 * [Jekyll](Jekyll/jekyll)
-* [MathJAX](math/mathjax)
+* [MathJAX](Math/mathjax)
 
 
 ### Tools
 * [Git](Tools/git)
 * [Linux / Bash](Tools/bash)
-* [LaTeX](math/latex)
+* [LaTeX](Math/latex)
 * Markdown
 * Zsh
 * RegEx

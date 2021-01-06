@@ -6,6 +6,24 @@ title: Audio
 
 <section>
 
+## HTML5 Audio Element
+
+```html
+<audio id="audio" src="my-audio.m4a" controls></audio>
+```
+
+### Attributes
+* `controls`
+* `autoplay`
+* `loop="on"`
+
+
+</section>
+
+---
+
+<section>
+
 ## Controlling audio using JavaScript
 
 ```js
@@ -63,7 +81,7 @@ Ready-State
 
 Controls
 * `controls`
-* `volume`
+* `volume` (0 < vol < 1) [iOS: always 1]
 * `muted`
 
 Tracks
@@ -75,7 +93,7 @@ Playback-State
 * `duration`
 * `paused`
 * `defaultPlaybackRate`
-* `playbackRate`
+* `playbackRate` ((<1 slow motion, >1 fast forward) [not on iOS])
 * `played`
 * `seekable`
 * `ended`
@@ -111,11 +129,21 @@ Video specific
 * `waiting`
 * `playing`
 * `canplay`
-* `canplaythrough`
+* `canplaythrough` (when the source is ready to play)
 * `seeking`
 * `seeked`
 * `timeupdate`
 * `ended`
 * `ratechange`
+
+</section>
+
+---
+
+<section>
+
+## Resources
+
+* [Apple Developer: HTML5 Audio and Video](https://developer.apple.com/library/archive/documentation/AudioVideo/Conceptual/Using_HTML5_Audio_Video/Introduction/Introduction.html#//apple_ref/doc/uid/TP40009523-CH1-SW1)
 
 </section>

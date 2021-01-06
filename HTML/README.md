@@ -13,9 +13,9 @@ Overview
 * [Styling HTML5 elements](elements-styling)
 
 Elements in detail
-* [Images](images)
-* [Input Elements: Textbox, Checkbox, Radio Buttons, Buttons](input)
-* [HTML5 Canvas](canvas)
+* [Images](html-images)
+* [Input Elements: Textbox, Checkbox, Radio Buttons, Buttons](html-input)
+* [HTML5 Canvas](html-canvas)
 
 ### Web Design Principles
 * [Accessibility](webdesign-accessibility)

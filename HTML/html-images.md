@@ -206,4 +206,14 @@ img {
 }
 ```
 
+### Gap underneath image!?
+
+* Images are `inline` elements, they "sit" on the baseline, i.e. they reserve space for letters that go below the baseline, e.g. "p", "q", etc.
+
+```css
+img {
+  display: block;
+}
+```
+
 </section>

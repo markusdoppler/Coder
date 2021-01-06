@@ -36,7 +36,13 @@ A local repository consists of three "trees" maintained by Git.
 
 <figure class="fig-1-2">
 
+<div>
+
 Configure Git
+
+</div>
+<div>
+
 ```shell
 git config --global user.name "User Name"
 git config --global user.email "username@icloud.com"
@@ -47,6 +53,12 @@ git config --global color.ui tree
 git config format.pretty oneline
 ```
 
+Saving Github password (by storing the login credentials in plain text)
+```bash
+git config --global credential.helper store
+```
+
+</div>
 </figure>
 </section>
 

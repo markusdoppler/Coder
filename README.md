@@ -65,8 +65,8 @@ layout: home
 * VSCode
 
 **Math**
-* [LaTeX](math/latex)
-* [MathJAX](math/mathjax)
+* [LaTeX](Math/latex)
+* [MathJAX](Math/mathjax)
 
 **Databases**
 * MySQL

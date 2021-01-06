@@ -304,6 +304,39 @@ using Vuex Store
 this.$store.getter.myProperty
 this.$store.commit("myFunction");
 ```
+
+</section>
+
+---
+
+<section>
+
+## VueCLI
+
+Install
+```bash
+npm install -g @vue/cli
+```
+or
+```bash
+yarn global add @vue/cli
+```
+
+Create project
+```bash
+vue create my-project
+```
+
+Start development mode
+```bash
+vue serve
+```
+
+Build project
+```bash
+vue build
+```
+
 </section>
 
 ---

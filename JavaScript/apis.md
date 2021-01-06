@@ -1,5 +1,9 @@
 ---
 title: Browser APIs
+styles:
+- ../assets/JavaScript/apis.css
+scripts:
+- ../assets/JavaScript/apis.js
 ---
 
 # Browser APIs
@@ -162,6 +166,25 @@ observer.observe(section);
 
 <section>
 
+## Resize Observer API
+
+```js
+const resizeObserver = new ResizeObserver((entries) => {
+  entries.forEach((entry) => {
+    let container = entry.target;
+    container.classList.toggle("small", entry.contentRect.width < 175);
+  });
+});
+
+resizeObserver.observe(document.getElementById("format-panel"));
+```
+
+</section>
+
+---
+
+<section>
+
 ## Local Storage, Session Storage and Cookies
 
 ### Local Storage
@@ -194,6 +217,81 @@ document.cookie = `name=Karl; expires=${new Date(9999,0,1).toUTCString()}`
 
 document.cookie = `lastname=Müller; expires=${new Date(9999,0,1).toUTCString()}`
 ```
+
+</section>
+
+---
+
+<section>
+
+## Clipboard API
+
+Programmatic copy
+```js
+navigator.clipboard.writeText("Hello clipboard!").then(() => {
+  // Successful copy
+}, () => {
+  // Copy failed
+});
+```
+
+Programmatic paste
+```js
+navigator.clipboard.readText().then((clipboardText) => {
+  // paste clipboardText
+});
+```
+
+Rich text paste
+```js
+let data = [];
+let clipboardItems = await navigator.clipboard.read();
+for (let clipboardItem of clipboardItems) {
+  if (!clipboardItem.types.includes("text/html"))
+    return;
+
+  let blob = await clipboardItem.getType("text/html");
+  let html = await new Promise((resolve) => {
+    let reader = new FileReader;
+    reader.addEventListener("load", () => {
+      resolve(reader.result);
+    });
+    reader.readAsText(blob);
+  });
+
+  data.push(html);
+}
+```
+
+</section>
+
+---
+
+<section>
+
+## Web Animations API
+
+<figure class="fig-1-2">
+
+<div>
+  <div id="logo">
+    <div id="needle"></div>
+  </div>
+</div>
+<div>
+
+```js
+needle.animate({
+  transform: [
+    "rotateX(35deg) rotateZ(13deg)",
+    "rotateX(35deg) rotateZ(733deg)",
+  ],
+  easing: ["ease-out"],
+}, 800);
+```
+
+</div>
+</figure>
 
 </section>
 

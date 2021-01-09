@@ -17,7 +17,14 @@ window.addEventListener("DOMContentLoaded", function () {
   /* Table of Contents */
   for (let tapElement of document.querySelectorAll('.toc, .fork-me-on-github')) {
     tapElement.addEventListener("click", function() {
+      console.log(this.classList.value)
       this.classList.toggle("tapped");
+    });
+    tapElement.addEventListener("mouseenter", function() {
+      if (!this.classList.value.includes("tapped")) this.classList.add("tapped");
+    });
+    tapElement.addEventListener("mouseleave", function() {
+      if (this.classList.value.includes("tapped")) this.classList.remove("tapped");
     });
   }
   

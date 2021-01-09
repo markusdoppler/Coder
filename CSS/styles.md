@@ -465,6 +465,8 @@ change the direction:
 
 #### Radial Gradient
 
+from the inside to the outside of an element
+
 <figure class="fig-1-3">
 
 <div style="width: 100%; height: 100%; background: radial-gradient(#648880, #293f50);"></div>
@@ -478,7 +480,20 @@ background:         radial-gradient(#648880, #293f50);
 
 </figure>
 
-from the inside to the outside of an element
+<figure class="fig-1-3">
+
+<div style="width: 100%; height: 100%; background: radial-gradient(circle 30px at 40px 40px, rgba(255, 0, 0, 0), rgba(255, 0, 0, 1));"></div>
+
+```css
+background: radial-gradient(
+  circle 30px at 40px 40px,
+  rgba(255, 0, 0, 0),
+  rgba(255, 0, 0, 1)
+);
+```
+
+</figure>
+
 
 [CSS Gradient Generator](https://www.cssmatic.com/gradient-generator)
 

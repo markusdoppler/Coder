@@ -37,6 +37,13 @@ ul {
 }
 ```
 
+### Unset
+Change all properties to the parent value if inheritable or the initial value if not
+```css
+all: unset;
+```
+
+
 </section>
 
 ---
@@ -94,6 +101,25 @@ section {
   background-color: var(--bg-colour);
   color: var(--text-colour);
 }
+```
+
+### Manipulate CSS Variables from JavaScript
+CSS
+```css
+.flashlight {
+  --cursorX: 0px;
+  --cursorY: 0px;
+
+  top: var(--cursorX);
+  left: var(--cursorY);
+}
+```
+
+JavaScript
+```js
+let flashlight = document.querySelector('.flashlight');
+flashlight.style.setProperty("--cursorX", e.offsetX + "px");
+flashlight.style.setProperty("--cursorY", e.offsetY + "px");
 ```
 
 </section>

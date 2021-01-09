@@ -42,17 +42,54 @@ transition: all .15s ease;
 
 ```css
 @keyframes my-animation {
-    0%   {  }
-    100% {  }
+  0%   {  }
+  100% {  }
 }
 ```
 
 ### Applying the animation
 
 ```css
-animation-name: 
+animation-name: my-animation;
+animation-duration: 400ms;
+animation-timing-function: linear;
+animation-delay: 0;
+animation-iteration-count: infinite;
+animation-fill-mode: forwards;
+animation-direction: alternate;
+animation-play-state: running;
 ```
 
+Shorthand
+```css
+animation: name duration timing-function delay iteration-count direction fill-mode;
+```
+
+Example
+<figure class="fig-1-3">
+
+<div class="spotlight-pulse-animation"></div>
+
+<div>
+
+```css
+.spotlight-pulse-animation {
+  animation-name: pulse-animation;
+  animation-duration: 400ms;
+  animation-timing-function: linear;
+  animation-delay: 0;
+  animation-iteration-count: infinite;
+}
+
+@keyframes pulse-animation {
+  0%   { transform: scale(1); }
+  25%  { transform: scale(1.5); }
+  75%  { transform: scale(0.5); }
+  100% { transform: scale(1); }
+}
+```
+
+</div>
 </section>
 
 ---

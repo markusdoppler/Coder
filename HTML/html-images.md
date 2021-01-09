@@ -217,3 +217,20 @@ img {
 ```
 
 </section>
+
+---
+
+<section>
+
+## Handling images with JavaScript
+
+Check whether image loads
+```js
+const image_src = "/assets/images/flower.jpg";
+let img = new Image();
+img.onload = function() { console.log('✅'); }; 
+img.onerror = function() { console.log('❌'); };
+img.src = image_src;
+```
+
+</section>

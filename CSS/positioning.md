@@ -158,19 +158,17 @@ if width is too large, try removing white spaces in HTML
 
 usually a _small space_ will exist between two inline-block elements
 
-### `none`
-completely hide an element and render the page _as if that element doesn’t exist_
-
-any elements nested within this element will also be hidden
-
 ### `flex`
 
 
 ### `grid`
 
 
+### `none`
+* completely hide an element and render the page _as if that element doesn’t exist_
+* any elements nested within this element will also be hidden
 
-## Hide any element
+Hide any element
 ```css
 .hidden {
         display: none;
@@ -251,13 +249,37 @@ floated elements must reside within a parent element with the class _group_
 
 <section>
 
-## Transform
+## Inline boxes
+
+### White space
+```css
+white-space: no-wrap;
+```
+
+### Box-decoration
+```css
+box-decoration-break: clone;
+```
+
+<figure class="fig-1-3">
+<div>
+  <div>Lorem ipsum, dolor sit <span style="display: inline-block; background-color: navy; padding: 0.2rem 0.4rem; -webkit-box-decoration-break: clone; -o-box-decoration-break: clone; box-decoration-break: clone;">with box-decoration-break</span></div>
+  <div>Lorem ipsum, dolor sit <span style="display: inline-block; background-color: navy; padding: 0.2rem 0.4rem;">without box-decoration-break</span></div>
+</div>
+
+<div>
 
 ```css
-transform: rotate(20deg)
-
-transform: 
+.inline-box {
+  display: inline;
+  -webkit-box-decoration-break: clone;
+  -o-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
 ```
+
+</div>
+</figure>
 
 </section>
 

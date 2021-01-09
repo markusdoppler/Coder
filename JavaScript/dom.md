@@ -77,7 +77,22 @@ element.value
 element.className
 element.classList.add
 element.classList.remove
+element.classList.value
 element.parentNode
+element.textContent
+element.innerHTML
+element.getAttribute("src")
+element.src
+element.alt
+```
+
+```js
+const childHTMLString = "<img src='bird.png' alt='bird'>";
+document.querySelector(".parentElement").insertAdjacentHTML("beforeend", childHTMLString);
+```
+
+```js
+document.getElementById("gamebutton").textContent = "Restart Game!";
 ```
 
 </section>
@@ -92,6 +107,11 @@ element.parentNode
 element.parentNode
 ```
 
+Cloning a node
+```js
+const clonedNode = document.querySelector("#picture_template").cloneNode(true);
+parent.appendChild(clonedNode);
+```
 
 </section>
 
@@ -129,6 +149,17 @@ function stopFunction() {
   clearInterval(myVar);
 }
 ```
+
+### Animation Frame
+
+```js
+function animationStep(time) {
+   // do some animations
+   
+   requestAnimationFrame(animationStep);
+}
+```
+
 
 </section>
 

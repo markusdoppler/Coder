@@ -180,6 +180,27 @@ displayUser('email@me.com', "12345");
 ```
 
 
+
+### Image Loading Example
+```js
+async function load() {
+  const image_status = await load_image(image_src).then(msg => { return msg }).catch(err => { return err });
+  console.log("image load", image_status)
+  // add image to DOM
+}
+```
+
+```js
+async function load_image(src) {
+  return await new Promise((resolve, reject) => {
+    let img = new Image();
+    img.onload = () => resolve('✅');
+    img.onerror = () => reject('❌');
+    img.src = src;
+  })
+}
+```
+
 </section>
 
 ---

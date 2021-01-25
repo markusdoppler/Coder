@@ -713,6 +713,35 @@ filter: hue-rotate(180deg);
 
 <section>
 
+## Background Blend Mode
+
+* `lighten`
+* `darken`
+* `multiply`
+
+<figure class="fig-1-3">
+
+<div>
+  <div style="margin: 0.5rem; display: grid; place-items: center; text-align: center; background-color: coral; background-image: url(../assets/favicon.png); background-size: cover; background-repeat: no-repeat; width: 5rem; height: 5rem;">no blending</div>
+  <div style="margin: 0.5rem; display: grid; place-items: center; text-align: center; background-color: coral; background-image: url(../assets/favicon.png); background-size: cover; background-repeat: no-repeat; width: 5rem; height: 5rem; background-blend-mode: lighten;">lighten</div>
+</div>
+
+```css
+.lightened-background {
+  background-color: coral;
+  background-image: url(../assets/favicon.png);
+  background-blend-mode: lighten;
+}
+```
+
+</figure>
+
+</section>
+
+---
+
+<section>
+
 ## Clip Path
 
 <figure class="fig-1-3">

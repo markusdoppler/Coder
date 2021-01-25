@@ -81,16 +81,19 @@ element.classList.value
 element.parentNode
 element.textContent
 element.innerHTML
+element.setAttribute("tabindex", -1)
 element.getAttribute("src")
 element.src
 element.alt
 ```
 
+insertAdjacentHTML
 ```js
 const childHTMLString = "<img src='bird.png' alt='bird'>";
-document.querySelector(".parentElement").insertAdjacentHTML("beforeend", childHTMLString);
+parentElement.insertAdjacentHTML("beforeend", childHTMLString);
 ```
 
+textContent
 ```js
 document.getElementById("gamebutton").textContent = "Restart Game!";
 ```

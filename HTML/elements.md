@@ -135,21 +135,35 @@ Combining Viewport Values
 <meta name="viewport" content="width=device-width, initial-scale=1">
 ```
 
+#### Description
+
+```html
+<meta name="description" content="">
+```
+
 #### SEO Open Graph
 * [Facebook Sharing Debugger](https://developers.facebook.com/tools/debug/sharing/)
 
 ```html
 <meta property="og:title" content="Facebook Open Graph META Tags"/>
-<meta property="og:image" content="https://davidwalsh.name/wp-content/themes/klass/img/facebooklogo.png"/>
-<meta property="og:url" content="https://davidwalsh.name/facebook-meta-tags"/>
-<meta property="og:site_name" content="David Walsh Blog"/>
-<meta property="og:type" content="blog"/>
-<meta property="og:description" content="Facebook's Open Graph protocol allows for web developers to turn their websites into Facebook 'graph' objects, allowing a certain level of customization over how information is carried over from a non-Facebook website to Facebook when a page is 'recommended', 'liked', or just generally shared."/>
+<meta property="og:image" content="http://www.markusdoppler.at/seo.png"/>
+<meta property="og:image:alt" content="Markus Doppler's logo is a butterfly.">
+<meta property="og:url" content="http://www.markusdoppler.at"/>
+<meta property="og:site_name" content="Markus Doppler"/>
+<meta property="og:type" content="website"/>
+<meta property="og:description" content=""/>
+<meta property="og:site_name" content="Markus Doppler">
+<meta property="og:locale" content="de_DE">
 ```
 
 #### SEO Twitter Card
 
-...
+```html
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Markus Doppler">
+<meta name="twitter:description" content="Markus Doppler">
+<meta name="twitter:image" content="http://www.markusdoppler.at/seo.png">
+```
 
 </section>
 

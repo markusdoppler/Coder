@@ -648,6 +648,20 @@ class Duck extends Bird {
 export default Duck;
 ```
 
+### Setters and getters
+```js
+class BirdsNest {
+
+  set eggsCount(numberOfEggs) {
+
+  }
+
+  get eggsCount() {
+
+  }
+}
+```
+
 </section>
 
 ---

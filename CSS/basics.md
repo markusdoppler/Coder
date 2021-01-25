@@ -103,6 +103,18 @@ section {
 }
 ```
 
+Fallback value (e.g. if `clamp` is not supported)
+```css
+:root {
+  --padding: clamp(1rem, 2vw, 2rem);
+}
+
+section {
+  padding: var(--padding, 1.5rem);
+}
+```
+
+
 ### Manipulate CSS Variables from JavaScript
 CSS
 ```css

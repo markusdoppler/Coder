@@ -299,6 +299,154 @@ needle.animate({
 
 <section>
 
+## Web Components API
+
+*Custom HTML Tag*
+```html
+<radio-button></radio-button>
+```
+
+*Create class and define element*
+```js
+class RadioButton extends HTMLElement { ... }
+window.customElements.define("radio-button", RadioButton);
+```
+
+
+### Life Cycle Methods
+
+```js
+class RadioButton extends HTMLElement {
+  // called when an instance of the element is created or upgraded
+  constructor() {
+    super();
+  }
+
+  // called every time the element is inserted into the DOM
+  connectedCallback() {
+
+  }
+
+  // called every time the element is removed into the DOM
+  disconnectedCallback() {
+    
+  }
+
+  // called when an attribute is added, removed, updated, or replaced
+  attributeChangedCallback(attributeName, oldValue, newValue) {
+
+  }
+}
+```
+
+### Template
+
+The template can contain any markup and styles pertaining to the custom element.
+
+
+### Shadow DOM
+
+Encapsulates e.g. styles pertaining to the custom component from the rest of the DOM.
+
+```js
+element.attachShadow({ mode: 'open' });
+```
+
+#### Example: Web Component Template with CSS Shadow parts
+Web Component Template
+```html
+<template id="format-button">
+  <style>
+    .format-button { border: 2px solid navy; }
+  </style>
+  <button class="format-button">
+    <span part="icon" class="icon"></span>
+    <span part="label" class="label"></span>
+  </button>
+</template>
+```
+
+Registering the Web component
+```js
+let template = document.getElementById("format-button");
+window.customElements.define(template.id, class extends HTMLElement {
+  constructor() {
+    super();
+
+    this.attachShadow({ mode: 'open' });
+
+    let newButtonElement = template.content.cloneNode(true);
+
+    let parts = newButtonElement.querySelectorAll("span");
+    parts[0].textContent = this.getAttribute("data-icon");
+    parts[1].textContent = this.textContent;
+
+    this.shadowRoot.appendChild(newButtonElement);
+    this.addEventListener("click", this.handleClick.bind(this));
+  }
+});
+```
+
+CSS Shadow Part Styles
+```css
+#bold::part(icon) {
+  color: red;
+  font-weight: bold;
+}
+#italic::part(icon) {
+  color: blue;
+  font-style: italic;
+}
+```
+
+Web Component Usage
+```html
+<format-button id="bold" data-icon="B">Bold</format-button>
+<format-button id="italic" data-icon="I">Italic</format-button>
+```
+
+
+
+### Slots
+Slots can be used to add custom text
+
+#### Single slot
+```html
+<radio-button>
+  Slot text
+</radio-button>
+```
+
+Usage in template
+```html
+<button>
+  <slot />
+</button>
+```
+
+
+#### Multiple slots
+```html
+<emoji-card name="Fruits" emoji="🥝🍇">
+  <div slot="sour">Kiwi</div>
+  <div slot="sweet">Grape</div>
+</emoji-card>
+```
+
+Usage in template
+```html
+<div>
+  <h3><slot name="sour" /></h3>
+  <p><slot name="sweet" /></p>
+</div>
+```
+
+</section>
+
+---
+
+<section>
+
 ## Service Workers
 
 Make sure Service Workers are supported

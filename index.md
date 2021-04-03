@@ -1,12 +1,31 @@
 ---
 layout: home
+styles:
+- assets/home.css
+scripts:
+- assets/home.js
 ---
 
 # Coder
 
 <section>
 
-## My Cheatsheets
+<div class="quick-links-container">
+  <quick-link href="Python/README">Python</quick-link>
+  <quick-link href="JavaScript/README">JavaScript</quick-link>
+  <quick-link href="HTML/README">HTML</quick-link>
+  <quick-link href="CSS/README">CSS</quick-link>
+  <quick-link href="SVG/README">SVG</quick-link>
+  <quick-link href="Tools/git">Git</quick-link>
+  <quick-link href="Tools/bash">Bash</quick-link>
+  <quick-link href="Editors/vim">VIM</quick-link>
+</div>
+
+</section>
+
+<section>
+
+## List of all Cheatsheets
 
 ### Programming Languages
 * [Python](Python/README)

@@ -291,6 +291,41 @@ word-spacing: 0.25em;
 * `none`
 
 
+#### Text Ellipsis
+
+<figure>
+<div>
+  <div style="width: 15ch; background: navy; color: white; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Lorem ipsum dolor est</div>
+</div>
+
+```css
+.ellipsis-text {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+```
+
+</figure>
+
+<figure>
+<div>
+  <div style="width: 15ch; background: navy; color: white; overflow: hidden; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 4;">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dicta eius quibusdam nobis.</div>
+</div>
+
+
+```css
+.ellipsis-box {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+}
+```
+
+</figure>
+
+
 ### Colour
 
 ```css
@@ -811,6 +846,28 @@ cursor: text;
 
 <section>
 
+## User Experience (Zoom, scroll etc.)
+
+avoid double tap to zoom
+```css
+section {
+  touch-action: manipulate;
+}
+```
+
+smooth scroll (e.g. when ID changes in URL)
+```css
+html {
+  scroll-behavior: smooth;
+}
+```
+
+</section>
+
+---
+
+<section>
+
 ## Pointer Events
 * make an element "see-through" for any pointer events (click & touch)
 
@@ -827,6 +884,7 @@ pointer-events: none;
 ## Webkit specific styles
 
 * [Apple Developer: Customizing Style Sheets](https://developer.apple.com/library/archive/documentation/AppleApplications/Reference/SafariWebContent/AdjustingtheTextSize/AdjustingtheTextSize.html)
+
 
 ### System fonts
 ```css

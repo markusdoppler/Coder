@@ -6,96 +6,141 @@ title: AJAX
 
 <section>
 
-## JSON (JavaScript Object Notation)
+## XML HTTP Request (XHR)
 
-### Stringify Object
+**GET Request**
 ```js
-JSON.stringify({name: 'Tim', age: 17})
+var request = new XMLHttpRequest();
+request.open('GET', '/words', false);
+request.send('word='+word+'&type='+wordType);
+if (request.status == 200) {
+  console.log(request.responseText);
+}
 ```
 
-### Parsing JSON
+**POST Request**
 ```js
-text = "{name: 'Tim', age: 17}"
+request.open('POST', '/search.php', true);
+request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+request.setRequestHeader('Cache-Control', 'no-cache');
+request.onreadystatechange = function () {
+  console.log(request.status, request.responseText);
+};
+request.send("jsonData=" + JSON.stringify(wordData));
+```
+
+### XML HTTP Request
+
+`window.XMLHttpRequest`
+```js
+var request = new XMLHttpRequest();
+```
+
+**Methods**
+* `open(method, url, [isAsyncronous])`
+* `setRequestHeader(header, value)`
+* `send(body)`
+
+**Properties**
+* `readyState` (`4` = ready)
+* `status` (`200` = OK)
+* `statusText`
+* `response`
+* `responseText`
+
+**Events**
+* `readystatechange`
+* `abort`
+* `load`
+* `loadstart`
+* `loadend`
+
+</section>
+
+---
+
+<section>
+
+## Fetch API
+
+```js
+await (await fetch('https://api.github.com/users/markusdoppler')).json()
+await fetch('https://api.github.com/users/markusdoppler').then(data => data.json())
+fetch('https://api.github.com/users/markusdoppler').then(data => data.json()).then(json => console.log(json))
+```
+
+```js
+fetch(fileOrURL)
+  .then((data) => {
+    // ...
+  })
+  .catch(error => {
+    // ...
+  });
+```
+
+```js
+const request = new Request('data.json');
+fetch(request).then(function(response) {
+  return response.text();
+}).then(function(text) {
+  console.log(text);
+});
+```
+
+
+</section>
+
+---
+
+<section>
+
+## Axios library
+
+```js
+const axios = require('axios');
+
+await axios.get('/user', { params:  12345 });
+await axios.post('/user', { params:  12345 });
+
+axios.post('/user', { params:  12345 })
+  .then(() => {
+    // ...
+  }).catch(() => {
+    // ...
+  });
+```
+
+</section>
+
+---
+
+<section>
+
+## JSON 
+(JavaScript Object Notation)
+
+Stringify object
+```js
+JSON.stringify({ name: 'Tim', age: 17 })
+```
+
+Parsing JSON
+```js
+text = "{ name: 'Otto', age: 17 }"
 JSON.parse(text)
 ```
 
-</section>
-
----
-
-<section>
-
-## AJAX (Asynchronous JavaScript And XML)
-
-
-* XHR
-* `fetch` API
-* `get`
-* `<>.then().catch()`
-* `request()` (returns Promise)
-* `axios`
-
-* Synchronous JavaScript
-* Asynchronous JavaScript
-* Callbacks
-* Promises
-
-</section>
-
----
-
-<section>
-
-## XML HTTP Request
-
 ```js
-var request = new XMLHttpRequest();
-request.open('GET', 'http://www.markusdoppler.at/documentation/', false);
-request.send(null);
-if(request.status == 200) {
-  dump(request.responseText);
-}
-```
+const jsonData = `{ "number": 5, "colour": "red" }`;
 
-### HTTP Request
-```js
-if (window.XMLHttpRequest) {
-  httpRequest = new XMLHttpRequest();
-}
-```
-
-```js
-httpRequest.onreadystatechange = handlerFunction;
-httpRequest.open('POST', 'http://latin.markusdoppler.at/search.php', true);
-httpRequest.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-httpRequest.setRequestHeader('Cache-Control', 'no-cache');
-httpRequest.send('verbum='+verbum+'&type='+wordData.wordType);
-
-httpRequest.send("jsonData=" + JSON.stringify(wordData));
-wordData = JSON.parse(httpRequest.responseText, function(k, v) {
-
-  if (httpRequest.readyState === 4) {
-    if (httpRequest.status === 200) {
-      alert("Input successful. Reload page prompt?");
+const data = JSON.parse(jsonData, function(key, value) {
+    if (!isNaN(parseInt(value))) {
+        return parseInt(value);
     } else {
-      alert("Save not successful: "+httpRequest.responseText);
+        return value;
     }
-  }
-
-  if (httpRequest.readyState === 4 && httpRequest.status === 200) {
-    if (httpRequest.responseText != "false") {
-      wordData = JSON.parse(httpRequest.responseText, function(k, v) {
-          if (k === "") {
-              return v;
-          } else if (!isNaN(parseInt(v))) {
-              return parseInt(v);
-          } else {
-              return v;
-          }
-      });
-    }
-  }
-}
+});
 ```
 
 </section>
@@ -104,11 +149,40 @@ wordData = JSON.parse(httpRequest.responseText, function(k, v) {
 
 <section>
 
-## Promise
-Return values
-* `resolve`: data
-* `reject`: error
+## Promises
 
+Promise object
+* `new Promise((resolve, reject) => { /* ... */ });`
+  * `resolve(data)`: 
+  * `reject(error)`: 
+* `Promise.all([promise1, promise2])`
+
+Await Promise
+* `await promise`
+
+Chained Promises
+* `promise.then()`
+* `promise.catch()`
+* `promise.finally()`
+
+### Promise example via `setTimeout()`
+```js
+const promise = new Promise((resolve, reject) => {
+    setTimeout(() => {
+      if (everythingIsFine) resolve('✅')
+      else reject('❌');
+    })
+  })
+const answer = await promise
+```
+
+one-line Promise
+```js
+await new Promise((resolve, reject) => { setTimeout(() => { if (everythingIsFine) resolve('✅'); else reject('❌'); }); });
+```
+
+
+### `.then()` and `.catch()`
 ```js
 const promise = new Promise((resolve, reject) => {
   setTimeout(() => {
@@ -125,7 +199,8 @@ promise.then(user => {
 });
 ```
 
-Function that returns a Promise
+
+**Function that returns a Promise**
 ```js
 function getData(username) {
   return new Promise((resolve, reject) => {
@@ -140,7 +215,7 @@ getData('winfy153')
   .catch(err => console.log(err));
 ```
 
-"Parallel" Promises
+### "Parallel" Promises
 ```js
 const promise1 = new Promise(resolve => {
   setTimeout(() => {
@@ -164,6 +239,7 @@ const [weather, store] = Promise.all(getWeather(), getStores());
 ```
 
 
+
 ### Async + Await
 Let synchronous code look like synchronous code
 ```js
@@ -178,7 +254,6 @@ async function displayUser(email, password) {
 
 displayUser('email@me.com', "12345");
 ```
-
 
 
 ### Image Loading Example
@@ -207,9 +282,23 @@ async function load_image(src) {
 
 <section>
 
-## Async / Await
+## Async and Await
 
-### How was it done before
+**Let asynchronous code look like synchronous code!**
+```js
+async function getData() {
+  let promise = new Promise((resolve, reject) => {
+    setTimeout(() => resolve('done'), 3000)
+  })
+
+  let result = await promise
+  console.log(result)
+}
+getData()
+```
+
+
+### A little history: How was it done before
 
 Callback
 ```js
@@ -233,100 +322,31 @@ async function manageTheWeather() {
 }
 ```
 
-### Let asynchronous code look like synchronous code!
-```js
-async function getData() {
-  let promise = new Promise((resolve, reject) => {
-    setTimeout(() => resolve('done'), 3000)
-  })
-
-  let result = await promise
-  console.log(result)
-}
-getData()
-```
-
 </section>
 
 ---
 
 <section>
 
-## Fetch
+## HTTP Header
 
-```js
-await fetch('https://api.github.com/users/wesbos').then(data => data.json())
-
-await (await fetch('https://api.github.com/users/wesbos')).json()
+```
+Content-Type: text/html
+Content-Type: text/html; charset=UTF-8
+Content-Type: text/plain
+Content-Type: application/json
 ```
 
-
-### Fetch Request Example
-
-Example from Design+Code
-```html
-<script>
-import ThemeSwitch from "@/components/ThemeSwitch";
-
-export default {
-  name: "Request",
-  components: {
-    ThemeSwitch
-  },
-  data() {
-    return {
-      email: null
-    };
-  },
-  computed: {
-    isDarkMode() {
-      return this.$store.getters.isDarkMode;
-    }
-  },
-  methods: {
-    onSubmit() {
-      const email = this.email;
-
-      // Slack API logic
-      let slackURL = new URL("https://slack.com/api/chat.postMessage");
-
-      const data = {
-        token: [YOUR OAUTH ACCESS TOKEN]
-        channel: "hq",
-        text: `${email} has requested admin access to HQ. Please go to Netlify to invite them.`
-      };
-
-      slackURL.search = new URLSearchParams(data);
-
-      fetch(slackURL)
-        .then(() => {
-          this.$router.push({
-            name: "signin",
-            params: {
-              userRequestedAccount: true,
-              email: email
-            }
-          });
-        })
-        .catch(error => {
-          alert("Error: " + error);
-        });
-    }
-  }
-};
-</script>
+### CORS (Cross-Origin Resource Sharing)
+```
+Access-Control-Allow-Origin: http://localhost:3000
+Access-Control-Allow-Origin: *
 ```
 
-</section>
-
----
-
-<section>
-
-## Axios library
-
-```js
-await axios.someFunc()
-```
+### Same-Origin Policy
+Allowed if the following are equal:
+* protocol (HTTP or HTTPS)
+* domain
+* port
 
 </section>

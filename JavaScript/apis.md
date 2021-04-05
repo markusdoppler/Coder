@@ -336,6 +336,11 @@ class RadioButton extends HTMLElement {
   attributeChangedCallback(attributeName, oldValue, newValue) {
 
   }
+
+  // observing the following attributes, i.e. attributeChangedCallback() called when attribute modified
+  static get observeredAttributes() {
+    return ['name', 'data'];
+  }
 }
 ```
 

@@ -82,7 +82,7 @@ Use web
 ## Semantic HTML
 
 ### HTML
-* `lang` attribute on `<html>`
+* `<html>` should have `lang` attribute
 
 ### Headings
 * `<h1>` to `<h6>` accordingly
@@ -114,9 +114,14 @@ Use web
 * Role – e.g. `button`, `checkbox`
 * Name / Label – `aria-labelledby`, `aria-label`, `<label>`, Contents (e.g. Button Text), `title`
 * State – e.g. `disabled`, `checked`
-* Value – 
+* Value – e.g. `input`'s text content
 
 Browser generates an accessibility tree from these properties.
+
+### CSS
+* The accessibility tree is generated from the DOM, therefore CSS styling should reflect the DOM order and/or vice versa.
+* `display: none` and `visibility: hidden` remove elements from the accessibility tree.
+
 
 </section>
 
@@ -235,6 +240,33 @@ Features of `<button>` vs. `<div>` etc.
 </figure>
 
 
+### Focus in SPA
+
+Strategy
+* call `.focus()` on newly loaded content (has to have `tabindex="-1"` – probably also overwrite `:focus` in CSS)
+
+
+</section>
+
+---
+
+<section>
+
+## Colour and Contrast
+
+Minimum contrast
+* text and images at least `> 4.5`
+* large text (> 14-18pt) `> 3.0`
+
+Enhanced contrast
+* text and images at least `> 7.0`
+* large text (> 14-18pt) `> 4.5`
+
+### Tools
+* [OATMEAL](https://ebay.gitbook.io/oatmeal/)
+* [Color contrast ratio checker](https://contrast-ratio.com/?utm_campaign=chrome_series_contrastratio_050417&utm_source=chromedev&utm_medium=yt-desc)
+* [Color Contrast Analyzer (Chrome extension)](https://chrome.google.com/webstore/detail/color-contrast-analyzer/dagdlcijhfbmgkjokkjicnnfimlebcll?hl=en?utm_campaign=chrome_series_contrastanalyzer_050417&utm_source=chromedev&utm_medium=yt-desc) for contrast ratio between image background colour and text foreground colour
+
 </section>
 
 ---
@@ -269,6 +301,12 @@ Deque website --> skip to content
 <button class="button">Get Fruit</button>
 
 </section>
+
+
+### Remove interactive controls (Inert) from taborder
+* `display: none`
+* `aria-hidden`
+* `tabindex="-1"`
 
 ---
 
@@ -338,6 +376,85 @@ using `for`-attribute
 <div id="broccoli-card" class="button memory-card" role="button" tabindex="0" aria-labelledby="memory-label broccoli-card">🥦</div>
 
 
+### Example: Label Shadow-DOM
+
+```html
+<custom-element label="faviourite-button"></custom-element>
+```
+
+```js
+class CustomElement extends HTMLElement {
+  static get observeredAttributes() {
+    return ['label'];
+  }
+  constructor() {
+    super();
+    this.attachShadow({ mode: 'open' });
+    this.button = document.createElement('button');
+    this.button.textContent = "💚";
+    this.shadowRoot.appendChild(this.button);
+  }
+  attributeChangedCallback(name, oldValue, newValue) {
+    if (name === "label" && newValue) this.button.setAttribute("aria-label", newValue);
+  }
+}
+window.customElements.define("custom-element", CustomElement);
+```
+
+### Example: Label Custom Element
+
+```html
+<howto-label>
+  Element
+  <howto-input></howto-input>
+</howto-label>
+```
+
+* [HowTo Components (Accessible common UI patterns)](https://github.com/GoogleChromeLabs/howto-components)
+
+</section>
+
+---
+
+<section>
+
+## Modal Dialogs
+
+* `role="dialog"`
+* `ESC` to exit dialog
+* 
+
+1. make dialog a top-level sibling (direct child of <body>)
+```html
+<div class="dialog" role="dialog" aria-labelledby="dialog-window-title">
+  <div class="dialog-window">
+    <h2 id="dialog-window-title">Dialog title</h2>
+    <p>Dialog text lorem ipsum dolor est. Sic ut anemone.</p>
+    <button>Cancel</button>
+    <button>OK</button>
+  </div>
+  <div class="dialog-mask"></div>
+</div>
+```
+
+```css
+.dialog { display: none; }
+.dialog.opened { display: block; }
+```
+
+2. when opening the dialog
+a. make dialog control focussable (`tabindex="0"`)
+b. save the focussed element at the time of firing up the modal via `document.activeElement`
+c. focus some element (e.g. the first) into the dialog
+d. only dialog controls are tabbable nothing else in the document.
+
+3. when closing the dialog
+revert changed from 2a., 2c. and 2d.
+
+4. go back to previous element from 2b.
+
+### Source
+* [Light box Dialog (ebay)](https://ebay.gitbook.io/mindpatterns/disclosure/lightbox-dialog)
 
 </section>
 
@@ -374,6 +491,7 @@ Role
 * `menu`
 * `tree`
 * `treeitem`
+* `dialog`
 
 
 ### ARIA Labels
@@ -474,6 +592,18 @@ button[aria-expanded="true"] + #settings-panel {
 <div aria-label="This is an input field"></div>
 ```
 
+
+### Example: `aria-activedescendent`
+
+```html
+<radio-group role="radio-group" tabindex="0" aria-activedescendent="rb3">
+  <radio-button id="rb1" role="radio" aria-checked="false">Water</radio-button>
+  <radio-button id="rb2" role="radio" aria-checked="false">Tea</radio-button>
+  <radio-button id="rb3" role="radio" aria-checked="true">Matcha</radio-button>
+</radio-group>
+```
+
+
 </section>
 
 ---
@@ -499,6 +629,27 @@ button[aria-expanded="true"] + #settings-panel {
 ## Colour and Contrast
 
 
+
+</section>
+
+---
+
+<section>
+
+## Focus Ring
+
+CSS Level-4 selector
+* like `:focus`, but only for non-mouse users
+
+```css
+:focus-visible {
+
+}
+
+:not(:focus-visible) {
+  outline: none;
+}
+```
 
 </section>
 

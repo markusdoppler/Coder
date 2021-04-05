@@ -300,4 +300,35 @@ or via CSS
 
 </figure>
 
+
+### Colour filter
+
+```
+r = 1 - hex / 255 = 1
+g = 1 - hex / 255 = 0.5
+b = 1 - hex / 255 = 0.1
+```
+
+```svg
+<svg>
+   <defs>
+      <filter id="monochrome" color-interpolation-filters="sRGB" x="0" y="0" height="100%" width="100%">
+         <feComponentTransfer>
+            <feFuncR type="gamma" amplitude="1" exponent="1" />
+            <feFuncG type="gamma" amplitude="1" exponent="0.5" />
+            <feFuncB type="gamma" amplitude="1"  exponent="0.1" />
+         </feComponentTransfer>
+      </filter>
+   </defs>
+</svg>
+```
+
+The filter can be applied to an element using CSS
+```css
+.element {
+  filter: url(#monochrome);
+}
+```
+
+
 </section>

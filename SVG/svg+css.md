@@ -64,8 +64,14 @@ fill: url(#radialgradient);
 <section>
 
 ## Filter
+A SVG filter can be applied to an element using CSS
 ```css
-filter: url(#dropshadow);
+.dropshadow {
+  filter: url(#dropshadow);
+}
+.coloured {
+  filter: url(#monochrome);
+}
 ```
 
 </section>

@@ -18,12 +18,24 @@ Resources
 
 <section>
 
-## Useful commans
+## Searching files
 
+### Grep
 Search files (in this case python scripts) for specific text
 ```bash
 grep "FIXME" *.py
 ```
+
+Search
+```bash
+grep -rn "z.B." --include="*.html" .
+```
+* `-r` recursively
+* `-n` show line numbers
+* `--include="*.html"` only include html files in search
+* `.` everywhere starting in the current directory
+* `-l` show list of files
+
 
 Search all text files for string and replace that string
 * [Stack Overflow thread](https://stackoverflow.com/questions/15402770/how-to-grep-and-replace)
@@ -31,6 +43,42 @@ Search all text files for string and replace that string
 ```bash
 find /path/to/files -type f -exec sed -i 's/oldstring/new string/g' {} \;
 ```
+
+### sed – Stream editor
+
+```bash
+sed 's#foo#bar#g'
+```
+The 2nd character after the `s` can be anything and `sed` will use that character as a separator.
+* `-e` – regex expression
+* `-i` – input
+
+
+### grep + xargs + sed
+
+Replace all occurences of `z.B.` with `<nbr>z. B.</nbr>`
+```bash
+sed -e "s#z\.B\.#<nbr>z. B.</nbr>#g" -i "" *.html
+
+# Linux
+grep -rl "d\.h\." * | xargs sed -e 's#d\.h\.#<nbr>d. h.</nbr>#g' -i
+
+# Mac
+grep -rl "z\.B\." * | xargs sed -e 's#z\.B\.#<nbr>z. B.</nbr>#g' -i ""
+```
+
+
+
+### Count number of lines
+
+```bash
+wc -l
+```
+
+```bash
+grep "something" * | wc -l
+```
+
 
 </section>
 

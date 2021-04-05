@@ -30,6 +30,32 @@ if (canvas.getContext) {
 
 <section>
 
+## Responsive Canvas
+
+```js
+function setupCanvas(canvas) {
+  const dpr = window.devicePixelRatio || 1;
+
+  const rect = canvas.getBoundingClientRect();
+  canvas.width = rect.width * dpr;
+  canvas.height = rect.height * dpr;
+
+  var ctx = canvas.getContext('2d');
+  ctx.scale(dpr, dpr);
+  return ctx;
+}
+
+var ctx = setupCanvas(document.querySelector('canvas'));
+// ...
+```
+
+
+</section>
+
+---
+
+<section>
+
 ## Styling
 
 ### Colours
@@ -69,8 +95,9 @@ c.fillRect(x, y, width, height);
 
 ### Line
 ```
+c.lineWidth = 5;
 c.beginPath();
-c.moveTo(x,y);
+c.moveTo(50,50);
 c.lineTo(100,40);
 c.stroke();
 ```

@@ -30,6 +30,47 @@ transition: all .15s ease;
 
 </figure>
 
+**CSS Fade-In Transition**
+```css
+.box {
+  transition: opacity 500ms ease-in-out;
+  opacity: 0;
+}
+.box:hover {
+  opacity: 1;
+}
+```
+
+
+### Transition via JavaScript
+
+DOM Events
+* `transitionend`
+
+
+#### JavaScript Fade-In Transition
+```js
+const element = document.createElement('div');
+element.style.opacity = '0';
+document.body.append(element);
+getComputedStyle(element).opacity;
+element.style.transition = 'opacity 500ms ease-in-out';
+element.style.opacity = '1';
+```
+
+The `getComputedStyle(element).opacity` is essential here, otherwise the rendering engine never sees the opacity of `0`.
+
+
+#### JavaScript Fade-Out Transition
+
+```js
+const animation = element.addEventListener('transitionend', (event) => {
+  if (event.target !== element) return;
+  element.remove();
+});
+```
+
+
 </section>
 
 ---
@@ -55,8 +96,13 @@ animation-duration: 400ms;
 animation-timing-function: linear;
 animation-delay: 0;
 animation-iteration-count: infinite;
+
 animation-fill-mode: forwards;
+animation-fill-mode: both;
+
 animation-direction: alternate;
+
+animation-play-state: paused;
 animation-play-state: running;
 ```
 
@@ -64,6 +110,7 @@ Shorthand
 ```css
 animation: name duration timing-function delay iteration-count direction fill-mode;
 ```
+
 
 Example
 <figure class="fig-1-3">
@@ -90,6 +137,110 @@ Example
 ```
 
 </div>
+
+## Animation via JavaScript
+
+DOM Events
+* `animationstart`
+* `animationiteration`
+* `animationend`
+* `finish`
+
+### CSS Fade-In Animation
+```css
+@keyframes fade-in {
+  from { opacity: 0; }
+}
+@keyframes fade-out {
+  to { opacity: 0; }
+}
+```
+
+```js
+const element = document.createElement('div');
+element.style.animation = 'fade-in 500ms ease-in-out';
+document.body.append(element);
+```
+
+### JavaScript Fade-Out Animation
+
+```js
+element.style.animation = 'fade-out 500ms ease-in-out';
+element.addEventListener('animationend', (event) => {
+  if (event.target !== element) return;
+  element.remove();
+});
+```
+
+</section>
+
+---
+
+<section>
+
+## Web Animation API
+
+```js
+element.animate(
+  { opacity: '0.2' },
+  { duration: 500, easing: 'ease-in-out', fill: 'forwards' }
+);
+```
+
+* `animation.commitStyles();`
+* `animation.cancel();`
+
+
+### JavaScript Fade-In via Web Animation API
+```js
+const element = document.createElement('div');
+document.body.append(element);
+element.animate(
+  { opacity: '0', offset: 0 },
+  { duration: 500, easing: 'ease-in-out' }
+);
+```
+
+### JavaScript Fade-Out via Web Animation API
+```js
+const fade_out_animation = element.animate(
+  { opacity: '0' },
+  { duration: 500, easing: 'ease-in-out' }
+);
+
+// via promise
+fade_out_animation.finished.then(() => element.remove());
+
+// via event
+fade_out_animation.onfinish = () => element.remove();
+```
+
+
+```js
+const fade_out_animation = element.animate(
+  { opacity: '0.2' },
+  { duration: 500, easing: 'ease-in-out', fill: 'forwards' }
+);
+```
+
+```js
+function animateTo(element, keyframes, options) {
+  const animation = element.animate(
+    keyframes, 
+    { ...options, fill: 'both' }
+  );
+  animation.addEventListener('finish', () => {
+    animation.commitStyles();
+    animation.cancel();
+  });
+  return animation;
+}
+```
+
+```js
+document.getAnimations();
+```
+
 </section>
 
 ---

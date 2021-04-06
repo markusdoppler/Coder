@@ -12,6 +12,10 @@ title: Events
 image.addEventListener('load', function(e) { newPhotoIsDoneLoading(e); }, false);
 
 document.ontouchstart = function(e){  }
+
+element.onclick
+
+window.onload
 ```
 
 ### Adding an Event Listener from HTML

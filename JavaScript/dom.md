@@ -43,6 +43,8 @@ Nodes
 ```js
 element.parentNode
 element.appendChild(childElement)
+document.body.append(element);
+element.remove();
 
 element.innerHTML
 element.innerText
@@ -99,13 +101,28 @@ element.className
 element.classList.add
 element.classList.remove
 element.classList.value
+element.classList.contains('zoom')
 ```
 
 Style
 ```js
 element.style.display = "block";
 element.style.border = "1px solid blue";
+element.style.marginLeft = 0;
+element.style.animationPlayState = `paused`;
 element.style.setProperty("background", "#fff");
+
+const computedStyle = window.getComputedStyle(element);
+computedStyle.getPropertyValue('margin')
+```
+
+StyleSheets
+```js
+document.styleSheets /* – stylesheets associated with a page */
+document.styleSheets[0].cssRules
+document.styleSheets[0].cssRules[0].type
+document.styleSheets[0].cssRules[0].deleteRule(rule)
+document.styleSheets[0].cssRules[0].appendRule(rule)
 ```
 
 </section>
@@ -284,6 +301,14 @@ navigator.systemLanguage
 <section>
 
 ## `setTimeout`, `setInterval` and `requestAnimationFrame`
+
+Functions
+* `setTimeout(callback, timeout)`
+* `window.clearTimeout(myTimeout)`
+* `setInterval(callback, interval)`
+* `window.clearInterval(myInterval)`
+* `requestAnimationFrame(callback)`
+
 
 ### `setTimeout`
 ```js

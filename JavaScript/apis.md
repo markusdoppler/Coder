@@ -301,52 +301,67 @@ needle.animate({
 
 ## Web Components API
 
-*Custom HTML Tag*
+Using the component via the *custom HTML Tag*
 ```html
-<radio-button></radio-button>
+<recipe-text>
+  <span slot="vegetable">Broccoli</span>
+  <span slot="grain">Rice</span>
+</recipe-text>
 ```
 
-*Create class and define element*
+*Create class and define custom element*
 ```js
-class RadioButton extends HTMLElement { ... }
-window.customElements.define("radio-button", RadioButton);
+class RecipeText extends HTMLElement { ... }
+customElements.define("recipe-text", RecipeText);
 ```
 
-
-### Life Cycle Methods
-
-```js
-class RadioButton extends HTMLElement {
-  // called when an instance of the element is created or upgraded
-  constructor() {
-    super();
-  }
-
-  // called every time the element is inserted into the DOM
-  connectedCallback() {
-
-  }
-
-  // called every time the element is removed into the DOM
-  disconnectedCallback() {
-    
-  }
-
-  // called when an attribute is added, removed, updated, or replaced
-  attributeChangedCallback(attributeName, oldValue, newValue) {
-
-  }
-
-  // observing the following attributes, i.e. attributeChangedCallback() called when attribute modified
-  static get observeredAttributes() {
-    return ['name', 'data'];
-  }
-}
-```
 
 ### Template
 
 The template can contain any markup and styles pertaining to the custom element.
+Define the component via HTML5's `<template>` and `<slot>` tags.
+```html
+<template id="recipe-text-template">
+  <p>
+    <slot name="vegetable" part="veg">Tomato</slot> and <slot name="grain" part="veg">Noodles</slot>
+  </p>
+</template>
+```
+
+
+### Slots
+Slots can be used to add custom text.
+
+#### Single slot
+```html
+<radio-button>
+  Slot text
+</radio-button>
+```
+
+Usage in template
+```html
+<button>
+  <slot />
+</button>
+```
+
+#### Multiple slots
+```html
+<emoji-card name="Fruits" emoji="🥝🍇">
+  <div slot="sour">Kiwi</div>
+  <div slot="sweet">Grape</div>
+</emoji-card>
+```
+
+Usage in template
+```html
+<div>
+  <h3><slot name="sour" /></h3>
+  <p><slot name="sweet" /></p>
+</div>
+```
+
 
 
 ### Shadow DOM
@@ -354,10 +369,47 @@ The template can contain any markup and styles pertaining to the custom element.
 Encapsulates e.g. styles pertaining to the custom component from the rest of the DOM.
 
 ```js
-element.attachShadow({ mode: 'open' });
+customElements.define("recipe-text",
+  class extends HTMLElement {
+    constructor() {
+      super();
+
+      let recipeTextTemplate = document.getElementById("recipe-text-template");
+      let recipeText = recipeTextTemplate.content;
+      const shadowRoot = this.attachShadow({ mode: "open" }).appendChild(recipeText.cloneNode(true));
+    }
+});
 ```
 
-#### Example: Web Component Template with CSS Shadow parts
+`mode: open`: JavaScript from outside the `:root` can access and manipulate the elements within the shadow DOM
+
+
+
+### Styling the component
+
+#### Styling from within the `<template>` definition
+```html
+<template id="vegetable-text-template">
+  <style>
+    p { background-color: pink; padding: 0.5em; border: 1px solid red; }
+  </style>
+
+  <p>The <slot name="vegetable">Tomato</slot> is my favourite Vegetable!</p>
+</template>
+```
+**Note**: These styles are scoped directly to the component and nothing leaks out to other elements on the same page, thanks to the shadow DOM.
+
+#### Styling from the page's CSS
+```css
+vegetable-text span {
+  color: blue;
+}
+```
+**Note**: Styles in the main CSS file cannot access elements in the `<template>` or shadow DOM.
+
+
+
+#### Styling CSS Shadow parts from the page's CSS
 Web Component Template
 ```html
 <template id="format-button">
@@ -392,7 +444,7 @@ window.customElements.define(template.id, class extends HTMLElement {
 });
 ```
 
-CSS Shadow Part Styles
+**CSS Shadow Part Styles**
 ```css
 #bold::part(icon) {
   color: red;
@@ -412,39 +464,32 @@ Web Component Usage
 
 
 
-### Slots
-Slots can be used to add custom text
 
-#### Single slot
-```html
-<radio-button>
-  Slot text
-</radio-button>
+### Life Cycle Methods
+
+```js
+class RadioButton extends HTMLElement {
+  // called when an instance of the element is created or upgraded
+  constructor() {
+    super();
+  }
+
+  // called every time the element is inserted into the DOM
+  connectedCallback() {  }
+
+  // called every time the element is removed into the DOM
+  disconnectedCallback() {  }
+
+  // called when an attribute is added, removed, updated, or replaced
+  attributeChangedCallback(attributeName, oldValue, newValue) {  }
+
+  // observing the following attributes, i.e. attributeChangedCallback() called when attribute modified
+  static get observeredAttributes() {
+    return ['name', 'data'];
+  }
+}
 ```
 
-Usage in template
-```html
-<button>
-  <slot />
-</button>
-```
-
-
-#### Multiple slots
-```html
-<emoji-card name="Fruits" emoji="🥝🍇">
-  <div slot="sour">Kiwi</div>
-  <div slot="sweet">Grape</div>
-</emoji-card>
-```
-
-Usage in template
-```html
-<div>
-  <h3><slot name="sour" /></h3>
-  <p><slot name="sweet" /></p>
-</div>
-```
 
 </section>
 

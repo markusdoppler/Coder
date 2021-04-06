@@ -18,6 +18,10 @@ customElements.define("quick-link",
             background: aliceblue;
             text-decoration: none;
             color: #2a7ae2;
+            transition: 0.3s ease;
+          }
+          .quick-link:hover {
+            background: hsl(208, 100%, 90%);;
           }
         </style>
         <a href="#" class="quick-link"><slot /></a>

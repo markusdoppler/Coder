@@ -8,19 +8,27 @@ scripts:
 
 # Coder
 
-<section>
-
-<div class="quick-links-container">
-  <quick-link href="Python/README">Python</quick-link>
-  <quick-link href="JavaScript/README">JavaScript</quick-link>
-  <quick-link href="HTML/README">HTML</quick-link>
-  <quick-link href="CSS/README">CSS</quick-link>
-  <quick-link href="SVG/README">SVG</quick-link>
-  <quick-link href="Tools/git">Git</quick-link>
-  <quick-link href="Tools/bash">Bash</quick-link>
-  <quick-link href="Editors/vim">VIM</quick-link>
-</div>
-
+<section class="quick-links-container">
+  <div class="home-col-2">
+    <a class="home-card python" href="Python/README">Python</a>
+    <a class="home-card swift" href="Swift/README">Swift</a>
+  </div>
+  <div class="home-card-section">
+    <h2>Web Development</h2>
+    <div class="home-col-2">
+      <a class="home-card html" href="HTML/README">HTML</a>
+      <a class="home-card javascript" href="JavaScript/README">JavaScript</a>
+      <a class="home-card css" href="CSS/README">CSS</a>
+      <a class="home-card svg" href="SVG/README">SVG</a>
+      <a class="home-card php" href="PHP/README">PHP</a>
+    </div>
+  </div>
+  <div class="home-col-2">
+    <a class="home-card git" href="Tools/git">Git</a>
+    <a class="home-card sql" href="Tools/sql">SQL</a>
+    <a class="home-card bash" href="Tools/bash">Bash</a>
+    <a class="home-card vim" href="Editors/vim">VIM</a>
+  </div>
 </section>
 
 <section>

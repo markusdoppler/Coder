@@ -1,3 +1,65 @@
-.quick-links-container {
-
+:root {
+  --color-white: #fff;
+  --color-black: #000;
+  --color-darkgrey: #282A35;
+  --color-lightblue: #5696F6;
+  --color-lightblue2: #2a7ae2;
+  --color-green: #04AA6D;
+  --color-green-darker: #059862;
+  --color-lightgreen: #D9EEE1;
+  --color-yellow: #FFF4A3;
+  --color-red: #FFC0C7;
+  --color-lightred: #F3ECEA;
 }
+
+.quick-links-container {
+  /* background-color: var(--color-darkgrey); */
+}
+
+.home-card-section {
+  margin: 1em 0;
+}
+.home-card-section h2 {
+  text-align: center;
+  font-weight: 900;
+  font-size: 2rem;
+}
+
+
+.home-col-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.home-card {
+  min-height: 3em;
+  margin: 1em;
+  display: grid;
+  place-items: center;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-size: 1.5rem;
+  font-weight: 800;
+  background: aliceblue;
+  text-decoration: none;
+  color: var(--color-darkgrey);
+  border: 1px solid rgba(0,0,0,0.2);
+  border-radius: 0.2em;
+  opacity: 0.8;
+  transition: 0.3s ease;
+}
+.home-card:hover {
+  opacity: 1;
+  color: var(--color-black);
+}
+
+.python { background-color: var(--color-lightblue); }
+.swift { background-color: var(--color-red); }
+.html { background-color: var(--color-lightgreen); }
+.javascript { background-color: var(--color-green); }
+.css { background-color: var(--color-lightgreen); }
+.php { background-color: var(--color-lightgreen); }
+.svg { background-color: var(--color-lightgreen); }
+.git { background-color: var(--color-white); }
+.sql { background-color: var(--color-white); }
+.bash { background-color: var(--color-white); }
+.vim { background-color: var(--color-white); }

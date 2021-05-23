@@ -28,11 +28,37 @@ align-items: center;
 flex-direction: column;
 ```
 
-### Flex wrap
+### Flex Wrap
 
 ```css
 flex-wrap: wrap;
 ```
 
+### Flex Grow, Flex Shrink, Flex Basis
+applied to the child within a `display: flex` container
+```css
+flex: flex-grow flex-shrink flex-basis;
+```
+
+<figure class="fig-1-3">
+
+<div style="width: 100%; height: 10rem; display: flex; border: 2px solid navy;">
+  <div style="width: 100%; height: 100%; border: 2px solid gray; flex: 0 1 30%;"></div>
+  <div style="width: 100%; height: 100%; border: 2px solid gray; flex: 1 0 30%;"></div>
+</div>
+
+```css
+.flex-container {
+  display: flex;
+}
+.flex-child-1 {
+  flex: 0 1 30%;
+}
+.flex-child-2 {
+  flex: 1 0 30%;
+}
+```
+
+</figure>
 
 </section>

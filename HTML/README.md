@@ -9,10 +9,11 @@ title: HTML
 ## Table of Contents
 
 Overview
-* [HTML5 elements](elements)
+* [HTML5 elements](elements-basic)
 * [Styling HTML5 elements](elements-styling)
 
 Elements in detail
+* [Meta tags](elements-meta)
 * [Images](html-images)
 * [Input Elements: Textbox, Checkbox, Radio Buttons, Buttons](html-input)
 * [HTML5 Canvas](html-canvas)

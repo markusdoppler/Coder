@@ -14,6 +14,11 @@ title: Images
 
 * `src`
 
+Empty base-64 encoded image (may be used as placeholder)
+```html
+<img src="data:,">
+```
+
 * `alt`
 
 * `height` and `width`
@@ -29,7 +34,7 @@ title: Images
        src="default-url" >
 ```
 
-  * The `srcset` attribute allows you to specify a list of image file URLs, along with size descriptions. You also need to still use the `src` attribute to identify a "default" image source, to be used in browsers that don’t support `srcset`.
+* The `srcset` attribute allows you to specify a list of image file URLs, along with size descriptions. You also need to still use the `src` attribute to identify a "default" image source, to be used in browsers that don’t support `srcset`.
 
 Using image densities
 ```html
@@ -48,6 +53,10 @@ Using image widths
              butterfly-1x.png 1006w"
       src="butterfly-default.png" >
 ```
+
+* `type`
+
+e.g. `type="image/png"`, `type="image/jpg"`, `type="image/webp"`
 
 ### Other attributes
 * `longdesc` - Defines a URL at which can be found more information about the image. It was written out of the HTML5 specification, but its status is not quite so clear as other deprecated features.

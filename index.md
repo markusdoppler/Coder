@@ -25,7 +25,7 @@ scripts:
   </div>
   <div class="home-col-2">
     <a class="home-card git" href="Tools/git">Git</a>
-    <a class="home-card sql" href="Tools/sql">SQL</a>
+    <a class="home-card sql" href="SQL/sql">SQL</a>
     <a class="home-card bash" href="Tools/bash">Bash</a>
     <a class="home-card vim" href="Editors/vim">VIM</a>
   </div>
@@ -56,10 +56,12 @@ scripts:
 * React
 * [Jekyll](Jekyll/jekyll)
 * [MathJAX](Math/mathjax)
+* KaTeX
 
 
 ### Tools
 * [Git](Tools/git)
+* [SQL](SQL/sql)
 * [Linux / Bash](Tools/bash)
 * [LaTeX](Math/latex)
 * Markdown
@@ -73,6 +75,7 @@ scripts:
 ### Code Editors
 * [VIM](Editors/vim)
 * [VSCode](Editors/vscode)
+* XCode
 * Atom
 * Emacs
 

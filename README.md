@@ -10,13 +10,13 @@ layout: home
 
 * [Python](Python/README)
 * [JavaScript](JavaScript/README)
+* [PHP](PHP/README)
 * Swift
 * C
 * C++
 * Java
 * Fortran
 * Objective-C
-* PHP
 * Ruby
 
 </section>
@@ -30,7 +30,7 @@ layout: home
 * [HTML](HTML/README)
 * [CSS](CSS/README)
 * [JavaScript](JavaScript/README)
-* PHP
+* [PHP](PHP/README)
 * [SVG](Web/svg)
 * [Markdown](Markdown/markdown)
 * [Jekyll](Jekyll/jekyll)
@@ -55,23 +55,25 @@ layout: home
 ## Tools
 
 **Command Line**
-* Bash
-* Zsh
 * [Git](Tools/git)
+* [Linux / Bash](Tools/bash)
+* Zsh
 
 **Editors**
 * VIM
-* Atom
 * VSCode
+* XCode
+* Atom
 
 **Math**
 * [LaTeX](Math/latex)
 * [MathJAX](Math/mathjax)
+* KaTeX
 
 **Databases**
+* [SQL](SQL/sql)
 * MySQL
-* SQL
-* sqlite3
+* SQLite3
 * JSON
 * XML
 * CSV

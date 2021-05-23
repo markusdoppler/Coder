@@ -20,6 +20,20 @@ PHP code usually is put inside a tag like so
 
 **File Extension**: `.php`
 
+### Run PHP in terminal
+
+```bash
+php --version
+
+php script.php
+```
+
+### Quick local live server
+
+```bash
+php -S localhost:1234
+```
+
 </section>
 
 ---
@@ -130,7 +144,7 @@ XOR
 
 ## Control Structures
 
-### if ... elseif ... else
+### if ... else if ... else
 
 ```php
 if (condition) {
@@ -150,10 +164,10 @@ if (condition):
 endif;
 ```
 
-**Ternary Operator:**
+**Ternary Operator**
 
 ```php
-(condition) ? /* Instr if TRUE */ : /* Instr if FALSE */;
+(condition) ? /* Instruction if TRUE */ : /* Instruction if FALSE */;
 
 echo ($int == 0) ? "int = 0" : "int != 0";
 ```
@@ -201,7 +215,7 @@ do {
 ### for
 
 ```php
-for (initialization; test, increment) {
+for (initialization; test; increment) {
   // Code 
 }
 ```
@@ -209,14 +223,8 @@ for (initialization; test, increment) {
 ### foreach
 
 ```php
-foreach ($array as $value) {
+foreach ($values_array as $value) {
   // Code 
-}
-```
-
-```php
-foreach ($filenames as $filename) {
-
 }
 ```
 
@@ -250,7 +258,7 @@ while (condition) {
 ### `continue` keyword
 
 ```php
-for (initialization; test, increment) {
+for (initialization; test; increment) {
   if (true) {
     continue; // goes directly to the next iteration
   }
@@ -260,7 +268,7 @@ for (initialization; test, increment) {
 
 ```php
 while (condition) {
-  for (initialization; test, increment) {
+  for (initialization; test; increment) {
     if (true) continue 2; // goes directly to the next iteration of the other loop
   }
   // Code 
@@ -316,7 +324,7 @@ while ($i < 10) {
 #### Passing by Reference
 ```php
 function foo(&$arg) {
-  $arg+=5;
+  $arg += 5;
 }
 $count = 0;
 foo($count);
@@ -362,6 +370,9 @@ $part1 = "Hello ";
 $part2 = "World!"
 $words = $part1 . $part2;
 strval(123);
+
+// convert special characters to HTML entities
+echo htmlspecialchars($r);
 ```
 
 ### Array
@@ -374,9 +385,11 @@ $displayed = array();
 
 Associative Array (dictionary)
 ```php
-$array2 = array('A1' => 'apple',
-'B2' => 'banana',
-'C3' => 'pineapple');
+$array2 = array(
+  'A1' => 'apple',
+  'B2' => 'banana',
+  'C3' => 'pineapple'
+);
 ```
 
 Use
@@ -672,107 +685,6 @@ Both of these functions do the same thing, insert content of one PHP file into a
     echo "Hello World!";
   }
 ?>
-```
-
-</section>
-
----
-
-<section>
-
-## Form Handling
-
-* [HTTP Headers (code.tutsplus.com)](https://code.tutsplus.com/tutorials/http-headers-for-dummies--net-8039)
-
-`$_GET` – an associative array of variables passed to the current script via the URL parameters
-```html
-<a href="/product/show.php?productID=123">Show</a> 
-```
-
-```php
-echo $_GET['productID'];
-```
-
-`index.html`
-```html
-<form action="search.php" method="GET" >
-  <input type="text" name="textField" />
-  <input type="submit" />
-</form> 
-```
-
-`show.php`
-```php
-<?php
-echo $_GET['textField'];
-?>
-```
-
-`$_POST` – an associative array of variables passed to the current script via the URL parameters
-`index.html`
-```html
-<form action="login.php" method="POST" >
-  <input type="text" name="username" />
-  <input type="password" name="password" />
-  <input type="submit" />
-</form> 
-```
-
-`show.php`
-```php
-<?php
-  echo "Hello" . $_POST['username'];
-?>
-```
-
-`$_FILES` – an associative array of items uploaded to the current script via the HTTP POST method
-`index.html`
-```html
-<form enctype="multipart/form-data" action="upload.php" method="POST" >
-  <input type="file" name="picture" />
-  <input type="submit" />
-</form> 
-```
-
-`show.php`
-```php
-<?php
-  $path = "users_img" . $_FILES['picture']['name'];
-  move_uploaded_file($_FILES['picture']['tmp_name'], $path);
-?>
-```
-
-Variables `$_FILES`: 
-```php
-$_FILES['userfile']['name'] // File's original name
-$_FILES['userfile']['type'] // File's type
-$_FILES['userfile']['size'] // File's length
-$_FILES['userfile']['tmp_name'] // File's temporary name
-$_FILES['userfile']['error'] // Error code
-```
-
-### Example 
-```html
-<form>
-	<span>form text </span>
-	<input type="text" name="myformvar" size="30" value="phpfile.php"  />
-	<input type="Submit" value="Go" />
-</form>
-```
-```php
-isset($_GET['myformvar']))
-```
-
-```php
-if (isset($_GET['match']) && !fnmatch('*'.$_GET['match'].'*', $filename)) continue;
-```
-
-```html
-<form>
-  <h3>filter</h3>
-  <input type="text" name="match" size="30" value="<?php if (isset($_GET['match'])) print htmlspecialchars($_GET['match']);  ?>" />
-  <input type="Submit" value="Go" />
-</form>
 ```
 
 </section>

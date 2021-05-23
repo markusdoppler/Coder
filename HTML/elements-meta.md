@@ -25,6 +25,24 @@ title: Meta
 <meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport">
 ```
 
+**HTTP header**
+
+Content Type
+```html
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+```
+
+Content Policy
+```html
+<meta http-equiv="content-security-policy" content="default-src 'self'">
+
+<meta http-equiv="Content-Security-Policy" content="default-src *; img-src * 'self' data: https: http:; script-src 'self' 'unsafe-inline' 'unsafe-eval' *; style-src  'self' 'unsafe-inline' *">
+```
+
+Refresh document every 30 seconds
+```html
+<meta http-equiv="refresh" content="30">
+```
 
 </section>
 

@@ -292,6 +292,47 @@ N	# zurücksuchen
 
 <section>
 
+## File Permissions
+
+`ls -la`
+```
+drwxr-xr-x    # directory
+-rw-r-xr-x    # file
+```
+
+```
+ d   rwx   rwx   rwx
+ d    u     g     o
+```
+
+* `d` – directory
+* `r` – read
+* `w` – write
+* `x` – execute
+* `u` – user
+* `g` – group
+* `o` – others
+* `a` – all (user, group and others)
+
+
+Change permissions
+```bash
+chmod 755 myfile.dat
+chmod u+x myfile.dat
+
+chmod a+r myfile.dat
+```
+
+Change owner
+```bash
+chown
+```
+</section>
+
+---
+
+<section>
+
 ## Useful commands
 
 Free Memory / free space
@@ -302,12 +343,6 @@ du -hs		# human-readable form, sorted
 du -hs ..
 
 fs listquota -human
-```
-
-File Permissions
-```bash
-chmod 755 myfile.dat
-chown		# change owner
 ```
 
 ```bash

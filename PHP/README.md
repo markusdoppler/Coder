@@ -9,6 +9,7 @@ title: PHP
 ## Overview
 
 * [Basics](basics)
-* Working with a MySQL database
+* [Forms, Headers and Requests](forms)
+* [Databases](database)
 
 </section>

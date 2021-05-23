@@ -32,6 +32,58 @@ A local repository consists of three "trees" maintained by Git.
 
 <section>
 
+## Github Workflow
+
+**Rename a local git branch**
+```
+git branch -m new-name
+git branch -m old-name new-name
+```
+
+**Create new branch on Github and locally**
+```
+git branch --set-upstream-to=origin/new-feature new-feature
+```
+
+**Push new branch**
+```
+git checkout -b new-feature
+git commit ...
+git push origin new-feature 
+git push --set-upstream origin new-feature
+```
+
+**Pull new branch from Github**
+
+``` shell
+# see all branches
+git branch -a
+
+# see only remote branches
+git branch -r
+
+# pull and checkout new branch
+git pull
+git checkout new-branch
+```
+
+**Delete branch from Github**
+```
+git push origin --delete branch-name
+```
+
+**Delete branch locally**
+```
+git branch -d branch-name
+```
+
+
+</section>
+
+---
+
+<section>
+
 ## Configure Git
 
 <figure class="fig-1-2">
@@ -261,8 +313,13 @@ git commit -am "checked in everything"
 
 ```shell
 git branch
+git branch -a
+git branch -r
 git branch [branch-name]
 git branch -d [branch-name]
+git branch -m new-name
+git branch -m old-name new-name
+git branch --set-upstream-to=origin/new-feature new-feature
 ```
 
 change branch via
@@ -346,8 +403,9 @@ git branch -d feature-branch
 
 Handle **merge conflict**
 ```shell
-git merge # auto-merge fails
-# resolve conflicts
+git merge
+# 1. auto-merge fails
+# 2. resolve conflicts
 git add .
 git commit -m "resolved merge conflicts"
 ```
@@ -433,6 +491,9 @@ git pull
 git push
 git push origin main
 git push origin [branch]
+git push origin [new-branch]
+git push --set-upstream origin [new-branch]
+git push origin --delete branch-name
 ```
 
 </figure>

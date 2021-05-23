@@ -19,49 +19,48 @@ Terms
 * Grid track     (i.e. row or column)
 * Grid gap       (between grid tracks, also called gutters)
 
-Container element
+### Container element
 
 ```css
 .container {
-    display: grid;
+  display: grid;
+
+  grid-template-columns: 1fr 4fr 1fr;
+  grid-template-rows: auto 1fr 2fr;
+
+  grid-template-columns: 40px 50px auto 50px 40px;
+  grid-template-rows: 25% 100px auto;
+
+  grid-template-columns: [first] 40px [line2] 50px [line3] auto [col4-start] 50px [five] 40px [end];
+  grid-template-rows: [row1-start] 25% [row1-end] 100px [third-line] auto [last-line];
+
+  grid-template-columns: repeat(3, 20px [col-start]);
 
 
-      grid-template-columns: 1fr 4fr 1fr;
-      grid-template-rows: auto 1fr 2fr;
+  grid-template-areas:
+    "header header header header"
+    "main main . sidebar"
+    "footer footer footer footer";
 
-    grid-template-columns: 40px 50px auto 50px 40px;
-      grid-template-rows: 25% 100px auto;
+  /* shorthand */
+  grid-template:
+    [row1-start] "header header header" 25px [row1-end]
+    [row2-start] "footer footer footer" 25px [row2-end]
+    / auto 50px auto;
 
-    grid-template-columns: [first] 40px [line2] 50px [line3] auto [col4-start] 50px [five] 40px [end];
-    grid-template-rows: [row1-start] 25% [row1-end] 100px [third-line] auto [last-line];
-
-      grid-template-columns: repeat(3, 20px [col-start]);
-
-
-    grid-template-areas:
-      "header header header header"
-      "main main . sidebar"
-      "footer footer footer footer";
-
-    /* shorthand */
-    grid-template:
-      [row1-start] "header header header" 25px [row1-end]
-      [row2-start] "footer footer footer" 25px [row2-end]
-      / auto 50px auto;
-
-    grid-column-gap: 10px;
-    grid-row-gap: 15px;
-        column-gap:
-        row-gap:
+  grid-column-gap: 10px;
+  grid-row-gap: 15px;
+  column-gap:
+  row-gap:
 
 
-    /*child item alignment*/
-    justify-items: center;
-    align-items: center;
+  /*child item alignment*/
+  justify-items: center;
+  align-items: center;
 }
 ```
 
-Grid item
+### Grid item
 
 ```css
 .item {
@@ -72,7 +71,7 @@ Grid item
 
     /* shorthand */
     grid-column: 2/4;     /* from column line 2 to 4 */
-        grid-row: 2/3;            /* from row line 2 to 3 */
+    grid-row: 2/3;            /* from row line 2 to 3 */
 
     grid-column: 3 / span 2;
     grid-row: third-line / 4;
@@ -91,6 +90,73 @@ Grid item
 ```
 
 `grid-column` and `grid-row`
+
+</section>
+
+---
+
+<section>
+
+## Grid Auto Flow
+
+```css
+display: grid;
+grid-auto-flow: column;
+grid-auto-columns: 100%;
+```
+
+</section>
+
+---
+
+<section>
+
+## Grid Templates
+
+
+### Repeat
+```css
+display: grid;
+grid-template-columns: repeat(2, min-content);
+```
+
+### Min-Max
+```css
+display: grid;
+grid-template-columns: minmax(200px, 400px);
+```
+
+
+### Grid Template Areas
+
+**Grid Template Areas Example**
+
+![Grid example](../assets/CSS/grid-example.svg)
+
+```css
+.container {
+  display: grid;
+  grid-template-columns: 50px 50px 50px 50px;
+  grid-template-rows: auto;
+  grid-template-areas:
+    "header header header header"
+    "main main . sidebar"
+    "footer footer footer footer";
+}
+
+.item-a {
+  grid-area: header;
+}
+.item-b {
+  grid-area: main;
+}
+.item-c {
+  grid-area: sidebar;
+}
+.item-d {
+  grid-area: footer;
+}
+```
 
 </section>
 
@@ -136,41 +202,6 @@ Grid item
     "main main main sidebar"
     "footer footer footer footer";
     }
-}
-```
-
-</section>
-
----
-
-<section>
-
-## Example
-
-![Grid example](../assets/CSS/grid-example.svg)
-
-```css
-.item-a {
-  grid-area: header;
-}
-.item-b {
-  grid-area: main;
-}
-.item-c {
-  grid-area: sidebar;
-}
-.item-d {
-  grid-area: footer;
-}
-
-.container {
-  display: grid;
-  grid-template-columns: 50px 50px 50px 50px;
-  grid-template-rows: auto;
-  grid-template-areas:
-    "header header header header"
-    "main main . sidebar"
-    "footer footer footer footer";
 }
 ```
 

@@ -66,9 +66,18 @@ alert('Congratulations, you ' + outcome);
 ## Debugging
 
 Pause the flow of JavaScript
-* `alert`
-* `prompt`
-* `confirm`
+* `alert()`
+* `prompt()`
+* `confirm()`
+
+### Browser console
+
+```js
+console.log("Hello console!");
+console.table(array);
+console.error("Error!");
+```
+
 
 </section>
 
@@ -366,7 +375,7 @@ objectsArray = Array.from(objects)
 ## Functions
 ```js
 function sayHello(name) {
-    return('Hello ' + name);
+  return('Hello ' + name);
 };
 sayHello('Markus');
 ```
@@ -374,8 +383,8 @@ sayHello('Markus');
 ### Functional programming
 ```js
 function Planet(mass, radius) {
-    this.mass = mass
-    this.radius = radius
+  this.mass = mass
+  this.radius = radius
 }
 const planet = Planet(10, 3)
 ```
@@ -410,6 +419,19 @@ setTimeout(callback, 1000);
 
 function callback() {
 
+}
+```
+
+
+### Workaround: Named parameters
+
+Pass objects to function calls (using object destructuring)
+
+```js
+perform({ oneRequired: "Yes!", threeOptional: true })
+
+function perform({ oneRequired, twoOptional = null, threeOptional = false } = {}) {
+   // ...
 }
 ```
 
@@ -668,7 +690,7 @@ class BirdsNest {
 
 <section>
 
-# Destructuring
+## Destructuring
 
 ```js
 const [a, b, ...c] = [5,10,15,20];

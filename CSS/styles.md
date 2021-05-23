@@ -120,6 +120,11 @@ h1 {
 
 By default `1rem` corresponds to `16px`.
 
+* Ch (relative to the width of the `0` character)
+
+```css
+7ch
+```
 
 </section>
 
@@ -748,6 +753,27 @@ filter: hue-rotate(180deg);
 
 <section>
 
+## Blend Mode
+
+```css
+mix-blend-mode: multiply;
+```
+
+Blend mode categories
+
+1. Normal
+2. Darken (`darken`, `multiply`, `color-burn`)
+3. Lighten (`lighten`, `screen`, `color-dodge`)
+4. Contrast (`overlay`, `soft-light`, `hard-light`)
+5. Inversion (`difference`, `exclusion`)
+6. Component (`hue`, `saturation`, `color`, `luminosity`)
+
+</section>
+
+---
+
+<section>
+
 ## Background Blend Mode
 
 * `lighten`
@@ -848,18 +874,91 @@ cursor: text;
 
 ## User Experience (Zoom, scroll etc.)
 
-avoid double tap to zoom
+### Avoid double tap to zoom
 ```css
 section {
   touch-action: manipulate;
 }
 ```
 
-smooth scroll (e.g. when ID changes in URL)
+### Smooth scroll (e.g. when ID changes in URL)
+
 ```css
 html {
   scroll-behavior: smooth;
 }
+```
+
+a11y-tip: Turn on smooth scroll only if user has no preference!
+```css
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+```
+
+### Customize Scrollbar
+
+Safari Scrollbar
+```css
+body::-webkit-scrollbar {
+  width: 16px;
+}
+
+body::-webkit-scrollbar-track {
+  background: #111;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #00082a;
+  border: solid #111;
+  border-width: 0 2px;
+}
+```
+
+### Hide scroll bar
+```css
+body::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  display: none;
+}
+
+.firefox-only {
+  scrollbar-width: none;
+}
+```
+
+### Scroll snap
+
+```css
+.scroll-snap-x {
+  block-size: 100%; /* i.e. width: 100%; */
+
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 100%;
+
+  overscroll-behavior-x: contain;
+  -ms-scroll-snap-type: x mandatory;
+  scroll-snap-type: x mandatory;
+
+  overflow: auto hidden;
+}
+
+.scroll-item {
+  scroll-snap-align: start;
+}
+```
+
+### Caret color
+
+<input style="caret-color: red;">
+
+```css
+caret-color: red;
+caret-color: transparent;
 ```
 
 </section>

@@ -121,6 +121,7 @@ h1 {
   @include relative-font-size(2);
   padding: $spacing-unit / 2;
   margin: 2 * $spacing-unit 0 $spacing-unit 0;
+  font-weight: 900;
 }
 
 /**
@@ -141,6 +142,13 @@ section {
 
   @media only screen and (min-width: 767px) {
     padding: $spacing-unit / 2 $spacing-unit;
+  }
+
+  h2 {
+    font-weight: 800;
+  }
+  h3 {
+    font-weight: 600;
   }
 }
 

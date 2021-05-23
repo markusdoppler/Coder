@@ -99,71 +99,12 @@ Best place
 
 ### Meta
 
-#### Viewport
-
-Viewport Height & Width
-
-```html
-<meta name="viewport" content="width=device-width">
-<meta name="viewport" content="height=device-height">
-```
-
-Viewport Scale
-* `initial-scale=1`: ([`0`, `10`], default `1`) ratio between the device height, while in a portrait orientation, and the viewport size; in landscape mode this would be the ratio between the device width and the viewport size
-* `minimum-scale`: [`0`, `10`] should be a positive integer lower than or equal to the `initial-scale`
-* `maximum-scale`: [`0`, `10`] should be a positive integer greater than or equal to the `initial-scale`
-* `user-scalable`: [`yes`, `no`] turn on/disable any zooming
-
-```html
-<meta name="viewport" content="initial-scale=1">
-<meta name="viewport" content="minimum-scale=0">
-<meta name="viewport" content="maximum-scale=10">
-<meta name="viewport" content="user-scalable=yes">
-```
-
-Viewport Resolution
-* `target-density-dpi`: [`device-dpi`, `high-dpi`, `medium-dpi`, `low-dpi`, number]
-
-```html
-<meta name="viewport" content="target-densitydpi=device-dpi">
-```
-
-
-Combining Viewport Values
-
 ```html
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Description ...">
 ```
 
-#### Description
-
-```html
-<meta name="description" content="">
-```
-
-#### SEO Open Graph
-* [Facebook Sharing Debugger](https://developers.facebook.com/tools/debug/sharing/)
-
-```html
-<meta property="og:title" content="Facebook Open Graph META Tags"/>
-<meta property="og:image" content="http://www.markusdoppler.at/seo.png"/>
-<meta property="og:image:alt" content="Markus Doppler's logo is a butterfly.">
-<meta property="og:url" content="http://www.markusdoppler.at"/>
-<meta property="og:site_name" content="Markus Doppler"/>
-<meta property="og:type" content="website"/>
-<meta property="og:description" content=""/>
-<meta property="og:site_name" content="Markus Doppler">
-<meta property="og:locale" content="de_DE">
-```
-
-#### SEO Twitter Card
-
-```html
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Markus Doppler">
-<meta name="twitter:description" content="Markus Doppler">
-<meta name="twitter:image" content="http://www.markusdoppler.at/seo.png">
-```
+For details see [Meta Tags](elements-meta).
 
 </section>
 

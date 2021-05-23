@@ -12,11 +12,13 @@ title: Basics
 * the specificity of the selectors breaks the cascade
 * Every selector in CSS has a **specificity weight**
 
-| selector      | specificity weight    |
-|:-------------:|:---------------------:|
-| type          |  `0-0-1`              |
-| class         |  `0-1-0`              |
-| ID            |  `1-0-0`              |
+| selector          | specificity weight    |
+|:-----------------:|:---------------------:|
+| type              |  `0-0-1`              |
+| class             |  `0-1-0`              |
+| ID                |  `1-0-0`              |
+| `style`-attribute |  overrides the above  |
+| `!importatnt`     |  hightest specificity |
 
 Therefore, the ID selector will take precedence regardless of where it appears in the cascade, e.g. `<div id="circle"></div>` will be red:
 ```css
@@ -33,7 +35,7 @@ div {
 
 ```css
 ul {
-    list-style: circle !important;
+  list-style: circle !important;
 }
 ```
 
@@ -376,6 +378,38 @@ a[lang|="en"] { /* ... */ }
 
 ### Pseudo-Classes
 
+* `:active`
+* `:checked`
+* `:disabled`
+* `:empty`
+* `:enabled`
+* `:first-child`
+* `:first-of-type`
+* `:focus`
+* `:hover`
+* `:in-range`
+* `:invalid`
+* `:lang(language)`
+* `:last-child`
+* `:last-of-type`
+* `:link`
+* `:not(selector)`
+* `:nth-child(n)`
+* `:nth-last-child(n)`
+* `:nth-last-of-type(n)`
+* `:nth-of-type(n)`
+* `:only-of-type`
+* `:only-child`
+* `:optional`
+* `:out-of-range`
+* `:read-only`
+* `:read-write`
+* `:required`
+* `:root`
+* `:target`
+* `:valid`
+* `:visited`
+
 #### Link Pseudo-classes
 link specific (define if a link has or hasn’t been visited)
 
@@ -551,21 +585,28 @@ div:not(.lovely) { /* ... */ }
 
 
 ### Pseudo-elements (also `::pseudo-element`)
+
+* `::after`
+* `::before`
+* `::first-letter`
+* `::first-line`
+* `::selection`
+
 * only one pseudo-element may be used within a selector at a given time
 * first letter/line of text within an element
 ```css
-:first-letter
-:first-line
+::first-letter
+::first-line
 ```
 
 #### Generated Content Pseudo-elements
 * create new `inline` level pseudo-elements just inside the selected element
 
 ```css
-:before {
+::before {
     content: "";
 }
-:after {
+::after {
     content: "(" attr(href) ")";
 }
 ```
@@ -593,7 +634,7 @@ identifies part of the document that has been selected, or highlighted, by a use
 
 * selects _every imaginable_ element
 ```css
-*, *:before, *:after {
+*, *::before, *::after {
     /* ... */
 }
 ```
@@ -662,7 +703,7 @@ height: 50px;
 ```
 
 
-#### min-max width
+#### min/max width
 
 ```css
 max-width: 200px;
@@ -684,17 +725,20 @@ _INFO_: `margin` and `padding` properties are completely transparent and do not 
 * all four sides
 ```css
 margin: 20px;
+padding: 5px;
 ```
 
 * `top`+`bottom` & `left`+`right`
 ```css
 margin: 10px 20px;
+padding: 10px 20px;
 ```
 
 
 * unique values for all four sides (`top` - `right` - `bottom` - `left`)
 ```css
 margin: 10px 20px 30px 0px;
+padding: 10px 20px 30px 0px;
 ```
 
 
@@ -706,6 +750,11 @@ margin-top: 20px;
 margin-right: 20px;
 margin-bottom: 20px;
 margin-left: 20px;
+
+padding-top: 20px;
+padding-right: 20px;
+padding-bottom: 20px;
+padding-left: 20px;
 ```
 
 _BEST USAGE_: When we wish to identify only one margin or padding value
@@ -727,6 +776,16 @@ Set a negative margin to make it overlap its parent box (and possibly other cont
 margin: -66px 0 22px 0;
 ```
 
+
+#### Padding Aspect Ratio Trick
+
+`%`-value for `padding` specifies a padding in % of the width of the parent element (even the vertical padding!)
+```css
+.aspect-ratio-box {
+  width: 100%;
+  padding-bottom: 66.67%;
+}
+```
 
 
 ### Border

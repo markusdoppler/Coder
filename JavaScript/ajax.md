@@ -64,6 +64,12 @@ var request = new XMLHttpRequest();
 ## Fetch API
 
 ```js
+fetch("animals.json")
+  .then((response) => response.json())
+  .then((data) => (animals = data));
+```
+
+```js
 await (await fetch('https://api.github.com/users/markusdoppler')).json()
 await fetch('https://api.github.com/users/markusdoppler').then(data => data.json())
 fetch('https://api.github.com/users/markusdoppler').then(data => data.json()).then(json => console.log(json))
@@ -88,6 +94,32 @@ fetch(request).then(function(response) {
 });
 ```
 
+
+### Optional Parameter
+
+```js
+fetch(url, {
+   method: 'GET',
+})
+
+fetch(url, {
+  method: "POST", 
+  body: new URLSearchParams({ view: "home", id: currentItem.id, item: currentItem.title })
+})
+
+fetch(url, { mode: "no-cors" })
+
+fetch(url, {
+  headers: { 'mode': 'cors' }
+})
+
+fetch(url, {
+  mode: 'no-cors',
+  header: {
+    'Access-Control-Allow-Origin': '*'
+  }
+})
+```
 
 </section>
 
@@ -337,16 +369,38 @@ Content-Type: text/plain
 Content-Type: application/json
 ```
 
+
+### Same-Origin Policy (SORS – Same-Origin Resource Sharing)
+Allowed if the following are equal:
+* protocol (HTTP or HTTPS)
+* domain
+* port
+
+
 ### CORS (Cross-Origin Resource Sharing)
+
+Origin is not just the hostname, but a combination of port, hostname and scheme, such as `http://mysite.example.com:8080/`
+
+
+Server-side HTTP header
+Just remember: the origin responsible for serving resources will need to set this header.
 ```
 Access-Control-Allow-Origin: http://localhost:3000
 Access-Control-Allow-Origin: *
 ```
 
-### Same-Origin Policy
-Allowed if the following are equal:
-* protocol (HTTP or HTTPS)
-* domain
-* port
+```js
+res.setHeader('Access-Control-Allow-Origin', 'http://localhost:8888');
+
+// Request methods you wish to allow
+res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+
+// Request headers you wish to allow
+res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+
+// Set to true if you need the website to include cookies in the requests sent
+// to the API (e.g. in case you use sessions)
+res.setHeader('Access-Control-Allow-Credentials', true);
+```
 
 </section>

@@ -99,7 +99,12 @@ fetch(request).then(function(response) {
 
 ```js
 fetch(url, {
-   method: 'get',
+   method: 'GET',
+})
+
+fetch(url, {
+  method: "POST", 
+  body: new URLSearchParams({ view: "home", id: currentItem.id, item: currentItem.title })
 })
 
 fetch(url, { mode: "no-cors" })
@@ -115,7 +120,6 @@ fetch(url, {
   }
 })
 ```
-
 
 </section>
 

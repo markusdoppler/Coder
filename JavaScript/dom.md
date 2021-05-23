@@ -90,6 +90,7 @@ Attributes
 ```js
 element.setAttribute("tabindex", -1)
 element.getAttribute("src")
+element.removeAttribute("class")
 // image attributes
 element.src
 element.alt
@@ -98,10 +99,14 @@ element.alt
 Classes
 ```js
 element.className
-element.classList.add
-element.classList.remove
-element.classList.value
+element.classList.add("new-class")
+element.classList.add("mystyle", "anotherClass", "thirdClass")
+element.classList.remove("highlight")
 element.classList.contains('zoom')
+element.classList.toggle("switched-on")
+element.classList.value
+element.classList.length
+element.classList.item(0)
 ```
 
 Style
@@ -149,9 +154,10 @@ parent.appendChild(clonedNode);
 
 <section>
 
-## Measurements
+## Measurements and Scroll
 
-```html
+### Screen Measurements
+```js
 window.innerWidth
 window.innerHeight
 
@@ -163,19 +169,28 @@ window.screen.availHeight
 window.devicePixelRatio
 ```
 
+### Page and Element Measurements
 ```js
-element.getBoundingClientRect()
+window.pageXOffset
+window.pageYOffset
+
+element.offsetTop
+element.getBoundingClientRect().top
 ```
 
-<script>
-  document.write("window.innerWidth: " + window.innerWidth);
-  document.write("window.innerHeight: " + window.innerHeight);
-  document.write("window.screen.width: " + window.screen.width);
-  document.write("window.screen.height: " + window.screen.height);
-  document.write("window.devicePixelRatio: " + window.devicePixelRatio);
-  document.write("window.screen.availWidth: " + window.screen.availWidth);
-  document.write("window.screen.availHeight: " + window.screen.availHeight);
-</script>
+### Scroll
+```js
+window.scroll({ top: 100, behavior: "smooth" })
+
+window.scrollTo({ top: 100, behavior: "smooth" })
+
+window.scrollBy(dx, dy)
+window.scrollBy({ top: 100, behavior: "smooth" })
+
+element.scrollIntoView(true) // align to top
+element.scrollIntoView(false) // align to bottom
+element.scrollIntoView({ block: "start", behavior: "smooth" })
+```
 
 </section>
 

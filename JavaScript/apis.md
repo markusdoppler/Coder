@@ -130,7 +130,7 @@ function callback(entries, observer) {
   entries.forEach((entry, i) => {
     if (entry.isIntersecting) {
       // perform intersection action
-      observer.unobserve();
+      observer.unobserve(entry.target);
     }
   });
 }
@@ -484,7 +484,7 @@ class RadioButton extends HTMLElement {
   attributeChangedCallback(attributeName, oldValue, newValue) {  }
 
   // observing the following attributes, i.e. attributeChangedCallback() called when attribute modified
-  static get observeredAttributes() {
+  static get observedAttributes() {
     return ['name', 'data'];
   }
 }

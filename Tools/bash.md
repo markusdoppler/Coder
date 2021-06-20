@@ -441,6 +441,76 @@ tar xzf		# access
 
 <section>
 
+## FTP - File Transfer Protocol
+
+**Sources**
+* [Automating FTP ](https://krypted.com/mac-os-x/automating-ftp/)
+
+```bash
+ftp
+```
+
+```bash
+# remote file system of the ftp server
+ls
+pwd
+cd
+mkdir
+prompt      # toggle interactive mode (ask every time)
+?           # shows all ftp commands
+mget image.png
+mget *.html
+mput
+
+# local file system
+!ls
+lpwd
+lcd
+
+```
+
+```bash
+#!/bin/bash
+ftp -d myftpserver.com << ftpEnd
+	prompt
+	cd /Library/WebServer/Documents
+	put "*.html"
+	put "*.php"
+	cd /Library/WebServer/Documents
+	put "*.png"
+	quit
+ftpEnd
+```
+
+```bash
+#!/bin/bash
+ftp -d https://krypted.com/ << ftpEnd
+	prompt
+	cd /My/Documents
+	get "*.doc"
+	quit
+ftpEnd
+```
+
+### Automatically connect to FTP server
+```bash
+touch .netrc
+chmod 700 .netrc
+```
+
+```bash
+machine myftpserver.com
+   login myuser
+   password mypassword
+```
+
+
+</section>
+
+---
+
+<section>
+
 ## SSH — Secure Shell
 
 Secure shell

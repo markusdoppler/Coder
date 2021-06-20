@@ -67,7 +67,6 @@ scripts:
 * Markdown
 * Zsh
 * RegEx
-* SQL
 * Gnuplot
 * ROOT
 

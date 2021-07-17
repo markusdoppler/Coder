@@ -994,6 +994,14 @@ font-family: ui-monospace;
 font-family: ui-rounded;
 ```
 
+### Safe areas
+```css
+env(safe-area-inset-top)
+env(safe-area-inset-bottom)
+env(safe-area-inset-left)
+env(safe-area-inset-right)
+```
+
 ### Text adjustments
 
 ```css
@@ -1006,7 +1014,6 @@ font-family: ui-rounded;
 ```css
 -webkit-tap-highlight-color: rgba(200,0,0,0.4);
 ```
-
 
 ### iOS highlighting
 * applies to link or a JavaScript _clickable_ element

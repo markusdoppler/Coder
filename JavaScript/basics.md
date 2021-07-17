@@ -74,8 +74,45 @@ Pause the flow of JavaScript
 
 ```js
 console.log("Hello console!");
+// provide labels for variables
+console.log({ var1, var2 })
+// style console log
+console.log("%c Hello beautiful console", "color: pink; font-weight: bold; background-color: black;")
+```
+
+```js
 console.table(array);
+console.table([ var1, var2 ])
+```
+
+```js
+console.assert(condition, "condition is false")
+```
+
+```js
 console.error("Error!");
+```
+
+```js
+console.group("group label")
+console.groupCollapsed("group label")
+```
+
+```js
+console.dir(object)
+```
+
+```js
+console.count(label)
+```
+
+```js
+console.time()
+console.timeLog()
+```
+
+```js
+console.trace()
 ```
 
 
@@ -706,6 +743,78 @@ let {a, b, ...c} = {a: 10, b: 20, c: 30, d: 40};
 
 ```js
 ({a, b} = {a: 10, b: 20});
+```
+
+</section>
+
+---
+
+<section>
+
+## ES6 JavaScript Modules
+
+```html
+<script type="module" src="main.js"></script>
+```
+
+```js
+Named Export
+* `var`
+* `let`
+* `const`
+* `function`
+* `class`
+
+```js
+export const name = 'apple';
+export function drawApple() { … }
+
+export at the end of a file
+export { name, drawApple };
+
+export {
+  function1 as firstFunction,
+  function2 as secondFunction
+};
+```
+
+Named Import
+```js
+import { name, drawApple } from './modules/apple.js';
+
+import {drawApple as createApple} from './modules/apple.js';
+```
+
+Default Export
+```js
+export default peachName;
+
+export default function(context) { … }
+```
+
+Import Default
+```js
+import drawPeach from './modules/peach.js';
+```
+
+Namespacing
+```js
+import * as Module from './modules/module.js';
+
+Module.function1()
+Module.function2()
+```
+
+
+### Dynamic Module Loading
+
+```js
+import('./modules/myModule.js')
+  .then((Module) => {
+    // Do something with the module.
+    const square = new Module.Square(canvas.context)
+    square.draw();
+  });
 ```
 
 </section>

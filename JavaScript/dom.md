@@ -14,6 +14,7 @@ title: DOM
 
 Get element nodes for HTML tag, class, or id
 ```js
+document.body
 document.getElementsByTagName("p");
 document.getElementsByClassName("class");
 document.getElementById("id");
@@ -42,13 +43,15 @@ document.querySelectorAll(".selected")
 Nodes
 ```js
 element.parentNode
-element.appendChild(childElement)
-document.body.append(element);
-element.remove();
+parent.append("Hello from JS")
+parent.append(element)
+parent.appendChild(element)
+element.remove()
+parent.removeChild(element)
 
 element.innerHTML
-element.innerText
-element.textContent
+element.textContent // text including whitespace from HTML structure
+element.innerText   // simple text
 element.content
 
 element.value
@@ -91,9 +94,15 @@ Attributes
 element.setAttribute("tabindex", -1)
 element.getAttribute("src")
 element.removeAttribute("class")
+
 // image attributes
 element.src
 element.alt
+
+// data attributes – <span data-index="1" data-vegetable-variety="spinach">Spinach</span>
+element.dataset
+element.dataset.index
+element.dataset.vegetableVariety
 ```
 
 Classes
@@ -104,6 +113,7 @@ element.classList.add("mystyle", "anotherClass", "thirdClass")
 element.classList.remove("highlight")
 element.classList.contains('zoom')
 element.classList.toggle("switched-on")
+element.classList.toggle("switched-on", false)
 element.classList.value
 element.classList.length
 element.classList.item(0)
@@ -258,7 +268,7 @@ For details see [Event Listeners](events.md).
 
 **Properties**
 * `window.document`
-* `window.console.log()`
+* `window.console`
 
 **Methods**
 * `window.alert()`
@@ -307,6 +317,26 @@ navigator.appVersion
 navigator.cookieEnabled
 navigator.platform
 navigator.systemLanguage
+```
+
+### Browser
+
+Get all browser windows (not tabs)
+```js
+await browser.windows.getAll()
+```
+</section>
+
+---
+
+<section>
+
+## Feature detection
+
+```js
+if (browser.contextMenus) {
+  browser.contextMenus.create({ title: "Options...", ... })
+}
 ```
 
 </section>

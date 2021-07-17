@@ -13,9 +13,11 @@ image.addEventListener('load', function(e) { newPhotoIsDoneLoading(e); }, false)
 
 document.ontouchstart = function(e){  }
 
-element.onclick
+element.onclick.addListener((event) => {})
 
-window.onload
+element.onclick = function () {}
+
+window.onload = function () {}
 ```
 
 ### Adding an Event Listener from HTML
@@ -93,6 +95,51 @@ window.addEventListener("load", function(){
 
 <section>
 
+## List of user input events
+
+Mouse
+* `mousemove`
+* `mouseover`
+* `mouseout`
+* `mouseenter`
+* `mouseleave`
+* `mousedown`
+* `mouseup`
+* `click`
+* `mousewheel`
+
+Touch
+* `touchstart`
+* `touchmove`
+* `touchend`
+* `touchcancel`
+* `touchforcechange`
+
+Pointer
+* `pointermove`
+* `pointerdown`
+* `pointerup`
+* `pointerover`
+* `pointerout`
+* `pointerenter`
+* `pointerleave`
+
+Gesture
+* `gesturestart`
+* `gesturechange`
+* `gestureend`
+
+Keyboard
+* `keydown`
+* `keypup`
+* `keypress`
+
+</section>
+
+---
+
+<section>
+
 ## Mouse 
 
 * [Mouse Events](https://javascript.info/mouse-events-basics#coordinates-clientx-y-pagex-y)
@@ -120,6 +167,20 @@ function handleTouchEvent(e) {
 section.addEventListener("touchstart", function(e) { handleTouchStart(e); }, false);
 section.addEventListener("touchmove", function(e) { handleTouchMove(e); }, false);
 section.addEventListener("touchend", function(e) { handleTouchEnd(e); }, false);
+```
+
+</section>
+
+---
+
+<section>
+
+## Pointer
+
+```js
+element.onmousedown = function(event) {}
+
+element.onpointerdown = function(event) {}
 ```
 
 </section>
@@ -309,17 +370,17 @@ repeat
 ```
 
 Keyboard Codes
-| code | key |
-|:----:|:---:|
-|  65  |  a  |
-|  68  |  d  |
-|  75  |  k  |
-|  73  |  i  |
-|  78  |  n  |
-|  80  |  p  |
-|  82  |  r  |
-|  83  |  s  |
-|  86  |  v  |
+|  code  |  key  |
+|:------:|:-----:|
+|  `65`  |  `a`  |
+|  `68`  |  `d`  |
+|  `75`  |  `k`  |
+|  `73`  |  `i`  |
+|  `78`  |  `n`  |
+|  `80`  |  `p`  |
+|  `82`  |  `r`  |
+|  `83`  |  `s`  |
+|  `86`  |  `v`  |
 
 ClipboardData
 ```js
@@ -332,6 +393,28 @@ deltaX
 deltaX
 deltaX
 deltaMode  // pixels, lines or pages
+```
+
+</section>
+
+---
+
+<section>
+
+## Custom Event
+
+```js
+const element = document.querySelector(".element");
+```
+
+Sender
+```js
+element.dispatchEvent(new CustomEvent("value", { detail: this.value }));
+```
+
+Receiver
+```js
+element.addEventListener("value", ({ detail }) => console.log(detail));
 ```
 
 </section>

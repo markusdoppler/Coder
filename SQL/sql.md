@@ -120,9 +120,14 @@ DROP TABLE myTable
 
 ## Alter table columns
 
+add column
 ```sql
 ALTER TABLE student ADD gpa DECIMAL(3,2)
-    
+ALTER TABLE user ADD email TEXT;
+```
+
+delete column
+```sql
 ALTER TABLE student DROP COLUMN gpa
 ```
 

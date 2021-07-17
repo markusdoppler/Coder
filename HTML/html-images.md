@@ -18,6 +18,8 @@ Empty base-64 encoded image (may be used as placeholder)
 ```html
 <img src="data:,">
 ```
+Note that base-64 encoded images are about 1/3 bigger!
+
 
 * `alt`
 
@@ -240,6 +242,36 @@ let img = new Image();
 img.onload = function() { console.log('✅'); }; 
 img.onerror = function() { console.log('❌'); };
 img.src = image_src;
+```
+
+</section>
+
+---
+
+<section>
+
+## Loading Image Optimisation
+
+### Lazy Loading
+
+```html
+<img src="..." loading="lazy">
+```
+
+### Avoid loading invisible images
+
+Image is still loaded
+```html
+<div style="display: none">
+  <img src="...">
+</div>
+```
+
+Image is NOT loaded
+```html
+<div style="display: none">
+  <img src="..." loading="lazy">
+</div>
 ```
 
 </section>

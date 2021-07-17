@@ -105,6 +105,13 @@ grid-auto-flow: column;
 grid-auto-columns: 100%;
 ```
 
+```css
+display: grid;
+grid-auto-flow: columns;
+grid-auto-columns: 1fr;
+gap: 1em;
+```
+
 </section>
 
 ---

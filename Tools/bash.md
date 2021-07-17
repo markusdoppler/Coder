@@ -18,6 +18,29 @@ Resources
 
 <section>
 
+## Paths
+
+Absolute path
+```bash
+/js/modules/main.js
+```
+
+Absolute path (but referencing current directory with `.`
+```bash
+./modules/main.js
+```
+
+Relative path
+```bash
+modules/main.js
+```
+
+</section>
+
+---
+
+<section>
+
 ## Searching files
 
 ### Grep

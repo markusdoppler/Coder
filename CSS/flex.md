@@ -59,6 +59,16 @@ flex: flex-grow flex-shrink flex-basis;
 }
 ```
 
+Shorthand
+```css
+flex: 1;
+
+/* shorthand for */
+flex-grow: 1;
+flex-shrink: 1;
+flex-basis: 0;
+```
+
 </figure>
 
 </section>

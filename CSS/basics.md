@@ -105,7 +105,7 @@ section {
 }
 ```
 
-Fallback value (e.g. if `clamp` is not supported)
+Fallback value (e.g. if `clamp()` is not supported)
 ```css
 :root {
   --padding: clamp(1rem, 2vw, 2rem);
@@ -867,5 +867,61 @@ border-top-right-radius: 5px;
 *possible values*
 * `content-box`: default, which means box model is an *additive* design
 * `border-box`: any `border` or `padding` property values are included within the `width` and `height` of an element.
+
+</section>
+
+---
+
+<section>
+
+## Min, Max, Clamp
+
+### Min
+```css
+.a {
+  padding: min(100px, 10vw);
+}
+```
+
+### Max
+```css
+.b {
+  padding: max(100px, 10vw);
+}
+```
+
+### Clamp
+```css
+.b {
+  padding: clamp(1rem, 10vw, 2rem);
+}
+```
+
+**Fluid Fontsize**
+```css
+.c {
+  font-size: clamp(1.75rem, 3vw, 2.1rem);
+}
+
+@supports not (font-size: clamp(1.75rem, 3vw, 2.1rem)) {
+  .c {
+    font-size: min(max(1.75rem, 3vw), 2.1rem); 
+  }
+}
+```
+
+</section>
+
+---
+
+<section>
+
+## Calc
+
+```css
+.d {
+  padding: calc(50% - var(--sizeHeader) - 1rem);
+}
+```
 
 </section>

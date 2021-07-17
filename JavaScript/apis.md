@@ -34,8 +34,13 @@ window.addEventListener("popstate", function() {
 });
 ```
 
+</section>
 
-### Location
+---
+
+<section>
+
+## Location API
 
 ```js
 window.location
@@ -57,9 +62,12 @@ protocol subdomain domain        superdomain port   pathname           hash  que
 ```
 
 ```js
-location.reload()
-location.replace()
-location.replace('http://www.ecosia.com')
+window.location.reload();
+```
+
+```js
+window.location.replace()
+window.location.replace('http://www.ecosia.com')
 ```
 
 ### URL
@@ -582,6 +590,183 @@ self.addEventListener("fetch", e => {
       }).catch(err => caches.match(e.request).then(res => res));
   );
 });
+```
+
+### Caching with Service Workers
+
+```js
+self.addEventListener('install', (e) => {
+  e.waitUntil(
+    caches.open('butterfly-store').then((cache) => cache.addAll([
+      '',
+      'index.html',
+      'index.js',
+      'src/style.css',
+      'images/peacock-300.png',
+    ])),
+  );
+});
+
+self.addEventListener('fetch', (e) => {
+  console.log(e.request.url);
+  e.respondWith(
+    caches.match(e.request).then((response) => response || fetch(e.request)),
+  );
+});
+```
+
+### Offline Page with Service Workers
+
+```js
+const OFFLINE_VERSION = 1;
+const CACHE_NAME = 'offline';
+const CACHE_URL = 'offline.html';
+
+self.addEventListener("install", (event) => {
+  event.waitUntil(
+    (async () => {
+      const cache = await caches.open(CACHE_NAME);
+      await cache.add(new Request(OFFLINE_URL, { chache: 'reload' }))
+    })();
+  );
+  self.skipWaiting();
+});
+
+self.addEventListener("fetch", (event) => {
+  if (event.request.mode !== 'navigate') {
+    return;
+  }
+  event.respondWith((async () => {
+    try {
+      const networkResponse = await fetch(event.request);
+      return networkResponse;
+    } catch () {
+      const cache = await caches.open(CACHE_NAME);
+      const cachedResponse = await cache.match(OFFLINE_URL);
+      return cachedResponse;
+    }
+  })());
+});
+```
+
+**Service Worker**
+
+Reload app, once back online
+```js
+window.addEventListener("online", () => {
+  window.location.reload()
+})
+```
+
+Fallback function
+```js
+async function checkNetworkAndReload() {
+  try {
+    const response = await fetch('.');
+    if (response.status >= 200 & response.status < 500) {
+      window.location.reload();
+      return
+    }
+  } catch {
+    // Do nothing, still offline
+  }
+  window.setTimeout(checkNetworkAndReload, 2500);
+}
+```
+
+</section>
+
+---
+
+<section>
+
+## Web Sharing API
+```js
+const overlay = document.querySelector("overlay");
+const shareModal = document.querySelector("share-modal");
+const shareButton = document.querySelector("share-button");
+const title = window.document.title;
+const url = window.document.location.href;
+
+shareButton.addEventListener("click", () => {
+  if (navigator.share) {
+    navigator.share({
+      title: `${title}`,
+      url: `${url}`
+    })
+    .then(() => {
+      console.log("Thanks for sharing!");
+    })
+    .catch(console.error);
+  } else {
+    overlay.classList.add("show-share");
+    shareModal.classList.add("show-share");
+  }
+});
+
+overlay.addEventListener("click", () => {
+  overlay.classList.remove("show-share");
+  shareModal.classList.remove("show-share");
+});
+```
+
+
+```js
+const shareButton = document.getElementById("share-button")
+
+shareButton.onclick = async (filesArray) => {
+  if (navigator.canShare) {
+    navigator.share({
+      url: "https://yourapp.com",
+      title: "PWAs are awesome",
+      text: "I learned to build a PWA today."
+    })
+  }
+}
+
+// use files array
+shareButton.onclick = async (filesArray) => {
+  if (navigator.canShare) {
+    navigator.share({
+      files: filesArray,
+      title: "PWAs are awesome",
+      text: "I learned to build a PWA today."
+    })
+  }
+}
+```
+
+</section>
+
+---
+
+<section>
+
+## Geolocation API
+
+```js
+window.navigator.geolocation.getCurrentPosition(console.log)
+```
+
+</section>
+
+---
+
+<section>
+
+## Device Motion API
+
+Chrome Dev-Tools: Sensors Tab
+
+```js
+window.addEventListener("devicemotion", (event) => {
+  console.log(event)
+  event.acceleration
+  event.acceleration.x
+
+  event.rotationRate.beta
+  event.rotationRate.gamma
+})
 ```
 
 </section>

@@ -22,6 +22,7 @@ Elements in detail
 * [Accessibility](webdesign-accessibility)
 * [Green Webdesing](webdesign-green)
 * [Responsive](webdesign-responsive)
+* [PWA](pwa)
 
 
 

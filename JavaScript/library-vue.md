@@ -63,6 +63,72 @@ export default {
 
 <section>
 
+## Vue 3 Setup
+
+```html
+<div id="app">
+  <h1>{{message}}</h1>
+  <the-button @update="changeMessage"></the-button>
+</div>
+```
+
+```js
+const vueObject = {
+  data() {
+    return {
+      message: "Bye, Vue 2."
+    }
+  },
+  methods: {
+    changeMessage() {
+      this.message = "Hi, Vue 3!"
+    }
+  }
+}
+
+const vueComponent = {
+  template: `<button @click="updateMessage">Update message</button>`,
+  emits: ["update"],
+  methods: {
+    updateMessage() {
+      this.$emit("update")
+    }
+  }
+}
+
+const app = Vue.createApp(vueObject)
+app.component("the-button", vueComponent)
+app.mount("#app")
+```
+
+### Composition API
+
+```js
+const vueComponent = {
+  emits: ["update"],
+  setup(props, context) {
+    // data
+    const message = ref("Hello Composition API!")
+
+    // methods
+    function updateMessage() {
+      message = "Hello"
+    }
+
+    // custom events
+    context.emit("update", this.message)
+  }
+}
+```
+
+
+
+</section>
+
+---
+
+<section>
+
 ## Basics
 
 ### Vue instance

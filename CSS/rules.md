@@ -70,17 +70,59 @@ title: "@ Rules"
 }
 ```
 
+```css
+@supports (aspect-ratio: 1 / 1) { 
+  .square {
+    aspect-ratio: 1 / 1;
+  }
+}
+```
+
 </section>
 
 ---
 
 <section>
 
-## `@media`
+## `@media` Queries
 
 ```css
 @media screen and (max-aspect-ratio: 3/4) {  }
 @media screen and (orientation: landscape) {  }
+```
+
+```css
+@media (prefers-reduced-motion) {  }
+@media (prefers-contrast) {  }
+@media (prefers-reduced-transparency) {  }
+@media (prefers-color-scheme) {  }
+@media (inverted-colors) {  }
+```
+
+</section>
+
+---
+
+<section>
+
+## `@container` Queries
+
+```css
+.card {
+  contain: size layout;
+}
+
+@container (max-width: 850px) {
+  .links {
+    display: none;
+  }
+
+  .time {
+    font-size: 1.25rem;
+  }
+
+  /* ... */
+}
 ```
 
 </section>

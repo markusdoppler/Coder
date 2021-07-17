@@ -321,3 +321,22 @@ Worst properties to animate in terms of performance (require repaint for every f
 </figure>
 
 </section>
+
+---
+
+<section>
+
+## Easing Curves
+
+```css
+.particle {
+  transition: transform 200ms linear;
+  transition: transform 200ms ease;
+  transition: transform 200ms ease-in;
+  transition: transform 200ms ease-in-out;
+  transition: transform 375ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 200ms cubic-bezier(0, .8, .13, 1);
+}
+```
+
+</section>

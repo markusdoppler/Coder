@@ -1,8 +1,16 @@
 ---
-title: AJAX
+title: Fetch & AJAX
 ---
 
-# Asynchronous JavaScript and XML (AJAX)
+# Fetch and AJAX
+
+<section>
+
+## AJAX (Asynchronous JavaScript and XML)
+
+</section>
+
+---
 
 <section>
 
@@ -173,6 +181,49 @@ const data = JSON.parse(jsonData, function(key, value) {
         return value;
     }
 });
+```
+
+</section>
+
+---
+
+<section>
+
+## Promises Overview
+
+```js
+promise
+  .then( /* ... */ )
+  .then( /* ... */ )
+  .then( /* ... */ )
+  .catch( /* ... */ )
+```
+
+Create
+```js
+const ride = new Promise((resolve, reject) => {
+  if (arrived) {
+    resolve("driver arrived")
+  } else {
+    reject("driver bailed")
+  }
+})
+```
+
+Consume
+```js
+ride
+  .then(value => {
+    console.log(value)
+    // driver arrived
+  })
+  .catch(error => {
+    console.log(error)
+    // driver bailed
+  })
+  .finally(() => {
+    console.log("all settled!")
+  })
 ```
 
 </section>

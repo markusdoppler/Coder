@@ -70,6 +70,14 @@ title: "@ Rules"
 }
 ```
 
+```css
+@supports (aspect-ratio: 1 / 1) { 
+  .square {
+    aspect-ratio: 1 / 1;
+  }
+}
+```
+
 </section>
 
 ---

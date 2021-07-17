@@ -56,6 +56,8 @@ struct ContentView: View {
 }
 ```
 
+![MVVM](../assets/Swift/MVVM.png)
+
 </section>
 
 ---

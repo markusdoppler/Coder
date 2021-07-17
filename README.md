@@ -11,7 +11,7 @@ layout: home
 * [Python](Python/README)
 * [JavaScript](JavaScript/README)
 * [PHP](PHP/README)
-* Swift
+* [Swift](Swift/README)
 * C
 * C++
 * Java

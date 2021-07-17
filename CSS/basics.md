@@ -920,7 +920,7 @@ border-top-right-radius: 5px;
 
 ```css
 .d {
-  padding: calc()
+  padding: calc(50% - var(--sizeHeader) - 1rem);
 }
 ```
 

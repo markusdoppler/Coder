@@ -178,6 +178,19 @@ echo ${@:1}	# prints: arg1 arg2 arg3
 
 <section>
 
+## CURL
+
+```bash
+curl -i -k https://apple.com
+curl -I -k https://apple.com # only headers
+```
+
+</section>
+
+---
+
+<section>
+
 ## Linux Basics
 
 ### Change password
@@ -194,18 +207,18 @@ pwd
 ### List files
 
 ```bash
-ls          			# directory listing 
-ls -l        			# long version directory listing 
+ls          			# directory listing 
+ls -l        			# long version directory listing 
 ```
 * `-l` — long
-* `-lt` — sorted with time  
+* `-lt` — sorted with time  
 * `-ltr` — sorted with reverse time 
 * `-a` — hidden files
 
 Changing directories
 cd dirwxyz 		— change directory 
-cd ..        			— go to origin 
-cd ~        			— go to origin 
+cd ..        			— go to origin 
+cd ~        			— go to origin 
 
 ```bash
 ls /directory/ -al --reverse --sort=time
@@ -408,7 +421,7 @@ tail -f control		# useful for showing progress as a file is being written to, e.
 
 Reroute
 ```
->       	# Reroute the output of the last process (e.g. to a file)
+>       	# Reroute the output of the last process (e.g. to a file)
 ```
 
 Grep
@@ -740,7 +753,7 @@ ddd creutz.exe
 Compile FORTRAN
 ```bash
 gfortran
-gfortran dateiName (-o runName) 
+gfortran dateiName (-o runName) 
 gfortran -o3 name.f95 -lmathlib 
 	      -O3 ----- Faktor 3 an Geschwindigkeit 
 lib mathlib.a -L ...path... 
@@ -767,8 +780,8 @@ gcc
 
 `gcc` — Compiler
 ```bash
-which gcc          # Shows the compiles being used 
-whereis gcc        
+which gcc          # Shows the compiles being used 
+whereis gcc        
 ```
 
 
@@ -784,7 +797,7 @@ gcc -o testApp test.c
 * `test.c` — Datei, die ich compilieren will 
 
 ```bash
-./testApp         # Run program 
+./testApp         # Run program 
 ```
 
 ```bash
@@ -794,7 +807,7 @@ gcc -Wall -O -o outputfile inputfile.c
 Using modules
 Only use compiler but doesn’t use linker => modules have to be compiled to be used 
 ```bash
-gcc -c -Wall -O -o modul1.o modul1.c 
+gcc -c -Wall -O -o modul1.o modul1.c 
 
 gcc -Wall -O -o mycalc modul1.o mycalc.c 
 ```
@@ -802,7 +815,7 @@ gcc -Wall -O -o mycalc modul1.o mycalc.c
 Creating Modules
 
 ```bash
-gcc -O -Wall -o prog prog.c modul.c -lm     // modul.c in prog.c einbinden und in prog ausführen 
+gcc -O -Wall -o prog prog.c modul.c -lm     // modul.c in prog.c einbinden und in prog ausführen 
 ```
 
 

@@ -144,6 +144,11 @@ Add remote origin
 git remote add origin [url]
 ```
 
+update remote branches
+```git
+git remote update origin --prune
+```
+
 </figure>
 </section>
 
@@ -593,6 +598,11 @@ unstage a file for commit
 git reset HEAD file
 ```
 
+```shell
+git reset --hard origin/live
+git clean -f -d
+```
+
 </div>
 
 </figure>
@@ -664,6 +674,22 @@ the `1b2e1d63ff` stands for the first 10 characters of the commit id you want to
 
 <section>
 
+## Blame
+
+```git
+git log -L48,+1:index.html
+```
+
+```git
+git blame -L 48,+1 index.html
+```
+
+</section>
+
+---
+
+<section>
+
 ## Add a local repository to Github
 
 ```shell
@@ -671,6 +697,90 @@ git init
 
 git remote add origin https://github.com/user/repo.git
 git remote -v
+```
+
+</section>
+
+
+---
+
+<section>
+
+## Git Hooks
+
+`.git/hooks/pre-commit`
+
+```sh
+#!/bin/sh
+#
+# An example hook script to verify what is about to be committed.
+# Called by "git commit" with no arguments.  The hook should
+# exit with non-zero status after issuing an appropriate message if
+# it wants to stop the commit.
+#
+# To enable this hook, rename this file to "pre-commit".
+
+if git rev-parse --verify HEAD >/dev/null 2>&1
+then
+        against=HEAD
+else
+        # Initial commit: diff against an empty tree object
+        against=$(git hash-object -t tree /dev/null)
+fi
+
+# If you want to allow non-ASCII filenames set this variable to true.
+allownonascii=$(git config --bool hooks.allownonascii)
+
+# Redirect output to stderr.
+exec 1>&2
+
+# Cross platform projects tend to avoid non-ASCII filenames; prevent
+# them from being added to the repository. We exploit the fact that the
+# printable range starts at the space character and ends with tilde.
+if [ "$allownonascii" != "true" ] &&
+        # Note that the use of brackets around a tr range is ok here, (it's
+        # even required, for portability to Solaris 10's /usr/bin/tr), since
+        # the square bracket bytes happen to fall in the designated range.
+        test $(git diff --cached --name-only --diff-filter=A -z $against |
+          LC_ALL=C tr -d '[ -~]\0' | wc -c) != 0
+then
+        cat <<\EOF
+Error: Attempt to add a non-ASCII file name.
+
+This can cause problems if you want to work with people on other platforms.
+
+To be portable it is advisable to rename the file.
+
+If you know what you are doing you can disable this check using:
+
+  git config hooks.allownonascii true
+EOF
+        exit 1
+fi
+
+# If there are whitespace errors, print the offending file names and fail.
+```
+
+
+Can use any other scripting language
+
+```bash
+#!/bin/bash
+
+# exit with 0 or 1
+```
+
+```python
+#!/bin/python
+
+# exit with 0 or 1
+```
+
+
+Configure the path to the hooks
+
+```
+git config core.hookspath /my/hook/path
 ```
 
 </section>

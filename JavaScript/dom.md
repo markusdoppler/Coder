@@ -179,6 +179,10 @@ window.screen.availHeight
 window.devicePixelRatio
 ```
 
+```js
+window.orientation
+```
+
 ### Page and Element Measurements
 ```js
 window.pageXOffset

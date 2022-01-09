@@ -15,4 +15,8 @@ title: VSCode
 * `⌥`+`⇧`+`↓` = Duplicate row
 * `⌘`+`⌥`+`↑` / `⌘`+`⌥`+`↓`  = Place additional cursors below / above
 
+* `Ctrl` + `Shift` + `Alt` + `Cmd` + `7` = Split Screen
+* `Ctrl` + `1-9` = Switch Tab
+
+
 </section>

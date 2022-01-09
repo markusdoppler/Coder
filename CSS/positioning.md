@@ -106,6 +106,16 @@ The element with the _highest_ `z-index` value will appear on the _top_ regardle
 
 must first apply a `position` value of `relative`, `absolute`, or `fixed`
 
+
+### Stacking context
+create a new stacking context
+```css
+isolation: isolate;
+```
+
+
+
+
 </section>
 
 ---
@@ -411,6 +421,49 @@ Margin trick
    padding-top: -50%;
 }
 ```
+
+</section>
+
+---
+
+---
+<section>
+
+## Example: stacked elements
+```html
+<div class="parent">
+   <div class="back"></div>
+   <div class="front"></div>
+</div>
+```
+
+`position: absolute`
+```css
+.parent {
+   position: relative;
+}
+.back {
+   position: relative;
+}
+.front {
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+}
+```
+
+`grid-area: 1 / 1`
+```css
+.parent {
+   display: grid;
+}
+.back, .front {
+   grid-area: 1 / 1;
+}
+```
+
 
 </section>
 

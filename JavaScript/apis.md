@@ -193,6 +193,68 @@ resizeObserver.observe(document.getElementById("format-panel"));
 
 <section>
 
+## Mutation Observer API
+
+```js
+const mutationObserver = new MutationObserver(entries => {
+   console.log(entries)
+})
+
+const parent = document.querySelector(".parent")
+
+const mutationOptions = { children: true };
+mutationObserver.observe(parent, mutationOptions)
+mutationObserver.disconnect()
+
+parent.children[0].remove()
+setTimeout(() => {
+   parent.appendChild(document.createElement("div"))
+}, 100)
+```
+
+**Children**
+```js
+const mutationOptions = {
+   children: true
+}
+
+// evoke observer
+parent.children[0].remove()
+parent.appendChild(document.createElement("div"))
+```
+
+
+**Attributes**
+```js
+const mutationOptions = {
+   attributes: true,
+   attributesOldValue: true,
+   attributesFilter: ["id"]
+}
+
+// evoke observer
+parent.id = "New Id"
+```
+
+**Character data**
+```js
+const mutationOptions = {
+   subtree: true,
+   characterData: true,
+   characterDataOldValue: true
+}
+
+// evoke observer
+parent.parent.innerText = "Hallo"
+```
+
+
+</section>
+
+---
+
+<section>
+
 ## Local Storage, Session Storage and Cookies
 
 ### Local Storage
@@ -767,6 +829,35 @@ window.addEventListener("devicemotion", (event) => {
   event.rotationRate.beta
   event.rotationRate.gamma
 })
+```
+
+</section>
+
+---
+
+<section>
+
+## Gamepad API
+
+```js
+let frameId;
+
+window.addEventListener("gamepadconnected", (event) => {
+  console.log("A gamepad connected:", event.gamepad);
+
+  frameId = window.requestAnimationFrame(animationFrame);
+});
+
+window.addEventListener("gamepaddisconnected", (event) => {
+  console.log("A gamepad disconnected:", event.gamepad);
+
+  window.cancelAnimationFrame(frameId);
+});
+
+function animationFrame() {
+   var gamepads = navigator.getGamepads();
+   console.log(gamepads);
+}
 ```
 
 </section>

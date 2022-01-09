@@ -292,6 +292,16 @@ Alternative voice or tone (almost as if it were placed in quotation marks)
 <blockquote cite="https://markusdoppler.at">
 ```
 
+#### Summary and Details
+
+```html
+<details>
+   <summary>Summary</summary>
+   <p>Details....</p>
+</details>
+```
+
+
 
 #### Encoding Special Characters
 
@@ -918,7 +928,7 @@ class="broccoli green-veg"
 <aside>
 <footer>
 ```
-￼
+
 ![Basic HTML Structure](../assets/HTML/html-structure.png)
 
 ### SEMANTICS & GOOD PRACTICES

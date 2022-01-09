@@ -65,12 +65,14 @@ export default {
 
 ## Vue 3 Setup
 
+{% raw %}
 ```html
 <div id="app">
   <h1>{{message}}</h1>
   <the-button @update="changeMessage"></the-button>
 </div>
 ```
+{% endraw %}
 
 ```js
 const vueObject = {

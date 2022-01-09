@@ -21,7 +21,7 @@ styles:
 * ...
 
 ### Hexadecimal notation
-￼
+
 ![HEX Code](../assets/CSS/hexcode.tiff)
 
 * white: `#000000`
@@ -57,6 +57,20 @@ hsl(60, 100%, 50%)
 ```
 
 ![CSS Colours](../assets/CSS/colors.png)
+
+
+### Colour functions
+
+```css
+:root {
+   --primary: red;
+}
+
+.element {
+   color: hsl(from var(--primary) h s calc(l + 10%));
+}
+```
+
 
 </section>
 
@@ -146,6 +160,14 @@ font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 
 ```css
 font-size: 14px;
+```
+
+#### Fluid typography via area
+```css
+.static-frame {
+   --area: calc((100vw * 100vh) / (320px * 680px));
+   font-size: calc(var(--area)* 1em) !important;
+}
 ```
 
 #### Font-Weight
@@ -328,6 +350,18 @@ word-spacing: 0.25em;
 }
 ```
 
+### Text columns
+
+```css
+.column-text {
+   line-height: 1.2;
+   columns: 2 30ch;
+   gap: 4rem;
+   max-width: 100ch;
+}
+```
+
+
 </figure>
 
 
@@ -405,7 +439,7 @@ background-repeat: no-repeat;
 * `no-repeat`
 
 #### Background Position
-￼
+
 ![Background Position](../assets/CSS/background-position.png)
 
 ```css
@@ -445,7 +479,7 @@ background-size: cover;
 background-size: contain;
 ```
 
-* `auto`: may be used as either the width or height value to preserve the aspect ratio of the background image
+* `auto`: may be used as either the width or height value to preserve the aspect ratio of the background image
 * `cover`: the background image will be resized to completely cover an element’s width and height, the background image’s original aspect ratio will be preserved
 * `contain`: the background image will be resized to reside entirely contained within an element’s width and height
 
@@ -980,6 +1014,31 @@ pointer-events: none;
 
 <section>
 
+## Rendering Optimisation
+
+```css
+isolation: isolate;
+```
+
+```css
+will-change: transform;
+```
+
+```css
+contain: strict;
+contain: size;
+contain: layout;
+contain: paint;
+contain: style;
+contain: content;
+```
+
+</section>
+
+---
+
+<section>
+
 ## Webkit specific styles
 
 * [Apple Developer: Customizing Style Sheets](https://developer.apple.com/library/archive/documentation/AppleApplications/Reference/SafariWebContent/AdjustingtheTextSize/AdjustingtheTextSize.html)
@@ -1026,6 +1085,22 @@ env(safe-area-inset-right)
 ### Keyboard Enter Key Title
 ```html
 <div id="editor" contenteditable="true" enterkeyhint="send"></div>
+```
+
+</section>
+
+---
+
+<section>
+
+## Chromium specific styles
+
+### Hack: no number buttons
+
+```css
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+input[type=number] { -moz-appearance: textfield; }
 ```
 
 </section>

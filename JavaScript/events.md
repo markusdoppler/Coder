@@ -89,6 +89,13 @@ window.addEventListener("load", function(){
 });
 ```
 
+### Page show and hide
+
+```js
+window.addEventListener("pageshow", () => {  });
+window.addEventListener("pagehide", () => {  });
+```
+
 </section>
 
 ---
@@ -128,6 +135,11 @@ Gesture
 * `gesturestart`
 * `gesturechange`
 * `gestureend`
+
+Device
+* `devicemotion`
+* `deviceorientation`
+* `orientationchange`
 
 Keyboard
 * `keydown`

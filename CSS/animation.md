@@ -259,6 +259,12 @@ Worst properties to animate in terms of performance (require repaint for every f
 * `left`
 * `right`
 
+Further enhancements
+```css
+will-change: transform;
+```
+
+
 ### Box-shadow
 
 <figure class="fig-1-1">

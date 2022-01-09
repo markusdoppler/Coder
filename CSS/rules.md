@@ -78,6 +78,16 @@ title: "@ Rules"
 }
 ```
 
+```css
+@supports (display: grid) {
+
+}
+
+@supports selector(:focus-visible) {
+   
+}
+```
+
 </section>
 
 ---

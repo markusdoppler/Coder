@@ -234,15 +234,65 @@ var myString = "Hello World".
 ```
 
 
-**Find and replace with RegEx**
+### Template String
+
+```js
+const string = `My name is ${firstName}`;
+```
+
+
+### Tagged Template
+```js
+custom`My name is ${firstName}`
+
+function custom(stringsArray, ...values) {
+  console.log(stringsArray, values)
+}
+```
+
+```js
+bold`My name is ${firstName}`
+
+function bold(strings, ...values) {
+  return values.reduce((finalString, value, index) => {
+    return `${finalString}<strong>${value}</strong>${strings[index + 1]}`
+  }, strings[0])
+}
+```
+
+
+### Substring
+```js
+string.substring(indexStart[, indexEnd])
+string.substr(start, length)
+```
+
+```js
+const string = "hello"
+string.substring(1) // ello
+```
+
+
+### String contains/includes Substring
+```js
+const sentence = "The quick brown fox jumps over the lazy dog."
+const word = "dog"
+sentence.includes(word)
+```
+
+
+
+### Find and replace with RegEx
 * [Mozilla: RegExp](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp)
 * [Mozilla: Regular Expressions Guide](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions)
+
 ```js
 let lunch = "Pizzapie";
 lunch = lunch.replace(/Pizza/g, "Broccoli");
 ```
 
-**Split**
+
+## Split
 
 ```js
 var pathArray = window.location.pathname.split('/');
@@ -368,6 +418,9 @@ const persons = [
   {name: "Lisa", age: 15},
 ];
 persons.map(person => person.age);
+
+// all parameters
+array.map((currentItem, index, arrayObject) => {}, thisBoundValue)
 ```
 
 **filter**
@@ -379,6 +432,9 @@ const positiveNumbers = numbers.filter(function(value, index, array) {
 });
 
 const positiveNumbersWithES6 = numbers.filter(value => value >= 0);
+
+// all parameters
+array.filter((elem, i, rep) => {})
 ```
 
 **reduce**
@@ -472,6 +528,27 @@ function perform({ oneRequired, twoOptional = null, threeOptional = false } = {}
 }
 ```
 
+### Generator function
+
+Generator function denoted by `*` after `function` keyword
+```js
+function* idGenerator() {
+  let id = 1
+
+  while (true) {
+    yield id
+    id++
+  }
+}
+
+const generator = idGenerator()
+const id1 = generator.next()
+const id2 = generator.next()
+```
+
+
+
+
 </section>
 
 ---
@@ -530,7 +607,13 @@ Object.keys(myObject);
 Object.values(myObject);
 ```
 
+Check whether property is defined
+```js
+const person = { name: "Max", age: 25 }
 
+if (person.name) {  }
+if ("name" in person) {  }
+```
 
 
 
@@ -743,6 +826,22 @@ let {a, b, ...c} = {a: 10, b: 20, c: 30, d: 40};
 
 ```js
 ({a, b} = {a: 10, b: 20});
+```
+
+```js
+const data = { foo: 45, bar: 23, name: 'Poppy' };
+
+// subset
+const { name, ...rest } = data;
+console.log(rest) // { foo: 45, bar: 23 }
+
+// renaming
+const { name: firstName, foo: age };
+console.log(firstName, age) // "Poppy", 45
+
+// defaults
+const { len: length = 0 } = {};
+console.log(length) // 0
 ```
 
 </section>

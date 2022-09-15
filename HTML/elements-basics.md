@@ -12,6 +12,11 @@ title: HTML5
 * The DOM represents all of the different elements and their relationship to each other
 * Elements nested inside others have a *parent and child relationship* while elements that share the same parent have a *sibling relationship*.
 
+
+### Parsing HTML
+
+[HTML Parser Book by Simon Pieters](https://htmlparser.info)
+
 </section>
 
 ---
@@ -34,6 +39,20 @@ title: HTML5
 
 ```html
 <!-- this is a comment -->
+```
+
+</section>
+
+---
+
+<section>
+
+## Inline Event Listener
+
+```html
+<div onclick="var event = arguments[0] || window.event; [...]"></div>
+
+<span onclick="event.stopPropagation(); alert('you clicked inside the header');">something inside the header</span>
 ```
 
 </section>
@@ -1036,5 +1055,28 @@ document.body.appendChild(myBook);
 ```js
 document.createElement('my-book');
 ```
+
+</section>
+
+---
+
+<section>
+
+## Drag and Drop API
+
+* `<img>` and `<a>` elements are draggable by default
+* other elements
+
+```html
+<div draggable="true"></div>
+```
+
+```css
+.not-draggable {
+   -webkit-user-drag: none;
+}
+```
+
+[JavaScript Events](../JavaScript/dom#separate-html-document)
 
 </section>

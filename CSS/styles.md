@@ -71,6 +71,17 @@ hsl(60, 100%, 50%)
 }
 ```
 
+### `currentColor`
+
+```css
+.parent {
+  color: red;
+}
+.child {
+  border-color: currentColor;
+}
+```
+
 
 </section>
 
@@ -470,7 +481,7 @@ span {
 ```
 
 
-#### Background Size (CSS3)
+#### Background Size
 
 ```css
 background-size: width height;
@@ -483,7 +494,7 @@ background-size: contain;
 * `cover`: the background image will be resized to completely cover an element’s width and height, the background image’s original aspect ratio will be preserved
 * `contain`: the background image will be resized to reside entirely contained within an element’s width and height
 
-#### Background Clip (CSS3)
+#### Background Clip
 
 ```css
 background-clip: border-box;
@@ -568,8 +579,20 @@ background: radial-gradient(
 
 </figure>
 
-
 [CSS Gradient Generator](https://www.cssmatic.com/gradient-generator)
+
+
+#### Conic Gradient
+
+<figure class="fig-1-3">
+
+<div style="width: 100%; height: 100%; background: conic-gradient(from .5turn at bottom center, lightblue, white);"></div>
+
+```css
+  --gradient-conic: conic-gradient(from .5turn at bottom center, lightblue, white);
+```
+
+</figure>
 
 
 #### Colour Stops
@@ -584,7 +607,6 @@ background: linear-gradient(to right, #f6f1d3, #648880, #293f50);
 ```
 
 </figure>
-
 <figure class="fig-1-3">
 
 <div style="width: 100%; height: 100%; background: linear-gradient(to right, #f6f1d3, #648880 85%, #293f50);"></div>
@@ -595,6 +617,22 @@ background: linear-gradient(to right, #f6f1d3, #648880 85%, #293f50);
 ```
 
 </figure>
+
+### Cool Gradients
+
+```css
+:where(html) {
+   --gradient-rainbow: 
+      linear-gradient(0deg,   hsla(0   100% 50% / 80%), hsla(0   100% 50% / 0) 75%),
+      linear-gradient(60deg,  hsla(60  100% 50% / 80%), hsla(60  100% 50% / 0) 75%),
+      linear-gradient(120deg, hsla(120 100% 50% / 80%), hsla(120 100% 50% / 0) 75%),
+      linear-gradient(180deg, hsla(180 100% 50% / 80%), hsla(180 100% 50% / 0) 75%),
+      linear-gradient(240deg, hsla(240 100% 50% / 80%), hsla(240 100% 50% / 0) 75%),
+      linear-gradient(300deg, hsla(300 100% 50% / 80%), hsla(300 100% 50% / 0) 75%);
+
+   --gradient-mellow: linear-gradient(to bottom right,#1f005c, #5b0060, #870160, #ac255e, #ca485c, #e16b5c, #f39060, #ffb56b);
+}
+```
 
 </section>
 
@@ -630,6 +668,28 @@ border: 3px solid maroon;
 ```
 
 </figure>
+
+### Gradient Border
+
+<figure class="fig-1-3">
+
+<div style="width: 100%; height: 100%; border-width: 0.3em; border-style: solid; border-image-slice: 1; border-image-source: conic-gradient(from .5turn at bottom center, red, blue);"></div>
+
+```css
+.gradient-border {
+   --size: 0.3em;
+   --gradient-conic: conic-gradient(from .5turn at bottom center, red, blue);
+
+   border-width: var(--size);
+   border-style: solid;
+   border-image-slice: 1;
+   border-image-source: var(--gradient-conic);
+}
+```
+
+</figure>
+
+
 
 </section>
 
@@ -712,6 +772,12 @@ transform: skew(30deg);
 
 </figure>
 
+
+### Transform style
+
+```css
+transform-style: preserve-3d;
+```
 
 </section>
 
@@ -908,14 +974,35 @@ cursor: text;
 
 ## User Experience (Zoom, scroll etc.)
 
-### Avoid double tap to zoom
+### User select
+
 ```css
-section {
-  touch-action: manipulate;
+.text {
+  -webkit-user-select: none;
+  user-select: none;
 }
 ```
 
-### Smooth scroll (e.g. when ID changes in URL)
+### Touch action
+
+```css
+section {
+  touch-action: auto;
+  touch-action: none;
+  touch-action: pan-x;
+  touch-action: pan-left;
+  touch-action: pan-right;
+  touch-action: pan-y;
+  touch-action: pan-up;
+  touch-action: pan-down;
+  touch-action: pinch-zoom;
+  touch-action: manipulation; /* avoid double tap to zoom */
+}
+```
+
+
+### Smooth scroll
+(e.g. when ID changes in URL)
 
 ```css
 html {
@@ -931,6 +1018,25 @@ a11y-tip: Turn on smooth scroll only if user has no preference!
   }
 }
 ```
+
+### Customize Scrollbar
+
+```css
+html {
+  overscroll-behavior: auto;
+  overscroll-behavior: none;
+  overscroll-behavior: contain;
+
+  overscroll-behavior-y: contain;
+}
+```
+
+### Scroll Padding
+
+```css
+scroll-padding-top: var(—size-header);
+```
+
 
 ### Customize Scrollbar
 
@@ -964,6 +1070,14 @@ body::-webkit-scrollbar {
 }
 ```
 
+### Overflow scrolling
+use momentum-based scrolling for a given element
+
+```css
+-webkit-overflow-scrolling: auto;
+-webkit-overflow-scrolling: touch;
+```
+
 ### Scroll snap
 
 ```css
@@ -985,6 +1099,21 @@ body::-webkit-scrollbar {
   scroll-snap-align: start;
 }
 ```
+
+### Text Clip + fixed background
+
+<figure class="fig-1-3">
+
+<div style="width: 100%; height: 100%; background: radial-gradient(red, blue) fixed; background-size: 100%; -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 3em;">Hallo Welt</div>
+
+```css
+background: radial-gradient(red, blue) fixed;
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+```
+
+</figure>
+
 
 ### Caret color
 
@@ -1016,14 +1145,13 @@ pointer-events: none;
 
 ## Rendering Optimisation
 
-```css
-isolation: isolate;
-```
-
+hints to browsers how an element is expected to change – can help fix performance problems
 ```css
 will-change: transform;
 ```
 
+Indicate that an element and its contents are independent of the rest of the document tree.
+Changes within an element with containment applied are not propagated outside of the contained element to the rest of the page, leading to performance benefits through fewer DOM re-renders.
 ```css
 contain: strict;
 contain: size;
@@ -1081,6 +1209,16 @@ env(safe-area-inset-right)
 ```html
 <button class="action" ontouchstart="" style="-webkit-tap-highlight-color: rgba(0,0,0,0);">Testing Touch on iOS</button>
 ```
+
+### Font Smoothing
+
+```css
+.app {
+   -webkit-font-smoothing: antialiased;
+   -moz-osx-font-smoothing: grayscale;
+}
+```
+
 
 ### Keyboard Enter Key Title
 ```html

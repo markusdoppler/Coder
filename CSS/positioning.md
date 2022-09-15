@@ -93,7 +93,7 @@ if `top` and `bottom` values specified: `top` property will take **priority**
 if `left` and `right` values specified: `left` property will take **priority** (for English, German, etc. but not Arabic: `right`)
 
 
-### Z-Index
+### z-Index
 
 ```css
 z-index: 1;
@@ -112,8 +112,6 @@ create a new stacking context
 ```css
 isolation: isolate;
 ```
-
-
 
 
 </section>
@@ -172,6 +170,21 @@ usually a _small space_ will exist between two inline-block elements
 
 
 ### `grid`
+
+
+### `contents`
+causes an element's children to appear as if they were direct children of the element's parent
+
+```css
+.parent {
+   display: grid;
+}
+.element {
+
+}
+display: contents;
+grid-area: 1 / 1;
+```
 
 
 ### `none`

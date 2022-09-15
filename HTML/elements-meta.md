@@ -103,12 +103,15 @@ Combining Viewport Values
 
 <section>
 
-## Theme Color
+## Theme Color and Color Scheme
 
 ```html
 <meta name="theme-color" content="#ecd96f">
 <meta name="theme-color" content="#ecd96f" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#0b3e05" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="Canvas">
+
+<meta name="color-scheme" content="light dark">
 ```
 
 </section>

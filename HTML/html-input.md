@@ -200,6 +200,22 @@ input[type=range]:focus::-ms-fill-upper {
 
 <section>
 
+## Number `<input>`
+
+```html
+<input type="number">
+```
+
+```js
+input.valueAsNumber
+```
+
+</section>
+
+---
+
+<section>
+
 ## Form validation
 
 ```html

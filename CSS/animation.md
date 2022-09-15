@@ -178,6 +178,43 @@ element.addEventListener('animationend', (event) => {
 
 <section>
 
+## CSS Offset Path (Motion Path)
+
+Example
+<figure class="fig-1-3">
+
+<div id="motion-demo"></div>
+
+<div>
+
+```css
+#motion-demo {
+  offset-path: path("M20,20 C20,100 200,0 200,100");
+  animation: move 3000ms infinite alternate ease-in-out;
+  width: 40px;
+  height: 40px;
+  background: cyan;
+}
+
+@keyframes move {
+  0% {
+    offset-distance: 0%;
+  }
+  100% {
+    offset-distance: 100%;
+  }
+}
+```
+
+</div>
+
+
+</section>
+
+---
+
+<section>
+
 ## Web Animation API
 
 ```js

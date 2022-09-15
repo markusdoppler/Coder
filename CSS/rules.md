@@ -88,6 +88,37 @@ title: "@ Rules"
 }
 ```
 
+
+### Browser distinction
+
+```css
+@supports (-webkit-hyphens: none) { /* Safari only */ }
+@supports (-moz-appearance: none) { /* Firefox only */ }
+@supports (-webkit-tap-highlight-color: black) { /* Chrome, Edge, Opera only */ }
+```
+
+```css
+@media (dynamic-range: high) {
+   @supports (color(display-p3 0 .5 1)) {
+     :where(html) {
+       --link: color(display-p3 0 .5 1);
+       --link-visited: color(display-p3 .6 .2 1);
+     }
+   }
+}
+```
+
+```css
+@supports selector(:focus-visible) {
+  .custom-button:focus {
+    /* Remove the focus indicator on mouse-focus for browsers
+       that do support :focus-visible */
+    outline: none;
+    background: transparent;
+  }
+}
+```
+
 </section>
 
 ---
@@ -102,11 +133,32 @@ title: "@ Rules"
 ```
 
 ```css
-@media (prefers-reduced-motion) {  }
-@media (prefers-contrast) {  }
-@media (prefers-reduced-transparency) {  }
-@media (prefers-color-scheme) {  }
-@media (inverted-colors) {  }
+@media (prefers-reduced-motion: no-preference) {}
+@media (prefers-reduced-motion: reduce) {}
+
+@media (prefers-reduced-transparency: no-preference) {}
+@media (prefers-reduced-transparency: reduce) {}
+
+@media (prefers-reduced-data: no-preference) {}
+@media (prefers-reduced-data: reduce) {}
+
+@media (prefers-contrast: more) {}
+@media (prefers-contrast: less) {}
+
+@media (prefers-color-scheme: dark) {}
+@media (prefers-color-scheme: light) {}
+
+@media (orientation: portrait) {}
+@media (orientation: landscape) {}
+
+@media (inverted-colors) {}
+
+@media (dynamic-range: high) {}
+
+@media (pointer: fine) { /* ok to use small buttons/controls */ }
+@media (hover: hover) { /* ok to use :hover-based menus */ }
+@media (pointer: coarse) { /* make buttons and other “touch targets” bigger */ }
+@media (hover: none), (hover: on-demand) { /* suppress :hover-based menus */ }
 ```
 
 </section>
@@ -136,3 +188,38 @@ title: "@ Rules"
 ```
 
 </section>
+
+---
+
+<section>
+
+## `@layer` Cascade Layers
+
+1. layer (A, B, C) styles
+2. unlayered styles
+3. inline styles
+4. CSS Animation
+5. unlayered styles `!important`
+6. layer (C, B, A) styles `!important`
+7. inline styles `!important`
+8. CSS transitions
+
+```css
+@layer A, B;
+
+@import url('framework.css') layer(A.nested-layer);
+
+@layer A {
+  section {
+    background-color: red;
+  }
+}
+@layer B {
+  section {
+    background-color: red;
+  }
+}
+```
+
+</section>
+

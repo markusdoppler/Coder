@@ -48,6 +48,19 @@ WebGL Libraries
 * three.js
 * PIXI.js
 
+### Pointer Lock
+
+```js
+canvas.requestPointerLock = canvas.requestPointerLock || canvas.mozRequestPointerLock;
+document.exitPointerLock = document.exitPointerLock || document.mozExitPointerLock;
+
+document.addEventListener("pointerlockchange", lockChangeAlert, false);
+document.addEventListener("mozpointerlockchange",lockChangeAlert, false);
+
+canvas.addEventListener("click", canvas.requestPointerLock)
+closeButton.addEventListener("click", document.exitPointerLock)
+```
+
 </section>
 
 ---

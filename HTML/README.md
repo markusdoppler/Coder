@@ -9,7 +9,7 @@ title: HTML
 ## Table of Contents
 
 Overview
-* [HTML5 elements](elements-basic)
+* [HTML5 elements](elements-basics)
 * [Styling HTML5 elements](elements-styling)
 
 Elements in detail

@@ -32,15 +32,8 @@ window.onload = function () {}
 window.removeEventListener("keydown", handlerFunction);
 ```
 
-</section>
 
----
-
-<section>
-
-## Cancel an event and stop propagation of events
-
-### Cancel event
+### Prevent default event handling
 * prevent "Submit" button from submitting a form, or
 * prevent a link from following the URL,
 * prevent from scrolling
@@ -54,6 +47,63 @@ if (event.cancelable) {
   event.preventDefault();
 }
 ```
+
+</section>
+
+---
+
+<section>
+
+## Event Propagation
+
+```js
+const grandparent = document.querySelector(".grandparent")
+const parent = document.querySelector(".parent")
+const child = document.querySelector(".child")
+```
+
+**Capture Phase**
+  * Document
+  * Grandparent
+  * Parent
+  * Child
+**Bubble Phase**
+  * Child
+  * Parent
+  * Grandparent
+  * Document
+
+
+### Capture
+```js
+grandparent.addEventListener("click",
+  e => {
+    // ...
+  },
+  { capture: true }
+)
+```
+
+### Stop Event Propagation
+```js
+grandparent.addEventListener("click", 
+  e => {
+    e.stopPropagation()
+  },
+  { capture: true }
+)
+```
+
+### One-time event listener
+```js
+grandparent.addEventListener("click", 
+  e => {
+    // ...
+  },
+  { once: true }
+)
+```
+
 
 ### Stop Event Propagation
 * prevent further propagation of an event through the DOM (offspring -> ancestors)
@@ -187,12 +237,33 @@ section.addEventListener("touchend", function(e) { handleTouchEnd(e); }, false);
 
 <section>
 
-## Pointer
+## Pointer Events
 
 ```js
-element.onmousedown = function(event) {}
+canvas.addEventListener("pointerdown", startPointer)
+canvas.addEventListener("pointermove", movingPointer)
+canvas.addEventListener("pointerup",   endPointer)
 
-element.onpointerdown = function(event) {}
+function startPointer(e) {
+
+}
+function endPointer(e) {
+
+}
+function movingPointer(e) {
+  const coords = {
+    client: { x: e.clientX, y: e.clientY },
+    offset: { x: e.offsetX, y: e.offsetY },
+    page: { x: e.pageX, y: e.pageY },
+    screen: { x: e.screenX, y: e.screenY },
+    movement: { x: e.movementX, y: e.movementY },
+    e: { x: e.x, y: e.y },
+  }
+  console.table(coords)
+  
+  console.log(e.pressure, e.webkitForce)
+  console.log(e.altitudeAngle, "", e.azimuthAngle, e.tiltX, e.tiltY)
+}
 ```
 
 </section>

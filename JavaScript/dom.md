@@ -32,6 +32,13 @@ returns a node list of elements for this query
 document.querySelectorAll(".selected")
 ```
 
+### Matches
+
+```js
+e.target.matches("div")
+```
+
+
 </section>
 
 ---
@@ -114,6 +121,7 @@ element.classList.remove("highlight")
 element.classList.contains('zoom')
 element.classList.toggle("switched-on")
 element.classList.toggle("switched-on", false)
+element.classList.toggle("switched-on", el.width > 120)
 element.classList.value
 element.classList.length
 element.classList.item(0)
@@ -126,6 +134,8 @@ element.style.border = "1px solid blue";
 element.style.marginLeft = 0;
 element.style.animationPlayState = `paused`;
 element.style.setProperty("background", "#fff");
+
+document.documentElement.style.cssText = `color: red;`;
 
 const computedStyle = window.getComputedStyle(element);
 computedStyle.getPropertyValue('margin')
@@ -190,7 +200,20 @@ window.pageYOffset
 
 element.offsetTop
 element.getBoundingClientRect().top
+
+document.elementFromPoint(x, y)
 ```
+
+jQuery's `offset()` in Vanilla
+```js
+var rect = document.querySelector("#container").getBoundingClientRect();
+var offset = { 
+  top: rect.top + window.scrollY, 
+  left: rect.left + window.scrollX, 
+};
+console.log(offset);
+```
+
 
 ### Scroll
 ```js
@@ -254,6 +277,48 @@ document.querySelector("input").select();
 
 <section>
 
+## Document Fragment
+
+```js
+let fragment = new DocumentFragment()
+
+for (let i = 1; i < 3; i++) {
+   let li = document.createElement("li")
+   li.innerHTML = i
+   fragment.appendChild(li)
+}
+
+let list = document.querySelector("ul")
+list.appendChild(fragment)
+```
+
+</section>
+
+---
+
+<section>
+
+## Separate HTML Document
+
+```js
+const doc = document.implementation.createHTMLDocument();
+doc.write('<div>'):
+document.body.append(doc.body.firstChild);
+
+// Stream HTML contents (div in the body will automatically update)
+doc.write('<p>Hello'):
+doc.write('world!</p>');
+doc.write('<p>Yay!</p>');
+
+doc.write('</div>'):
+```
+
+</section>
+
+---
+
+<section>
+
 ## Event Listeners
 
 ```js
@@ -278,7 +343,6 @@ For details see [Event Listeners](events.md).
 * `window.alert()`
 
 
-
 Properties of the `window` object don't need to be specified.
 <figure>
 
@@ -292,6 +356,22 @@ window.setTimeout(() => {
 setTimeout(() => {
   alert("Hi");
 }, 3000)
+```
+
+### call `parent` function from within iFrame
+
+`parent` = parent's `window`
+
+```js
+// in document
+function my_function() {
+  // ...
+}
+```
+
+```js
+// in iframe
+parent.my_function()
 ```
 
 </figure>

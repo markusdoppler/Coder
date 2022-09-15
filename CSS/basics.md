@@ -386,6 +386,8 @@ a[lang|="en"] { /* ... */ }
 * `:first-child`
 * `:first-of-type`
 * `:focus`
+* `:focus-visible`
+* `:focus-within`
 * `:hover`
 * `:in-range`
 * `:invalid`
@@ -406,9 +408,35 @@ a[lang|="en"] { /* ... */ }
 * `:read-write`
 * `:required`
 * `:root`
-* `:target`
+* `:target` – element's id matches fragment in URL
 * `:valid`
 * `:visited`
+
+NEW:
+* `:not()`
+* `:is()`
+* `:where()`
+* `:has()`
+
+### Pseudo Classes
+
+```css
+.item:not(.dragging) { ... } /* Chrome 88, iOS 9 */
+
+.item:where(.active) { ... } /* Chrome 88, iOS 14 */
+.item:where(.active, .allowed) { ... } /* Chrome 88, iOS 14 */
+
+.item:is(.active) { ... } /* Chrome 88, iOS 14 */
+.container :is(.mid, .center, .main) .detail { ... } /* Chrome 88, iOS 14 */
+
+.item:focus-within { ... }
+.item:focus-visible { ... } /* iOS 15.4 (previously focus-ring) */
+```
+
+* `:where()` has specificity 0, `:is()` has highest specificity within it
+* selectors inside `:is` and `:where` can be invalid, others still applied
+
+
 
 #### Link Pseudo-classes
 link specific (define if a link has or hasn’t been visited)
@@ -591,6 +619,7 @@ div:not(.lovely) { /* ... */ }
 * `::first-letter`
 * `::first-line`
 * `::selection`
+* `::marker`
 
 * only one pseudo-element may be used within a selector at a given time
 * first letter/line of text within an element
@@ -759,6 +788,18 @@ padding-left: 20px;
 
 _BEST USAGE_: When we wish to identify only one margin or padding value
 
+#### Logical properties
+
+```css
+.item {
+   margin-block-end: 0.5em;
+   margin-block: 0.5em;
+   padding-inline: 0.5em;
+   border-block: 1px solid black;
+   padding-inline: 1px solid black;
+   max-inline-size: 400px;
+}
+```
 
 #### Margin Center Trick
 

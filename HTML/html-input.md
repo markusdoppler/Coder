@@ -200,6 +200,22 @@ input[type=range]:focus::-ms-fill-upper {
 
 <section>
 
+## Number `<input>`
+
+```html
+<input type="number">
+```
+
+```js
+input.valueAsNumber
+```
+
+</section>
+
+---
+
+<section>
+
 ## Form validation
 
 ```html
@@ -309,5 +325,26 @@ input:required:valid + .form_hint::before {
 
 </div>
 </figure>
+
+</section>
+
+
+---
+
+<section>
+
+## `<input>` autocomplete datalist
+
+```html
+<form>
+  <input type="text" placeholder="Which username??" list="usernames">
+  <datalist id="usernames">
+    <option value="Jack">
+    <option value="Sarah">
+    <option value="James">
+    <option value="Sasha">
+  <datalist>
+</form>
+```
 
 </section>

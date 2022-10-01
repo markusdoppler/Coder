@@ -71,6 +71,17 @@ hsl(60, 100%, 50%)
 }
 ```
 
+### `currentColor`
+
+```css
+.parent {
+  color: red;
+}
+.child {
+  border-color: currentColor;
+}
+```
+
 
 </section>
 
@@ -470,7 +481,7 @@ span {
 ```
 
 
-#### Background Size (CSS3)
+#### Background Size
 
 ```css
 background-size: width height;
@@ -483,7 +494,7 @@ background-size: contain;
 * `cover`: the background image will be resized to completely cover an element’s width and height, the background image’s original aspect ratio will be preserved
 * `contain`: the background image will be resized to reside entirely contained within an element’s width and height
 
-#### Background Clip (CSS3)
+#### Background Clip
 
 ```css
 background-clip: border-box;
@@ -568,8 +579,20 @@ background: radial-gradient(
 
 </figure>
 
-
 [CSS Gradient Generator](https://www.cssmatic.com/gradient-generator)
+
+
+#### Conic Gradient
+
+<figure class="fig-1-3">
+
+<div style="width: 100%; height: 100%; background: conic-gradient(from .5turn at bottom center, lightblue, white);"></div>
+
+```css
+  --gradient-conic: conic-gradient(from .5turn at bottom center, lightblue, white);
+```
+
+</figure>
 
 
 #### Colour Stops
@@ -584,7 +607,6 @@ background: linear-gradient(to right, #f6f1d3, #648880, #293f50);
 ```
 
 </figure>
-
 <figure class="fig-1-3">
 
 <div style="width: 100%; height: 100%; background: linear-gradient(to right, #f6f1d3, #648880 85%, #293f50);"></div>
@@ -595,6 +617,22 @@ background: linear-gradient(to right, #f6f1d3, #648880 85%, #293f50);
 ```
 
 </figure>
+
+### Cool Gradients
+
+```css
+:where(html) {
+   --gradient-rainbow: 
+      linear-gradient(0deg,   hsla(0   100% 50% / 80%), hsla(0   100% 50% / 0) 75%),
+      linear-gradient(60deg,  hsla(60  100% 50% / 80%), hsla(60  100% 50% / 0) 75%),
+      linear-gradient(120deg, hsla(120 100% 50% / 80%), hsla(120 100% 50% / 0) 75%),
+      linear-gradient(180deg, hsla(180 100% 50% / 80%), hsla(180 100% 50% / 0) 75%),
+      linear-gradient(240deg, hsla(240 100% 50% / 80%), hsla(240 100% 50% / 0) 75%),
+      linear-gradient(300deg, hsla(300 100% 50% / 80%), hsla(300 100% 50% / 0) 75%);
+
+   --gradient-mellow: linear-gradient(to bottom right,#1f005c, #5b0060, #870160, #ac255e, #ca485c, #e16b5c, #f39060, #ffb56b);
+}
+```
 
 </section>
 
@@ -630,6 +668,28 @@ border: 3px solid maroon;
 ```
 
 </figure>
+
+### Gradient Border
+
+<figure class="fig-1-3">
+
+<div style="width: 100%; height: 100%; border-width: 0.3em; border-style: solid; border-image-slice: 1; border-image-source: conic-gradient(from .5turn at bottom center, red, blue);"></div>
+
+```css
+.gradient-border {
+   --size: 0.3em;
+   --gradient-conic: conic-gradient(from .5turn at bottom center, red, blue);
+
+   border-width: var(--size);
+   border-style: solid;
+   border-image-slice: 1;
+   border-image-source: var(--gradient-conic);
+}
+```
+
+</figure>
+
+
 
 </section>
 
@@ -712,6 +772,12 @@ transform: skew(30deg);
 
 </figure>
 
+
+### Transform style
+
+```css
+transform-style: preserve-3d;
+```
 
 </section>
 
@@ -908,29 +974,136 @@ cursor: text;
 
 ## User Experience (Zoom, scroll etc.)
 
-### Avoid double tap to zoom
+### User select
+
 ```css
-section {
-  touch-action: manipulate;
+.text {
+  -webkit-user-select: none;
+  user-select: none;
 }
 ```
 
-### Smooth scroll (e.g. when ID changes in URL)
+### Touch action
+
+```css
+section {
+  touch-action: auto;
+  touch-action: none;
+  touch-action: pan-x;
+  touch-action: pan-left;
+  touch-action: pan-right;
+  touch-action: pan-y;
+  touch-action: pan-up;
+  touch-action: pan-down;
+  touch-action: pinch-zoom;
+  touch-action: manipulation; /* avoid double tap to zoom */
+}
+```
+
+
+### Text Clip + fixed background
+
+<figure class="fig-1-3">
+
+<div style="width: 100%; height: 100%; background: radial-gradient(red, blue) fixed; background-size: 100%; -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 3em;">Hallo Welt</div>
+
+```css
+background: radial-gradient(red, blue) fixed;
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+```
+
+</figure>
+
+
+### Caret color
+
+<input style="caret-color: red;">
+
+```css
+caret-color: red;
+caret-color: transparent;
+```
+
+</section>
+
+---
+
+<section>
+
+## Pointer Events
+* make an element "see-through" for any pointer events (click & touch)
+
+```css
+pointer-events: none;
+```
+
+</section>
+
+---
+
+<section>
+
+## Rendering Optimisation
+
+hints to browsers how an element is expected to change – can help fix performance problems
+```css
+will-change: transform;
+```
+
+Indicate that an element and its contents are independent of the rest of the document tree.
+Changes within an element with containment applied are not propagated outside of the contained element to the rest of the page, leading to performance benefits through fewer DOM re-renders.
+```css
+contain: strict;
+contain: size;
+contain: layout;
+contain: paint;
+contain: style;
+contain: content;
+```
+
+</section>
+
+---
+
+<section>
+
+## Scroll
+
+
+### Scroll Padding and Margin
+
+```css
+.scrollport {
+  padding: 1em;
+  scroll-padding: 1em;
+}
+
+.scrollport > * {
+  margin: 2em;
+  scroll-margin: 2em;
+}
+```
+
+
+### Overscroll behavior
 
 ```css
 html {
-  scroll-behavior: smooth;
+  overscroll-behavior: auto;
+  overscroll-behavior: none;
+  overscroll-behavior: contain;   /* eat up momentum when overscrolling */
+  overscroll-behavior-y: contain;
 }
 ```
 
-a11y-tip: Turn on smooth scroll only if user has no preference!
+### Overflow scrolling
+use momentum-based scrolling for a given element
 ```css
-@media (prefers-reduced-motion: no-preference) {
-  html {
-    scroll-behavior: smooth;
-  }
-}
+-webkit-overflow-scrolling: auto;
+-webkit-overflow-scrolling: touch;
 ```
+
 
 ### Customize Scrollbar
 
@@ -964,74 +1137,113 @@ body::-webkit-scrollbar {
 }
 ```
 
-### Scroll snap
+### Smooth scroll
+(e.g. when ID changes in URL)
 
 ```css
-.scroll-snap-x {
-  block-size: 100%; /* i.e. width: 100%; */
+html {
+  scroll-behavior: smooth;
+}
+```
 
-  display: grid;
-  grid-auto-flow: column;
-  grid-auto-columns: 100%;
+a11y-tip: Turn on smooth scroll only if user has no preference!
+```css
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+```
 
+### Perspective scroll effect
+
+```css
+.scrollport {
+  perspective: 10px;
+  perspective-origin: center center;
+}
+.scrollport, .scroll-section {
+  transform-style: preserve-3d;
+}
+.scroll-section > h2 {
+  transform: translatez(-5px);
+}
+```
+
+</section>
+
+---
+
+<section>
+
+## Scroll snap
+
+```css
+.scrollport {
   overscroll-behavior-x: contain;
+
   -ms-scroll-snap-type: x mandatory;
   scroll-snap-type: x mandatory;
+  scroll-snap-type: x proximity;
+  scroll-snap-type: y mandatory;
 
   overflow: auto hidden;
 }
 
 .scroll-item {
   scroll-snap-align: start;
+  scroll-snap-align: center:
+  scroll-snap-align: end;
+
+  scroll-snap-stop: always;
 }
 ```
 
-### Caret color
-
-<input style="caret-color: red;">
-
+Single Snap
 ```css
-caret-color: red;
-caret-color: transparent;
+.snap-x {
+  scroll-snap-type: x mandatory;
+}
+
+.snap-x > :nth-child(5) {
+  scroll-snap-align: center:
+}
 ```
 
-</section>
-
----
-
-<section>
-
-## Pointer Events
-* make an element "see-through" for any pointer events (click & touch)
+Fake rubberbanding
+`.overscroller .item .item .item .overscroller`
 
 ```css
-pointer-events: none;
+.scrollport {
+  scroll-snap-type: x mandatory;
+}
+
+.scrollport > :not(.overscroller) {
+  scroll-snap-align: start:
+}
 ```
 
-</section>
-
----
-
-<section>
-
-## Rendering Optimisation
-
+Start item
 ```css
-isolation: isolate;
+@keyframes scroll-start {
+  from { scroll-snap-align: center; }
+  to   { scroll-snap-align: unset;  }
+}
+
+.starting-scroll-snap-item {
+  animation: scroll-start 2ms;
+}
 ```
 
-```css
-will-change: transform;
-```
-
-```css
-contain: strict;
-contain: size;
-contain: layout;
-contain: paint;
-contain: style;
-contain: content;
-```
+Pull to refresh
+* tiny snap point at top of refresh `el`
+* delayed snap point on tiny `el`
+* scrollend checks scrollTop to be
+* set loading attribute
+* wait for `fetch()`
+* `scrollIntoView()` `&lt;main>`
+* ScrollTimeline for flare
+* snap-stop always on main for UX
 
 </section>
 
@@ -1081,6 +1293,16 @@ env(safe-area-inset-right)
 ```html
 <button class="action" ontouchstart="" style="-webkit-tap-highlight-color: rgba(0,0,0,0);">Testing Touch on iOS</button>
 ```
+
+### Font Smoothing
+
+```css
+.app {
+   -webkit-font-smoothing: antialiased;
+   -moz-osx-font-smoothing: grayscale;
+}
+```
+
 
 ### Keyboard Enter Key Title
 ```html

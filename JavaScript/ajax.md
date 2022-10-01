@@ -69,6 +69,35 @@ var request = new XMLHttpRequest();
 
 <section>
 
+## Load DocumentFragment via XHR
+
+```js
+const view = new DocumentFragment();
+const xhr = new XMLHttpRequest();
+
+xhr.onload = event => {
+   const newDocument = event.target.response;
+   const newView = newDocument.querySelector('.desired-view');
+
+   // Copy in the child nodes from the parent.
+   while (newView.firstChild) {
+      view.appendChild(newView.firstChild);
+   }
+
+   // Add the fragment to the page.
+   this.appendChild(view);
+};
+xhr.responseType = 'document';
+xhr.open('GET', `about.html`);
+xhr.send();
+```
+
+</section>
+
+---
+
+<section>
+
 ## Fetch API
 
 ```js
@@ -358,6 +387,41 @@ async function load_image(src) {
   })
 }
 ```
+
+</section>
+
+---
+
+<section>
+
+## Promise vs. async-await
+
+<figure>
+<div>
+
+Promise
+```js
+document.addEventListener("click", () => {
+  import("./module.js").then(({ default: printModule }) => {
+    printModule()
+  })
+})
+```
+
+</div>
+<div>
+
+Async Await
+```js
+document.addEventListener("click", async () => {
+  const { default: printModule } = await import("./module.js")
+  printModule()
+})
+```
+
+</div>
+</figure>
+
 
 </section>
 

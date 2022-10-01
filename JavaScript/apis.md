@@ -125,23 +125,87 @@ let data = JSON.parse(historyState)
 
 <section>
 
+## Drag and Drop API
+* [Drag and Drop Mobile Polyfill](https://github.com/timruffles/mobile-drag-drop)
+
+* `<img>` and `<a>` elements are draggable by default
+* other elements
+
+```html
+<div draggable="true"></div>
+```
+
+Events
+* `dragstart`
+* `drag`
+* `dragend`
+* 
+
+* `dragover`
+* `dragenter`
+* `dragleave`
+* `dragexit`
+* `drop`
+
+`event.dataTransfer.types`
+
+in `dragenter`, `dragover`
+```
+// needed for Firefox
+event.dataTransfer.dropEffect = 'copy'
+event.dataTransfer.dropEffect = 'link'
+```
+
+in `dragstart`
+```
+event.dataTransfer.effectAllowed = 'copyMove';
+
+// needed for Chrome
+event.dataTransfer.setData(type, data);
+event.dataTransfer.setData('Text', "Test");
+```
+
+in `drop`
+```
+event.dataTransfer.getData('Text')
+```
+
+```
+event.dataTransfer.setDragImage(dragIcon, -10, -10);
+```
+
+</section>
+
+---
+
+<section>
+
 ## Intersection Observer API
 
 Defining the observer
 ```js
-const myObserver = new IntersectionObserver(callback, options);
+const observer = new IntersectionObserver(callback, options);
+
+// Observing an element
+observer.observe(document.querySelector("section"));
+
+// Unobserving an element
+observer.unobserve(document.querySelector("section"));
 ```
 
 The callback function takes the two arguments `entries` and `observer`.
 ```js
-function callback(entries, observer) {
+new IntersectionObserver((entries, observer) => {
   entries.forEach((entry, i) => {
+    // perform intersection action
     if (entry.isIntersecting) {
-      // perform intersection action
-      observer.unobserve(entry.target);
+      observer.unobserve(entry.target)
     }
-  });
-}
+  })
+}, {
+  threshold: 0,
+  rootMargin: "0px 0px 300px 0px"
+})
 ```
 
 Options
@@ -153,20 +217,8 @@ const options = {
 };
 ```
 
-```js
-const options = {
-  threshold: 0,
-  rootMargin: "0px 0px 300px 0px"
-};
-```
-
-
-Observing an element
-```js
-const section = document.querySelector("section");
-
-observer.observe(section);
-```
+### Intersection Observer v2
+[Chrome: Intersection Observer v2](https://web.dev/intersectionobserver-v2/)
 
 </section>
 
@@ -179,8 +231,9 @@ observer.observe(section);
 ```js
 const resizeObserver = new ResizeObserver((entries) => {
   entries.forEach((entry) => {
-    let container = entry.target;
-    container.classList.toggle("small", entry.contentRect.width < 175);
+    console.log("resize observed on container", entry.target);
+    console.log("borderBoxSize", entry.borderBoxSize[0].inlineSize, entry.borderBoxSize[0].blockSize);
+    console.log("contentRect", entry.contentRect.width, entry.contentRect.height);
   });
 });
 
@@ -363,6 +416,19 @@ needle.animate({
 </div>
 </figure>
 
+
+### Composed animations
+```js
+element.animate(
+  [
+    { transform: "rotate(O) translate3D(10px, 0px, 100px)" },
+    { color: "#431236", offset: 0.3 },
+    { transform: "rotate(360deg) translateX(25px)"
+  ],
+  { duration: 3000, iterations: Infinity }
+);
+```
+
 </section>
 
 ---
@@ -493,7 +559,7 @@ Web Component Template
 </template>
 ```
 
-Registering the Web component
+### Registering the Web component
 ```js
 let template = document.getElementById("format-button");
 window.customElements.define(template.id, class extends HTMLElement {
@@ -537,6 +603,13 @@ Web Component Usage
 
 ### Life Cycle Methods
 
+Lifecycle Hooks in a web component:
+* `constructor()`
+* `connectedCallback()`
+* `disconnectedCallback()`
+* `attributeChangedCallback(name, oldValue, newValue)`
+* `static get observedAttributes()`
+
 ```js
 class RadioButton extends HTMLElement {
   // called when an instance of the element is created or upgraded
@@ -553,6 +626,9 @@ class RadioButton extends HTMLElement {
   // called when an attribute is added, removed, updated, or replaced
   attributeChangedCallback(attributeName, oldValue, newValue) {  }
 
+  // Invoked each time the custom element is moved to a new document.
+  adoptedCallback() {  }
+
   // observing the following attributes, i.e. attributeChangedCallback() called when attribute modified
   static get observedAttributes() {
     return ['name', 'data'];
@@ -561,6 +637,47 @@ class RadioButton extends HTMLElement {
 ```
 
 
+</section>
+
+---
+
+<section>
+
+## Fullscreen API
+
+```js
+const requestFullscreen = () => {
+   if (document.documentElement.requestFullscreen) document.documentElement.requestFullscreen();
+   else if (document.documentElement.webkitRequestFullscreen) document.documentElement.webkitRequestFullscreen();
+};
+
+const exitFullscreen = (document) => {
+   if (!is_fullscreen()) return;
+   if (document.exitFullscreen) document.exitFullscreen();
+   else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
+};
+
+const is_fullscreen = () => document.fullscreenElement || document.webkitFullscreenElement;
+
+// if supported, create event listener
+const fullscreen_support = document.documentElement.requestFullscreen || document.documentElement.webkitRequestFullscreen;
+const fullscreen_change = document.onfullscreenchange !== undefined ? 'fullscreenchange' : 'webkitfullscreenchange';
+if (fullscreen_support) {
+   document.documentElement.addEventListener(fullscreen_change, () => {
+      if (!is_fullscreen()) {
+         end_presentation_mode(window);
+      }
+   });
+}
+```
+
+```js
+if (fullscreen_support) requestFullscreen();
+```
+
+```js
+if (fullscreen_support) exitFullscreen(window.document);
+```
 </section>
 
 ---

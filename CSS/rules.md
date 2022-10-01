@@ -35,10 +35,12 @@ title: "@ Rules"
 ```css
 @font-face {
   font-family: Santiago;
-  src: local ("Santiago"), url("santiago.tt") format("truetype");
+  src: local("Santiago"), url("santiago.tt") format("truetype");
+  src: url("santiago.woff2"); /* supported everywhere */
   unicode-range: U+??,U+100-220;
   font-size: all;
   font-family: sans-serif;
+  font-display: swap;
 }
 ```
 
@@ -187,6 +189,30 @@ title: "@ Rules"
 }
 ```
 
+```css
+.card-container {
+  contain: inline-size / card-wrap;
+}
+
+@container card-wrap size(min-width: 850px) {
+  .card {
+    /* ... */
+  }
+}
+```
+
+
+### Container Query units
+
+```css
+1qw
+1qh
+1qi
+1qb
+1qmin
+1qmax
+```
+
 </section>
 
 ---
@@ -223,3 +249,32 @@ title: "@ Rules"
 
 </section>
 
+---
+
+<section>
+
+## `@scroll-timeline`
+
+```css
+@scroll-timeline scolling {
+  source: selector(body);
+  scroll-offsets: selector(#horizontal-move) start 1,
+              selector(#horizontal-move) end 1;
+  start: 0;
+  end: 100%;
+  time-range: 1s;
+}
+
+@keyframes move {
+  to {
+    transform: translateX(calc(-100% + 100vw));
+  }
+}
+
+#horizontal-move {
+  animation: 1s move forwards;
+  animation-timeline: scrolling;
+}
+```
+
+</section>

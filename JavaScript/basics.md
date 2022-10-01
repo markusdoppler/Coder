@@ -96,6 +96,8 @@ console.error("Error!");
 ```js
 console.group("group label")
 console.groupCollapsed("group label")
+...
+console.groupEnd()
 ```
 
 ```js
@@ -363,7 +365,11 @@ if (array.indexOf("apple") > -1) {
 }
 ```
 
-
+**last index of**
+```js
+const array = ["a", "b", "c", "a", "e"]
+array.lastIndexOf("a")
+```
 
 **splice**
 `myArray.splice(spliceIndex, spliceRangeOverwrite, newArrayItems ...);`

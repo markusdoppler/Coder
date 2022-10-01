@@ -1001,105 +1001,6 @@ section {
 ```
 
 
-### Smooth scroll
-(e.g. when ID changes in URL)
-
-```css
-html {
-  scroll-behavior: smooth;
-}
-```
-
-a11y-tip: Turn on smooth scroll only if user has no preference!
-```css
-@media (prefers-reduced-motion: no-preference) {
-  html {
-    scroll-behavior: smooth;
-  }
-}
-```
-
-### Customize Scrollbar
-
-```css
-html {
-  overscroll-behavior: auto;
-  overscroll-behavior: none;
-  overscroll-behavior: contain;
-
-  overscroll-behavior-y: contain;
-}
-```
-
-### Scroll Padding
-
-```css
-scroll-padding-top: var(—size-header);
-```
-
-
-### Customize Scrollbar
-
-Safari Scrollbar
-```css
-body::-webkit-scrollbar {
-  width: 16px;
-}
-
-body::-webkit-scrollbar-track {
-  background: #111;
-}
-
-body::-webkit-scrollbar-thumb {
-  background-color: #00082a;
-  border: solid #111;
-  border-width: 0 2px;
-}
-```
-
-### Hide scroll bar
-```css
-body::-webkit-scrollbar {
-  width: 0;
-  height: 0;
-  display: none;
-}
-
-.firefox-only {
-  scrollbar-width: none;
-}
-```
-
-### Overflow scrolling
-use momentum-based scrolling for a given element
-
-```css
--webkit-overflow-scrolling: auto;
--webkit-overflow-scrolling: touch;
-```
-
-### Scroll snap
-
-```css
-.scroll-snap-x {
-  block-size: 100%; /* i.e. width: 100%; */
-
-  display: grid;
-  grid-auto-flow: column;
-  grid-auto-columns: 100%;
-
-  overscroll-behavior-x: contain;
-  -ms-scroll-snap-type: x mandatory;
-  scroll-snap-type: x mandatory;
-
-  overflow: auto hidden;
-}
-
-.scroll-item {
-  scroll-snap-align: start;
-}
-```
-
 ### Text Clip + fixed background
 
 <figure class="fig-1-3">
@@ -1160,6 +1061,189 @@ contain: paint;
 contain: style;
 contain: content;
 ```
+
+</section>
+
+---
+
+<section>
+
+## Scroll
+
+
+### Scroll Padding and Margin
+
+```css
+.scrollport {
+  padding: 1em;
+  scroll-padding: 1em;
+}
+
+.scrollport > * {
+  margin: 2em;
+  scroll-margin: 2em;
+}
+```
+
+
+### Overscroll behavior
+
+```css
+html {
+  overscroll-behavior: auto;
+  overscroll-behavior: none;
+  overscroll-behavior: contain;   /* eat up momentum when overscrolling */
+  overscroll-behavior-y: contain;
+}
+```
+
+### Overflow scrolling
+use momentum-based scrolling for a given element
+```css
+-webkit-overflow-scrolling: auto;
+-webkit-overflow-scrolling: touch;
+```
+
+
+### Customize Scrollbar
+
+Safari Scrollbar
+```css
+body::-webkit-scrollbar {
+  width: 16px;
+}
+
+body::-webkit-scrollbar-track {
+  background: #111;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #00082a;
+  border: solid #111;
+  border-width: 0 2px;
+}
+```
+
+### Hide scroll bar
+```css
+body::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  display: none;
+}
+
+.firefox-only {
+  scrollbar-width: none;
+}
+```
+
+### Smooth scroll
+(e.g. when ID changes in URL)
+
+```css
+html {
+  scroll-behavior: smooth;
+}
+```
+
+a11y-tip: Turn on smooth scroll only if user has no preference!
+```css
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+```
+
+### Perspective scroll effect
+
+```css
+.scrollport {
+  perspective: 10px;
+  perspective-origin: center center;
+}
+.scrollport, .scroll-section {
+  transform-style: preserve-3d;
+}
+.scroll-section > h2 {
+  transform: translatez(-5px);
+}
+```
+
+</section>
+
+---
+
+<section>
+
+## Scroll snap
+
+```css
+.scrollport {
+  overscroll-behavior-x: contain;
+
+  -ms-scroll-snap-type: x mandatory;
+  scroll-snap-type: x mandatory;
+  scroll-snap-type: x proximity;
+  scroll-snap-type: y mandatory;
+
+  overflow: auto hidden;
+}
+
+.scroll-item {
+  scroll-snap-align: start;
+  scroll-snap-align: center:
+  scroll-snap-align: end;
+
+  scroll-snap-stop: always;
+}
+```
+
+Single Snap
+```css
+.snap-x {
+  scroll-snap-type: x mandatory;
+}
+
+.snap-x > :nth-child(5) {
+  scroll-snap-align: center:
+}
+```
+
+Fake rubberbanding
+`.overscroller .item .item .item .overscroller`
+
+```css
+.scrollport {
+  scroll-snap-type: x mandatory;
+}
+
+.scrollport > :not(.overscroller) {
+  scroll-snap-align: start:
+}
+```
+
+Start item
+```css
+@keyframes scroll-start {
+  from { scroll-snap-align: center; }
+  to   { scroll-snap-align: unset;  }
+}
+
+.starting-scroll-snap-item {
+  animation: scroll-start 2ms;
+}
+```
+
+Pull to refresh
+* tiny snap point at top of refresh `el`
+* delayed snap point on tiny `el`
+* scrollend checks scrollTop to be
+* set loading attribute
+* wait for `fetch()`
+* `scrollIntoView()` `&lt;main>`
+* ScrollTimeline for flare
+* snap-stop always on main for UX
 
 </section>
 

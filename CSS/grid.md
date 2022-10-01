@@ -48,13 +48,14 @@ Terms
     [row2-start] "footer footer footer" 25px [row2-end]
     / auto 50px auto;
 
-  grid-column-gap: 10px;
-  grid-row-gap: 15px;
+  grid-column-gap: 10px; /* < Safari 12 */
+  grid-row-gap: 15px;    /* < Safari 12 */
   column-gap:
   row-gap:
+  gap:
 
 
-  /*child item alignment*/
+  /* child item alignment */
   justify-items: center;
   align-items: center;
 }
@@ -71,7 +72,7 @@ Terms
 
     /* shorthand */
     grid-column: 2/4;     /* from column line 2 to 4 */
-    grid-row: 2/3;            /* from row line 2 to 3 */
+    grid-row: 2/3;        /* from row line 2 to 3 */
 
     grid-column: 3 / span 2;
     grid-row: third-line / 4;
@@ -82,7 +83,6 @@ Terms
     /* name */
     grid-area: header-name;
 
-
     justify-self: start | end | center | stretch;
     align-self: start | end | center | stretch;
     place-self: center;
@@ -90,6 +90,22 @@ Terms
 ```
 
 `grid-column` and `grid-row`
+
+</section>
+
+---
+
+<section>
+
+## Automatic columns
+
+```css
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 360px), 1fr));
+  gap: 4rem;
+}
+```
 
 </section>
 
@@ -119,7 +135,6 @@ gap: 1em;
 <section>
 
 ## Grid Templates
-
 
 ### Repeat
 ```css
@@ -171,7 +186,7 @@ grid-template-columns: minmax(200px, 400px);
 
 <section>
 
-## Simple Responsive Example
+## Responsive Example with Breakpoints
 
 ```css
 .container {

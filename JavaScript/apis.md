@@ -184,19 +184,28 @@ event.dataTransfer.setDragImage(dragIcon, -10, -10);
 
 Defining the observer
 ```js
-const myObserver = new IntersectionObserver(callback, options);
+const observer = new IntersectionObserver(callback, options);
+
+// Observing an element
+observer.observe(document.querySelector("section"));
+
+// Unobserving an element
+observer.unobserve(document.querySelector("section"));
 ```
 
 The callback function takes the two arguments `entries` and `observer`.
 ```js
-function callback(entries, observer) {
+new IntersectionObserver((entries, observer) => {
   entries.forEach((entry, i) => {
+    // perform intersection action
     if (entry.isIntersecting) {
-      // perform intersection action
-      observer.unobserve(entry.target);
+      observer.unobserve(entry.target)
     }
-  });
-}
+  })
+}, {
+  threshold: 0,
+  rootMargin: "0px 0px 300px 0px"
+})
 ```
 
 Options
@@ -206,21 +215,6 @@ const options = {
   threshold: 0,
   rootMargin: "-150px"
 };
-```
-
-```js
-const options = {
-  threshold: 0,
-  rootMargin: "0px 0px 300px 0px"
-};
-```
-
-
-Observing an element
-```js
-const section = document.querySelector("section");
-
-observer.observe(section);
 ```
 
 ### Intersection Observer v2
@@ -421,6 +415,19 @@ needle.animate({
 
 </div>
 </figure>
+
+
+### Composed animations
+```js
+element.animate(
+  [
+    { transform: "rotate(O) translate3D(10px, 0px, 100px)" },
+    { color: "#431236", offset: 0.3 },
+    { transform: "rotate(360deg) translateX(25px)"
+  ],
+  { duration: 3000, iterations: Infinity }
+);
+```
 
 </section>
 

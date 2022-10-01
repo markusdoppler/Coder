@@ -327,3 +327,24 @@ input:required:valid + .form_hint::before {
 </figure>
 
 </section>
+
+
+---
+
+<section>
+
+## `<input>` autocomplete datalist
+
+```html
+<form>
+  <input type="text" placeholder="Which username??" list="usernames">
+  <datalist id="usernames">
+    <option value="Jack">
+    <option value="Sarah">
+    <option value="James">
+    <option value="Sasha">
+  <datalist>
+</form>
+```
+
+</section>

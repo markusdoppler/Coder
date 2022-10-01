@@ -208,6 +208,15 @@ Example
 
 </div>
 
+```css
+.modal {
+  transition: 1s;
+  offset-path: path("M 250,100 S -300,500 -700,-200");
+}
+.modal.closed {
+  offset-distance: 100%;
+}
+```
 
 </section>
 
@@ -215,7 +224,7 @@ Example
 
 <section>
 
-## Web Animation API
+## Web Animations API
 
 ```js
 element.animate(

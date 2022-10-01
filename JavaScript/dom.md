@@ -227,6 +227,7 @@ window.scrollBy({ top: 100, behavior: "smooth" })
 element.scrollIntoView(true) // align to top
 element.scrollIntoView(false) // align to bottom
 element.scrollIntoView({ block: "start", behavior: "smooth" })
+element.scrollIntoView({ inline: "center", behavior: "smooth" })
 ```
 
 </section>
@@ -415,6 +416,53 @@ await browser.windows.getAll()
 
 <section>
 
+## `DOMPoint` and `DOMMatrix`
+
+```js
+const point = new DOMPoint(10, 20)
+const matrix = new DOMMatrix("translate(10px, 15px)").rotate(30)
+
+matrix.transformPoint(point)
+```
+
+
+**Draw a star mask**
+
+```js
+const createStar = ({ points = 5, x = 0, y = 0, size = 1 }) => {
+  Array.from({ length: points * 2 }, (_, i) => 
+    new DOMMatrix()
+      .translate(x, y)
+      .scale(size)
+      .rotate((i / points) * 360)
+      .translate(0, i % 2 ? -1 : -2)
+      .transformPoint({ x: 0, y: 0 })
+  )
+}
+
+function toCSSPolygon(points) {
+  const pointsStr = points.map(point => `${point.x}px ${point.y}px`).join(', ')
+  return `polygon(${pointsStr})`
+}
+
+const rect    = el.getBoundingClientRect() ;
+const x       = rect.width / 2:
+const y       = rect.height / 2;
+const endSize = Math.sqrt(x**2 + y**2);
+el.animate({
+  clipPath: [
+    toCSSPolygon(createStar({ x, y, size: 0 })),
+    toCSSPolygon(createStar({ x, y, size: endSize })),
+  ]
+}, { duration: 500, easing: "ease-in" });
+```
+
+</section>
+
+---
+
+<section>
+
 ## Feature detection
 
 ```js
@@ -422,6 +470,13 @@ if (browser.contextMenus) {
   browser.contextMenus.create({ title: "Options...", ... })
 }
 ```
+
+```js
+if ("IntersectionObserver" in window) {
+  // ...
+}
+```
+
 
 </section>
 

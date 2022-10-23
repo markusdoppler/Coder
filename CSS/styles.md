@@ -370,6 +370,21 @@ word-spacing: 0.25em;
    gap: 4rem;
    max-width: 100ch;
 }
+
+.column-layout {
+    column-count: 2;
+    columns: 2 30ch;
+    column-rule: 2px dotted orange;
+    column-gap: 1em;
+}
+.column-child {
+    column-span: all;
+    column-fill: auto;
+    column-fill: balance;
+    break-inside: avoid;
+    break-inside: avoid-column;
+    break-inside: avoid-page;
+}
 ```
 
 
@@ -911,6 +926,7 @@ Blend mode categories
 
 ```css
 clip-path: inset(0 0 50% 0);
+clip-path: inset(0 -100px); /* 0 top+bottom; -100px left+right */
 ```
 
 </figure>

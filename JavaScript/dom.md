@@ -328,6 +328,58 @@ window.addEventListener("load", () => alert("loaded DOM"));
 
 For details see [Event Listeners](events.md).
 
+**Mouse**: `click`, `contextmenu`, `dblclick`, `mousedown`, `mouseenter`, `mouseleave`, `mousemove`, `mouseover`, `mouseout`, `mouseup`
+`mousewheel`, `wheel`, 
+
+**Touch**: `touchstart`, `touchmove`, `touchcancel`, `touchend`
+
+**Pointer**: `pointerdown`, `pointermove`, `pointerover`, `pointerout`, `pointerenter`, `pointerleave`, `pointerup`
+
+**Gesture**: `gesturestart`, `gesturechange`, `gestureend`
+
+**Keyboard**: `keydown`, `keypress`, `keyup`
+
+**Device**: `devicemotion`, `deviceorientation`, `orientationchange`
+
+**Frame**: `load`, `abort`, `error`, `beforeunload`, `unload`, 
+`pageshow`, `pagehide`, 
+`hashchange`, 
+`resize`, 
+`scroll`
+
+**Form**: `change`, `input`, `select`, 
+`focus`, `focusin`, `focusout`, `blur`, 
+`invalid`, `reset`, `search`, `submit`
+
+**Drag**: `drag`, `dragstart`, `dragend`, `dragenter`, `dragleave`, 
+`drop`
+
+**Animation**: `animationstart`, `animationend`, `animationiteration`
+
+**Animation**: `animationstart`, `animationend`, `animationiteration`,
+`transitionend`
+
+**Media**: `abort`, `error`, `waiting`, `canplay`, 
+`durationchange`, 
+`loadstart`, `loadedmetadata`, `canplaythrough`, `loadeddata`, 
+`play`, `pause`, `playing`, `ended`, 
+`progress`, 
+`timeupdate`, 
+`ratechange`, 
+`seeked`, 
+`seeking`, 
+`stalled`, 
+`suspend`, 
+`volumechange`
+
+**Misc**: 
+`message`, 
+`online`, `offline`, 
+`popstate`, 
+`show`, 
+`storage`, 
+`toggle`, 
+
 </section>
 
 ---

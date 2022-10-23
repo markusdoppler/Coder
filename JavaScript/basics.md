@@ -309,160 +309,144 @@ var pathArray = window.location.pathname.split('/');
 ## Arrays
 
 ```js
-var myArray = [5, 10, 15];
-```
+let numbers = [5, 10, 15, 1, 2]
+const abc = ["a", "b", "c", "a", "e"]
 
-Get array element at index
-```js
-myArray[2]; // 15
-```
+Array.from({ length: 5 }) // [0,1,2,3,4]
+Array.from(Array(5)) // [0,1,2,3,4]
+Array.from({ length: 5 }, (element, index) => index + 1) // [1,2,3,4,5]
+// array from HTMLCollection
+Array.from(document.getElementsByClassName('asyncImage'))
 
-Get array length
-```js
-myArray.length
-```
+numbers.fill(1) // [1,1,1,1,1]
 
+// Get array length
+numbers.length // 3
 
+// Get array element at index
+numbers[2]    // 15
+numbers.at(1) // 10
 
-**add**
-add a new element to an array (at the end)
-```js
-myArray.push(7);
-```
+// includes
+numbers.includes(2)
 
-add a new element to an array (at the beginning)
-```js
-myArray.unshift(2);
-```
-
-
-**delete**
-delete element at the end
-```js
-myArray.pop();
-```
-
-delete element at the beginning
-```js
-myArray.shift();
-```
-
-delete element at index
-```js
-delete myArray[0]; // myArray[0] is now undefined!
-```
-
-**index of**
-
-```js
+// index of
 let list = [0,5,10,15]
 const index = list.indexOf(5)
-
 // array contains object
-const array = ["apple", "pear", "orange"];
-if (array.indexOf("apple") > -1) {
-  console.log("array contains apple");
-}
+const fruits = ["apple", "pear", "orange"]
+if (fruits.indexOf("apple") > -1) console.log("fruits contains apple")
+// last index of
+abc.lastIndexOf("a")
+
+// ADD
+// add a new element to an array (at the end)
+numbers.push(7)
+// add a new element to an array (at the beginning)
+numbers.unshift(2)
+
+// concatenate
+let numbers1 = [1,2];
+let numbers2 = [3,4];
+let numbers = numbers1.concat(numbers2) // [1,2,3,4]
+
+// DELETE
+// delete element at the end
+numbers.pop()
+
+// delete element at the beginning
+numbers.shift()
+
+// delete element at index
+delete numbers[0] // numbers[0] = undefined
+
+// array to String
+numbers.toString()
+numbers.join(" - ")
+
+// sort array
+numbers.reverse()
+numbers.sort()
+numbers.sort((a, b) => a - b)
 ```
 
-**last index of**
+### `splice`and `slice`
+
+`numbers.splice(spliceIndex, spliceRangeOverwrite, newArrayItems ...);`
 ```js
-const array = ["a", "b", "c", "a", "e"]
-array.lastIndexOf("a")
+numbers.splice(3,0, 20,25); // adds 20 and 25 to numbers at index 3
+numbers.splice(0,2);        // removes the first two elements
+numbers.splice(2,0, "0", "1");
 ```
 
-**splice**
-`myArray.splice(spliceIndex, spliceRangeOverwrite, newArrayItems ...);`
+`numbers.slice(sliceBeginIndex, sliceEndIndex=array.length);`
 ```js
-myArray.splice(3,0, 20,25); // adds 20 and 25 to myArray at index 3
-myArray.splice(0,2);        // removes the first two elements
+numbers.slice(3);     // subarray from index 3 upwards
+numbers.slice(0,2);   // array with the first two elements
+numbers.slice(1,4)
 ```
 
-**slice**
-`myArray.slice(sliceBeginIndex, sliceEndIndex=array.length);`
+### Array methods
 ```js
-myArray.slice(3);     // subarray from index 3 upwards
-myArray.slice(0,2);   // array with the first two elements
-```
-
-
-**concatenate**
-```js
-let myArray1 = [1,2];
-let myArray2 = [3,4];
-let myArray = myArray1.concat(myArray2);
-// [1,2,3,4]
-```
-
-
-
-
-**for each**
-```js
-let items = [1,5,10,17]
-let sum = 0
-items.forEach(i => {
-  sum += i
-})
-```
-
-
-### Array methods: map, filter, reduce
-
-**map**
-```js
-var numbers = [4, 9, 16, 25];
-
-numbers.map(Math.sqrt);
-
-numbers.map(item => item*2);
-
-// retrieve array of ages from array of objects
+const numbers = [4, -3, 9, 16, 25]
 const persons = [
-  {name: "John", age: 72},
-  {name: "Sally", age: 35},
-  {name: "Lisa", age: 15},
-];
-persons.map(person => person.age);
+  { name: "John", age: 72 },
+  { name: "Sally", age: 35 },
+  { name: "Lisa", age: 15 },
+]
 
-// all parameters
+// for each
+numbers.forEach((item, i) => console.log(item, i))
+numbers.find(item => item > 2)
+numbers.every(item => item > 0)
+numbers.findIndex(item => item === 2)
+
+// map
+numbers.map(Math.sqrt)
+numbers.map(item => item*2)
+persons.map(person => person.age)
+// general
 array.map((currentItem, index, arrayObject) => {}, thisBoundValue)
-```
 
-**filter**
-```js
-const numbers = [1, -1, 2, 3];
-
-const positiveNumbers = numbers.filter(function(value, index, array) {
-  return value >= 0;
-});
-
-const positiveNumbersWithES6 = numbers.filter(value => value >= 0);
-
-// all parameters
+// filter
+numbers.filter(value => value >= 0) // positive numbers
+numbers.filter((value, index, array) => value >= 0)
+// general
 array.filter((elem, i, rep) => {})
+
+// reduce
+numbers.reduce((sum, number) => sum + number, 0)
 ```
 
-**reduce**
+</section>
+
+---
+
+<section>
+
+## Dates
+
 ```js
-const numbers = [1,2,3,4,5,6,7];
+let date = new Date() // current date and time
 
-const factorialOfEight = numbers.reduce((res, value) => res * value, 8);
-```
+new Date(year, month, day, hours, minutes, seconds, milliseconds)
+new Date(year, month)
+new Date(milliseconds)
+new Date("2017-06-23")
+new Date("2017")
+new Date("2017-06-23T12:00:00-09:45")
+new Date("June 23 2017")
+new Date("Jun 23 2017 07:45:00 GMT+0530")
 
-```js
-let items = [1,3,5,7,9]
-const sumResult = items.reduce((sum, number) => sum + number, 0)
-```
-
-
-
-
-
-### array from HTMLCollection
-```js
-const objects = document.getElementsByClassName('asyncImage')
-objectsArray = Array.from(objects)
+date.getDay()          // 1-31
+date.getDay()          // 0-6
+date.getFullYear()     // (yyyy)
+date.getHours()        // 0-23
+date.getMilliseconds() // 0-999
+date.getMinutes()      // 0-59
+date.getMonth()        // 0-11
+date.getSeconds()      // 0-59
+date.getTime()         // milliseconds since 1970
 ```
 
 </section>
@@ -594,7 +578,8 @@ var school = {
     name: 'The Starter League',
     location: 'Merchandise Mart',
     students: 120,
-    teachers: ['Jeff', 'Raghu', 'Carolyn', 'Shay']
+    teachers: ['Jeff', 'Raghu', 'Carolyn', 'Shay'],
+    calculate: (input) => input**2
 };
 school['name'];
 school.name;
@@ -848,6 +833,47 @@ console.log(firstName, age) // "Poppy", 45
 // defaults
 const { len: length = 0 } = {};
 console.log(length) // 0
+```
+
+</section>
+
+---
+
+<section>
+
+## JSON
+
+```js
+JSON.parse(jsonString)
+JSON.stringify(object)
+```
+
+</section>
+
+---
+
+<section>
+
+## Errors
+
+```js
+try {
+  dangerousCall()
+} catch(error) {
+  console.log(error)
+}
+```
+
+```js
+try {
+  if (x == "") throw "empty"
+  if (isNan(x)) throw "not a number"
+  x = Number(x)
+} catch(error) {
+  console.error(error)
+} finally {
+  console.log("done")
+}
 ```
 
 </section>

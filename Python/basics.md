@@ -585,13 +585,13 @@ my_dict.values()
 
 ### Iterate dictionary
 ```python
-for key, value in rw.iteritems():
+for key, value in rw.items():
   print key, value
 
-rw.iteritems()
+rw.items()
 # <dictionary-itemiterator at 0x7f20e15b8cb0>
 
-list(rw.iteritems())
+list(rw.items())
 ```
 
 

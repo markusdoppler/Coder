@@ -163,6 +163,16 @@ title: "@ Rules"
 @media (hover: none), (hover: on-demand) { /* suppress :hover-based menus */ }
 ```
 
+PWA
+```css
+/* It targets only the app used within the browser */
+@media (display-mode: browser) {  }
+/* It targets only the app used with a system icon in standalone mode */
+@media (display-mode: standalone) {  }
+/* It targets only the app used with a system icon in all modes */
+@media (display-mode: standalone), (display-mode: fullscreen), (display-mode: minimal-ui) {  }
+```
+
 </section>
 
 ---

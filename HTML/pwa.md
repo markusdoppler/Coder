@@ -92,6 +92,10 @@ translucent for dark background-color
 <meta rel="viewport" content="initial-scale=1, viewport-fit=cover, user-scalable=no">
 ```
 
+### Viewport enters unsafe area
+`viewport-fit=cover`
++ CSS `safe-area-inset-*` to add safe-area padding etc.
+
 </section>
 
 ---

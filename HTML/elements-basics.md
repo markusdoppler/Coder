@@ -693,6 +693,15 @@ the perfect format for a long list of choices
 ```
 
 
+### Menu
+
+```html
+<menu>
+   <button>A</button>
+   <button>B</button>
+   <button type="submit">Send</button>
+</menu>
+```
 
 ### Submit
 #### Submit Input

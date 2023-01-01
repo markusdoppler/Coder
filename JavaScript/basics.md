@@ -48,6 +48,20 @@ Objects
 
 <section>
 
+## Strict mode
+
+```js
+"use strict"
+
+// better error checking in this scope
+```
+
+</section>
+
+---
+
+<section>
+
 ## Statements
 JavaScript is a set of statements, executed by the browser in the sequence they are written
 
@@ -232,15 +246,37 @@ parseFloat(e.offsetX).toFixed(2)
 ## Strings
 
 ```js
-var myString = "Hello World".
+let helloString = "Hello World"
+const sentence = "The quick brown fox jumps over the lazy dog."
+
+// CREATE
+// template string
+const string = `My name is ${firstName}`
+
+// Substring
+string.substring(indexStart, indexEnd)
+string.substring(1) // "ello World"
+string.substring(0,4)
+
+string.substr(start, length)
+string.substr(0, 4)
+
+// String contains/includes Substring
+sentence.includes("dog")
+
+// Split
+const pathArray = sentence.split(' ')
+
+// Find and replace with RegEx
+const otherSentence = sentence.replace(/the/g, "a")
+sentence.replaceAll("i", "ii")
 ```
 
 
-### Template String
+### Regular Expression
 
-```js
-const string = `My name is ${firstName}`;
-```
+* [Mozilla: RegEx](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp)
+* [Mozilla: Regular Expressions Guide](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions)
 
 
 ### Tagged Template
@@ -260,44 +296,6 @@ function bold(strings, ...values) {
     return `${finalString}<strong>${value}</strong>${strings[index + 1]}`
   }, strings[0])
 }
-```
-
-
-### Substring
-```js
-string.substring(indexStart[, indexEnd])
-string.substr(start, length)
-```
-
-```js
-const string = "hello"
-string.substring(1) // ello
-```
-
-
-### String contains/includes Substring
-```js
-const sentence = "The quick brown fox jumps over the lazy dog."
-const word = "dog"
-sentence.includes(word)
-```
-
-
-
-### Find and replace with RegEx
-* [Mozilla: RegExp](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp)
-* [Mozilla: Regular Expressions Guide](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions)
-
-```js
-let lunch = "Pizzapie";
-lunch = lunch.replace(/Pizza/g, "Broccoli");
-```
-
-
-## Split
-
-```js
-var pathArray = window.location.pathname.split('/');
 ```
 
 </section>
@@ -399,6 +397,7 @@ const persons = [
 numbers.forEach((item, i) => console.log(item, i))
 numbers.find(item => item > 2)
 numbers.every(item => item > 0)
+numbers.some(item => item > 0)
 numbers.findIndex(item => item === 2)
 
 // map
@@ -416,6 +415,18 @@ array.filter((elem, i, rep) => {})
 
 // reduce
 numbers.reduce((sum, number) => sum + number, 0)
+```
+
+```js
+const array = [1, 2, 3, [40, 50]]
+
+// flatten array
+array.flat()
+array.flat(2)
+array.flat(Infinity)
+
+// flatMap => more performant than .map().flat()
+array.flatMap((currentValue, index, array) => { /* … */ } )
 ```
 
 </section>
@@ -456,12 +467,22 @@ date.getTime()         // milliseconds since 1970
 <section>
 
 ## Functions
+
 ```js
 function sayHello(name) {
   return('Hello ' + name);
 };
 sayHello('Markus');
 ```
+
+### Arguments
+```js
+function myFunction(title, name, ...) {
+  console.log(arguments[1]) // "Markus"
+};
+myFunction("MSc", 'Markus', 15);
+```
+
 
 ### Functional programming
 ```js
@@ -536,8 +557,19 @@ const id1 = generator.next()
 const id2 = generator.next()
 ```
 
+## `bind`, `call`, `apply`
+```js
+let a = { name: "A" }
+let b = { name: "B" }
+function speak(arg) { console.log(this.name, arg)  }
 
+speak.bind(b)()
+speak.bind(b)("argument")
+speak.bind(b, "argument").call()
+speak.bind(b).call("argument", ...)
 
+speak.apply(a)
+```
 
 </section>
 
@@ -569,10 +601,13 @@ If stack is empty, task pending in the task queue is pushed onto the stack.
 
 <section>
 
-## Objects
-objects = collection of key and value pairs
+## Objects | Object Literal
 
-keys are also known as properties
+* objects = collection of key and value pairs
+* keys = properties
+* values
+
+
 ```js
 var school = {
     name: 'The Starter League',
@@ -580,50 +615,70 @@ var school = {
     students: 120,
     teachers: ['Jeff', 'Raghu', 'Carolyn', 'Shay'],
     calculate: (input) => input**2
-};
-school['name'];
-school.name;
-```
-
-Create object via `new`
-```js
-wordData = new Object();
-wordData.wordType = 4;
-```
-
-
-get all property keys and values (as arrays)
-```js
-Object.keys(myObject);
-Object.values(myObject);
-```
-
-Check whether property is defined
-```js
-const person = { name: "Max", age: 25 }
-
-if (person.name) {  }
-if ("name" in person) {  }
-```
-
-
-
-
-
-### Object Literal
-```js
-const book = {
+}
+const object = {
   title: "The Old Man and the Sea",
   author: "Earnest Hemingway",
   year: "1952",
   getSummary: function() {
     return `${this.title} was written by ${this.author} in ${this.year}`;
   }
-};
+}
+const person = { name: "Max", age: 25 }
 
-console.log(book.title);
+// Create object via `new`
+wordData = new Object()
+
+// get all property keys and values (as arrays)
+Object.keys(myObject)
+Object.values(myObject)
+
+// check if key exists
+if (person.name)                  {  }
+if ("key" in object)              {  }
+if (object.hasOwnProperty('key')) {  }
+
+// access property
+school['name']
+school.name
+
+// set property
+school.name = "High School"
+school.age = 350            // new property
+
+// 
+Object.defineProperty(object, "name", {
+  writable: false,
+  value: undefined,
+  configurable: false,
+  enumerable: false,
+  get()         { return this.name },
+  set(newValue) { this.name = newValue }
+})
+
+// 2-way data binding
+const inputElement = document.querySelector("input")
+const inputObject  = {}
+
+Object.defineProperty(inputObject, "name", {
+  get() {
+    return inputElement.value
+  },
+  set(newValue) {
+    inputElement.value = newValue
+  }
+})
+
 ```
 
+
+</section>
+
+---
+
+<section>
+
+## Objects | Function definition
 
 ### Constructor
 Example 1
@@ -724,8 +779,13 @@ const book2 = Object.create(bookProtos, {
 });
 ```
 
+</section>
 
-### Classes (ES6+)
+---
+
+<section>
+
+## Classes (ES6+)
 ```js
 class Book {
   constructor(title, author, year) {

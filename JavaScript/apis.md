@@ -954,6 +954,28 @@ window.addEventListener("devicemotion", (event) => {
 
 <section>
 
+## Screen Capture API
+
+```js
+const options = {
+  video: {
+    cursor: "always", // show the cursor
+  },
+  audio: false, // don't record audio
+};
+videoElement.srcObject = await navigator.mediaDevices.getDisplayMedia({
+  video: {
+    cursor: "always",
+    audio: false,
+  });
+```
+
+</section>
+
+---
+
+<section>
+
 ## Gamepad API
 
 ```js

@@ -70,6 +70,10 @@ const childHTMLString = "<img src='bird.png' alt='bird'>";
 parentElement.insertAdjacentHTML("beforeend", childHTMLString);
 ```
 
+```js
+element.replaceWith(node)
+```
+
 textContent
 ```js
 document.getElementById("gamebutton").textContent = "Restart Game!";
@@ -160,6 +164,11 @@ document.styleSheets[0].cssRules[0].appendRule(rule)
 
 ```js
 element.parentNode
+```
+
+```js
+element.closest('button:not(.user)')
+element.closest('dialog')
 ```
 
 Cloning a node (pass parameter `true` for deep copy)

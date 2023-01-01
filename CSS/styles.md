@@ -82,6 +82,12 @@ hsl(60, 100%, 50%)
 }
 ```
 
+### Browser color in light and dark mode
+```css
+background-color: Canvas;
+color: CanvasText;
+```
+
 
 </section>
 
@@ -800,6 +806,34 @@ transform-style: preserve-3d;
 
 <section>
 
+## Images
+
+### Preserve pixel contrast (e.g. pixel art)
+
+```css
+image-rendering: pixelated;
+```
+
+</section>
+
+---
+
+<section>
+
+## Mask
+
+```css
+mask: url(#svg-id);
+mask: url(mask-image.png);
+mask: url(mask-image1.png) add, url(mask-image2.png);
+```
+
+</section>
+
+---
+
+<section>
+
 ## Filter
 
 * Brightness
@@ -988,6 +1022,20 @@ cursor: text;
 
 <section>
 
+## Resize elements
+
+```css
+resize: both;
+resize: vertical;
+resize: horizontal;
+```
+
+</section>
+
+---
+
+<section>
+
 ## User Experience (Zoom, scroll etc.)
 
 ### User select
@@ -1039,6 +1087,13 @@ background: radial-gradient(red, blue) fixed;
 ```css
 caret-color: red;
 caret-color: transparent;
+```
+
+### Color scheme
+
+```css
+color-scheme: light;
+color-scheme: dark;
 ```
 
 </section>

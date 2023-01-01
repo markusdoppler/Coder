@@ -276,6 +276,8 @@ Chained Promises
 * `promise.then()`
 * `promise.catch()`
 * `promise.finally()`
+* `promise.any()`
+* `promise.allSettled()`
 
 ### Promise example via `setTimeout()`
 ```js

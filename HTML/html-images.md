@@ -192,7 +192,7 @@ Lazy Loading of image defined using `<picture>`
 </picture>
 ```
 
-<section>
+</section>
 
 ---
 

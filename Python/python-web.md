@@ -7,13 +7,16 @@ title: Python Web Frameworks
 <section>
 
 ## Flask
+
+[Flask](web-flask)
+
 + Jinja template engine
 + Werkzeug WSGI toolkit
+
 
 ```bash
 
 ```
-
 
 </section>
 

@@ -267,7 +267,17 @@ if a != "a" and b != "b":
     # do
 ```
 
-### Inline if-statement
+## Ternary operation
+= inline `if`-statement
+
+```python
+a = 5
+b = 2
+
+x = y if (a > b) else z
+# x == y
+```
+
 ```python
 binning = [5,10,20] if args.small else ([5, 10, 15, 20] if args.medium else [5, 10, 15, 20, 25, 30])
 ```
@@ -436,6 +446,11 @@ format()
 ```
 
 ```python
+name = "world"
+greeting = f"Hello {name}!"
+```
+
+```python
 pi = 3.14159
 
 print("pi is {}".format(pi))
@@ -527,6 +542,17 @@ l[n/2:]
 
 n/2
 # 2.5
+```
+
+### list comprehension
+
+```py
+[ print(n) for n in [1,2,3,4,5] ]
+
+lambda n: is_prime(n)
+
+sum = lambda x, y: x + y
+sum(2, 3)
 ```
 
 </section>
@@ -953,6 +979,64 @@ class myException(Exception):
 ```python
 print ""		# Python 2
 print("")		# Python 3
+```
+
+</section>
+
+---
+
+<section>
+
+## Functional Programming functions
+
+**Functional programming**
+* recursion
+* pure functions (no side effects, i.e. data manipulation outside the return statement)
+* higher order functions – function can be used as vars
+
+```py
+list(map(lambda x: x**2, [1, 2, 3, 4, 5]))
+
+list(filter(lambda x: x> 3, [1,2,3,4,5]))
+
+list(zip([‘a’, ‘b’, ‘c’], (1, 2, 3)))
+
+enumerate(["a", "b", "c"])
+
+sorted([4,3,1])
+
+any([ 0, False , 1])
+
+all([True, True, 1, 0])
+
+import functools
+reduce(lambda x, y: x+y, [1, 2, 3, 4, 5])
+partial(lambda x, y: x + y, y=1)
+
+import itertools
+list(accumulate([1,2,3,4, 5], lambda x, y : x+y))
+list(combinations([1, 2, 3], 2))
+list(permutations([1, 2, 3], 2))
+```
+
+
+
+```py
+numbers = [5, 10, 17]
+numbers = list(filter(lambda n: is_prime(n), numbers))
+[print(n) for n in numbers]
+```
+
+```py
+import functools
+import pandas as pd
+import os
+
+def parse_dir(path_to_dir):
+r, _, files = os.walk(path_to_dir).__next__()
+excel_list = filter(lambda filename: True if filename.endsWith(„.xlsx“) else False, files)
+df_list = map(lambda filename: pd.read_excel(os.path.join(r, filename), excel_list)
+reduce(pd.DataFrame.append, df_list)
 ```
 
 </section>

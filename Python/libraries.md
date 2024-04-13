@@ -88,6 +88,22 @@ env/bin/activate
 deactivate	# leave virtual environment
 ```
 
+workflow:
+```bash
+virtualenv my_venv
+
+source my_venv/bin/activate
+# pip install XYZ
+# ...
+deactivate
+```
+
+```bash
+pip freeze > requirements.txt
+
+pip install -r requirements.txt
+```
+
 
 </section>
 

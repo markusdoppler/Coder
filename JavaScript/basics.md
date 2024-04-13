@@ -42,6 +42,13 @@ Objects
 * Symbol
 * Promise
 
+
+```js
+typeof variable == undefined
+
+Array.isArray(variable)
+```
+
 </section>
 
 ---
@@ -116,6 +123,7 @@ console.groupEnd()
 
 ```js
 console.dir(object)
+console.dir(domNode)
 ```
 
 ```js
@@ -170,6 +178,14 @@ for (let i of arr) {
    console.log(i);
 }
 ```
+
+For loop over indices and property values
+```js
+for (let [i, item] of arr.entries()) {
+   console.log(i, item);
+}
+```
+
 
 While-loop
 ```js
@@ -230,6 +246,17 @@ try {
 
 ## Numbers
 
+```js
+const division = 16 / 0;
+isNaN(division);
+
+Number.MAX_SAFE_INTEGER
+```
+
+```js
+Math.random() // float in [0, 1)
+const random = Math.floor(1000 * Math.random()) // integer from 0 ... 999
+```
 
 ### Round to two decimal places
 
@@ -264,12 +291,28 @@ string.substr(0, 4)
 // String contains/includes Substring
 sentence.includes("dog")
 
+// pad start/end
+let str = '12'
+str.padStart(3, '0') // 012
+str.padEnd(3, '0') // 120
+
 // Split
 const pathArray = sentence.split(' ')
+sentence.split(/[,;|!?]/)
 
 // Find and replace with RegEx
 const otherSentence = sentence.replace(/the/g, "a")
 sentence.replaceAll("i", "ii")
+```
+
+### Letter from number
+```js
+const character = String.fromCharCode(97 + n);
+const string = String.fromCharCode(97+0, 97+7, 97+16);
+
+const A = 'A'.charCodeAt(0);
+let numberToCharacter = number => String.fromCharCode(A + number);
+let characterToNumber = character => character.charCodeAt(0) - A;
 ```
 
 
@@ -278,6 +321,10 @@ sentence.replaceAll("i", "ii")
 * [Mozilla: RegEx](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp)
 * [Mozilla: Regular Expressions Guide](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions)
 
+```js
+const matches = /.+\s.+/g.test("asffdsg   dsgsdg")
+string.match(/[0-9]/);
+```
 
 ### Tagged Template
 ```js
@@ -314,7 +361,8 @@ Array.from({ length: 5 }) // [0,1,2,3,4]
 Array.from(Array(5)) // [0,1,2,3,4]
 Array.from({ length: 5 }, (element, index) => index + 1) // [1,2,3,4,5]
 // array from HTMLCollection
-Array.from(document.getElementsByClassName('asyncImage'))
+Array.from(document.getElementsByClassName('async-image'))
+Array.from(document.querySelectorAll('.async-image'))
 
 numbers.fill(1) // [1,1,1,1,1]
 
@@ -336,6 +384,11 @@ const fruits = ["apple", "pear", "orange"]
 if (fruits.indexOf("apple") > -1) console.log("fruits contains apple")
 // last index of
 abc.lastIndexOf("a")
+// start offset
+"abcabc".indexOf("a") // 0
+"abcabc".lastIndexOf("c") // 5
+"abcabc".indexOf("a", 2) // 3
+"abcabc".lastIndexOf("c",4) // 2
 
 // ADD
 // add a new element to an array (at the end)
@@ -372,9 +425,12 @@ numbers.sort((a, b) => a - b)
 
 `numbers.splice(spliceIndex, spliceRangeOverwrite, newArrayItems ...);`
 ```js
+let numbers = [1,2,3,4,5,6,7,8];
 numbers.splice(3,0, 20,25); // adds 20 and 25 to numbers at index 3
 numbers.splice(0,2);        // removes the first two elements
-numbers.splice(2,0, "0", "1");
+numbers.splice(2,0, "0", "1"); // 
+
+const removedItemAtIndex2 = numbers.splice(2,1)
 ```
 
 `numbers.slice(sliceBeginIndex, sliceEndIndex=array.length);`
@@ -396,9 +452,9 @@ const persons = [
 // for each
 numbers.forEach((item, i) => console.log(item, i))
 numbers.find(item => item > 2)
-numbers.every(item => item > 0)
-numbers.some(item => item > 0)
 numbers.findIndex(item => item === 2)
+numbers.every(item => item > 0) // true if every item meets criterion
+numbers.some(item => item > 0) // true if at least one item meets criterion
 
 // map
 numbers.map(Math.sqrt)
@@ -427,6 +483,22 @@ array.flat(Infinity)
 
 // flatMap => more performant than .map().flat()
 array.flatMap((currentValue, index, array) => { /* … */ } )
+```
+
+**get last item from array**
+```js
+const lastItem = array[array.length - 1]; // slowest
+const lastItem = array.slice(-1);
+const lastItem = array.pop(); // fastest, but mutates the array!
+```
+
+**Array polyfill**
+```js
+Array.prototype.myForEach = function(callback){
+  for(let i = 0; i < this.length; i++){
+    callback(this[i], i, this);
+  }
+}
 ```
 
 </section>
@@ -646,7 +718,18 @@ school.name
 school.name = "High School"
 school.age = 350            // new property
 
+// shorthand deriving property name and value
+const name = 'ello'
+const age = 5
+const oj = { name, age }
+
+// dynamic property name
+const propertyName = 'superpower';
+const woman = { [propertyName]: 'everything' } // setting
+woman[propertyName] // getting
+
 // 
+object = { age: 5 }
 Object.defineProperty(object, "name", {
   writable: false,
   value: undefined,
@@ -656,7 +739,7 @@ Object.defineProperty(object, "name", {
   set(newValue) { this.name = newValue }
 })
 
-// 2-way data binding
+// 2-way data binding for input element
 const inputElement = document.querySelector("input")
 const inputObject  = {}
 

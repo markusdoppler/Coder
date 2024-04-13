@@ -30,9 +30,13 @@ document.querySelector("div.selected")
 returns a node list of elements for this query
 ```js
 document.querySelectorAll(".selected")
+
+// convert node list to array
+const list1 = Array.from(document.querySelectorAll(".element"));
+const list2 = [...document.querySelectorAll(".element")];
 ```
 
-### Matches
+### Matches query
 
 ```js
 e.target.matches("div")
@@ -49,7 +53,14 @@ e.target.matches("div")
 
 Nodes
 ```js
+const element = document.createElement("span");
+const text = document.createTextNode("hallo")
+
 element.parentNode
+element.parentElement
+
+element.firstChild
+element.lastChild
 parent.append("Hello from JS")
 parent.append(element)
 parent.appendChild(element)
@@ -62,6 +73,9 @@ element.innerText   // simple text
 element.content
 
 element.value
+
+element.tagName // == 'SPAN' || == 'VIDEO'
+element.nodeType // == Node.TEXT_NODE || == Node.ELEMENT_NODE
 ```
 
 insertAdjacentHTML
@@ -98,7 +112,15 @@ template.innerHTML = `<h3>Title</h3>`;
 const node = template.content.cloneNode(true);
 ```
 
+Node
+```js
+document.createTextNode(text)
+node.textContent = '123'
+nodeA.parentNode.insertBefore(nodeB, nodeA)             // nodeB - nodeA
+nodeA.parentNode.insertBefore(nodeB, nodeA.nextSibling) // nodeA - nodeB = insertAfter (which does not exist)
 
+node.after(document.createElement('span'))
+```
 
 Attributes
 ```js
@@ -138,6 +160,8 @@ element.style.border = "1px solid blue";
 element.style.marginLeft = 0;
 element.style.animationPlayState = `paused`;
 element.style.setProperty("background", "#fff");
+element.style.setProperty("--cursorY", e.offsetY + "px");
+element.style.removeProperty("--cursorY");
 
 document.documentElement.style.cssText = `color: red;`;
 
@@ -164,6 +188,9 @@ document.styleSheets[0].cssRules[0].appendRule(rule)
 
 ```js
 element.parentNode
+element.nextSibling
+element.firstChild
+element.lastChild
 ```
 
 ```js
@@ -189,31 +216,41 @@ parent.appendChild(clonedNode);
 ```js
 window.innerWidth
 window.innerHeight
+window.outerWidth
+window.outerHeight
 
-window.screen.width
-window.screen.height
-window.screen.availWidth
-window.screen.availHeight
+window.screenX
+window.screenY
+window.screenLeft
+window.screenTop
+
+window.pageXOffset
+window.pageYOffset
+
+window.scrollX
+window.scrollY
+
+window.screen // width, height, availWidth, availHeight, availLeft, availTop, isExtended, orientation
 
 window.devicePixelRatio
 ```
 
+### Element Measurements
 ```js
-window.orientation
+element.getClientRects() // more than one for e.g. inline-level elements
+element.getBoundingClientRect().top // x, y, width, height, top, right, bottom, left
 ```
 
-### Page and Element Measurements
 ```js
-window.pageXOffset
-window.pageYOffset
+element.offsetParent // parent with position != `static`
 
-element.offsetTop
-element.getBoundingClientRect().top
-
-document.elementFromPoint(x, y)
+element.offsetTop // `block`-level: position of border-box, `inline`-level: position of FIRST border-box
+element.offsetLeft
+element.offsetHeight
+element.offsetWidth
 ```
 
-jQuery's `offset()` in Vanilla
+jQuery's `offset()` in Vanilla JS
 ```js
 var rect = document.querySelector("#container").getBoundingClientRect();
 var offset = { 
@@ -221,6 +258,17 @@ var offset = {
   left: rect.left + window.scrollX, 
 };
 console.log(offset);
+```
+
+```js
+element.clientTop
+element.clientLeft
+element.clientHeight
+element.clientWidth
+```
+
+```js
+document.elementFromPoint(x, y)
 ```
 
 
@@ -258,19 +306,63 @@ document.write("");
 
 * [Selection and Range (javascript.info)](https://javascript.info/selection-range)
 
+## Selection
 ```js
-let range = new Range();
-range.setStart(node, offset);
-range.setEnd(node, offset);
+const selection = window.getSelection();
+const selection = document.getSelection();
+
+selection.isCollapsed   // true / false
+selection.empty()
+selection.removeAllRanges()
+selection.addRange(range)
+
+selection.modify(alter, direction, granularity)
+selection.modify("extend", "backward", "word")
+selection.modify("extend", "forward", "word")
+selection.modify("move", "forward", "line")
+selection.modify("move", "forward", "lineboundary")
+selection.modify("move", "forward", "character")
+
+
+if (selection.type == "Range") return;
+if (selection.type == "Caret") return;
+```
+
+## Range
+```js
+const range = selection.getRangeAt(0)
+
+const range = new Range()
+range.selectNodeContents(element)
+
+range.commonAncestorContainer
+range.startContainer
+range.endContainer
+range.startOffset
+range.endOffset
+range.collapsed   // true / false
+```
+
+```js
+range.setStart(node, offset)
+range.setEnd(node, offset)
+
+range.setStart(element, 12)
 ```
 * `node` – text node or an element node
 * If `node` is a text node, then `offset` must be the position in the text.
 * If `node` is an element node, then `offset` must be the child number.
 
+
+## Selection events
 ```js
-window.getSelection();
-document.getSelection().removeAllRanges();
-document.getSelection().addRange(range);
+// attention: different behaviour on touch screens and desktops
+document.addEventListener("selectionchange", function() {});
+
+// better use pointer events for universal behaviour
+document.addEventListener("mouseup", function() {});
+document.addEventListener("touchend", function() {});
+document.addEventListener("touchcancel", function() {});
 ```
 
 ### Input and text fields

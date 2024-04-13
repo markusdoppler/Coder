@@ -10,6 +10,34 @@ scripts:
 
 <section>
 
+## Internationalization API
+
+```js
+new Intl.DateTimeFormat('en-GB', {
+    dateStyle: 'full',
+    timeStyle: 'long',
+    timeZone: 'Australia/Sydney',
+  }).format(new Date())
+
+Intl.DateTimeFormat("de-AT", {
+  weekday: "short", 
+  day: "numeric", 
+  month: "long",
+}).format(new Date())
+
+Intl.DateTimeFormat("de-AT", {
+  day: "2-digit", 
+  month: "2-digit", 
+  year: "numeric"
+}).format(new Date());
+```
+
+<section>
+
+---
+
+<section>
+
 ## History API
 
 ### History
@@ -386,6 +414,13 @@ for (let clipboardItem of clipboardItems) {
 }
 ```
 
+Clipboard events
+```js
+document.addEventListener("cut", function(e) { console.log(e); });
+document.addEventListener("copy", function(e) { console.log(e); });
+document.addEventListener("pase", function(e) { console.log(e); });
+```
+
 </section>
 
 ---
@@ -423,9 +458,9 @@ element.animate(
   [
     { transform: "rotate(O) translate3D(10px, 0px, 100px)" },
     { color: "#431236", offset: 0.3 },
-    { transform: "rotate(360deg) translateX(25px)"
+    { transform: "rotate(360deg) translateX(25px)" }
   ],
-  { duration: 3000, iterations: Infinity }
+  { duration: 3000, iterations: Infinity, fill: 'forwards' }
 );
 ```
 

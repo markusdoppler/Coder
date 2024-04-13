@@ -24,9 +24,9 @@ scripts:
     </div>
   </div>
   <div class="home-col-2">
+    <a class="home-card vim" href="Server/README">Server</a>
     <a class="home-card git" href="Tools/git">Git</a>
     <a class="home-card sql" href="SQL/sql">SQL</a>
-    <a class="home-card bash" href="Tools/bash">Bash</a>
     <a class="home-card vim" href="Editors/vim">VIM</a>
   </div>
 </section>
@@ -54,9 +54,17 @@ scripts:
 * [Vue.js](JavaScript/library-vue)
 * [Nuxt.js](JavaScript/library-nuxt)
 * React
+* [Flask](Python/web-flask)
 * [Jekyll](Jekyll/jekyll)
 * [MathJAX](Math/mathjax)
 * KaTeX
+
+### Server Technologies
+* [Server](Server/README)
+* [Linux](Server/linux)
+* [Apache](Server/apache)
+* [Nginx](Server/nginx)
+* [API](Server/api)
 
 
 ### Tools
@@ -74,7 +82,7 @@ scripts:
 ### Code Editors
 * [VIM](Editors/vim)
 * [VSCode](Editors/vscode)
-* XCode
+* Xcode
 * Atom
 * Emacs
 

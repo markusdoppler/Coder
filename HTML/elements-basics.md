@@ -161,7 +161,7 @@ Simple Script that is runw when the HTML finished loading
 </body>
  
 */
-
+```
 
 </section>
 
@@ -170,6 +170,7 @@ Simple Script that is runw when the HTML finished loading
 <section>
 
 ## Anchor link
+
 * `inline`-level (may wrap block-level elements)
 
 
@@ -197,6 +198,11 @@ adding a predefined email
 * **spaces** are encoded with `%20`
 * **line-breaks** are encoded with `%0A`
 
+
+### Directly downloading a file via `download` attribute
+```html
+<a href="image.png" class="btn btn-primary" download>Download Image</a>
+```
 
 ### Opening Links in a New Window
 
@@ -226,6 +232,48 @@ open in a new window / tab
 <a href="#section-3">go to section 3</a>
 ```
 
+### 
+```html
+<!-- Indicates that the current document's original author or publisher does not endorse the referenced document -->
+<a href="" rel="nofollow">
+```
+
+
+| `rel` value	| Description | `<link>` | `<a>` and `<area>` | `<form>` |
+|---------------|-------------|----------|--------------------|----------|
+| `alternate` | Alternate representations of the current document. | 🔗 | 🔗 | – |
+| `author` | Author of the current document or article. | 🔗 | 🔗 | – |
+| `bookmark` | Permalink for the nearest ancestor section. | – | 🔗 | – |
+| `canonical` | Preferred URL for the current document. | 🔗 | – | – |
+| `dns-prefetch` | Tells the browser to preemptively perform DNS resolution for the target resource's origin. | 🚪 | – | – |
+| `external` | The referenced document is not part of the same site as the current document. | – | Annotation | Annotation |
+| `help` | Link to context-sensitive help. | 🔗 | 🔗 | 🔗 |
+| `icon` | An icon representing the current document. | 🚪 | – | – |
+| `license` | Indicates that the main content of the current document is covered by the copyright license described by the referenced document. | 🔗 | 🔗 | 🔗 |
+| `manifest` | Web app manifest. | 🔗 | – | – |
+| `me` | Indicates that the current document represents the person who owns the linked content. | 🔗 | 🔗 | – |
+| `modulepreload` | Tells to browser to preemptively fetch the script and store it in the document's module map for later evaluation. Optionally, the module's dependencies can be fetched as well. | 🚪 | – | – |
+| `next` | Indicates that the current document is a part of a series and that the next document in the series is the referenced document. | 🔗 | 🔗 | 🔗 |
+| `nofollow` | Indicates that the current document's original author or publisher does not endorse the referenced document. | – | ✍️ | ✍️ |
+| `noopener` | Creates a top-level browsing context that is not an auxiliary browsing context if the hyperlink would create either of those, to begin with (i.e., has an appropriate target attribute value). | – | ✍️ | ✍️ |
+| `noreferrer` | No Referer header will be included. Additionally, has the same effect as noopener. | – | ✍️ | ✍️ |
+| `opener` | Creates an auxiliary browsing context if the hyperlink would otherwise create a top-level browsing context that is not an auxiliary browsing context (i.e., has "_blank" as target attribute value). | – | ✍️ | ✍️ |
+| `pingback` | Gives the address of the pingback server that handles pingbacks to the current document. | 🚪 | – | – |
+| `preconnect` | Specifies that the user agent should preemptively connect to the target resource's origin. | 🚪 | – | – |
+| `prefetch` | Specifies that the user agent should preemptively fetch and cache the target resource as it is likely to be required for a followup navigation. | 🚪 | – | – |
+| `preload` | Specifies that the user agent must preemptively fetch and cache the target resource for current navigation according to the potential destination given by the as attribute (and the priority associated with the corresponding destination). | 🚪 | – | – |
+| `prerender` | Specifies that the user agent should preemptively fetch the target resource and process it in a way that helps deliver a faster response in the future. | 🚪 | – | – |
+| `prev` | Indicates that the current document is a part of a series and that the previous document in the series is the referenced document. | 🔗 | 🔗 | 🔗 |
+| `privacy-policy` | Gives a link to a information about the data collection and usage practices that apply to the current document. | 🔗 | 🔗 | – |
+| `search` | Gives a link to a resource that can be used to search through the current document and its related pages. | 🔗 | 🔗 | 🔗 |
+| `stylesheet` | Imports a style sheet. | 🚪 | – | – |
+| `tag` | Gives a tag (identified by the given address) that applies to the current document. | – | 🔗 | – |
+| `terms-of-service` | Link to the agreement, or terms of service, between the document's provider and users who wish to use the document. | 🔗 | 🔗 | – |
+
+– Not allowed
+🔗 Link
+🚪 External Resource
+✍️ Annotation
 
 </section>
 

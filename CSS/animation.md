@@ -293,6 +293,30 @@ document.getAnimations();
 
 <section>
 
+## Animating height
+
+```css
+.content {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 500ms;
+}
+
+.content[aria-hidden="false"] {
+  grid-template-rows: 1fr;
+}
+
+.content > div {
+  overflow: hidden;
+}
+```
+
+</section>
+
+---
+
+<section>
+
 ## Optimising Animations
 
 Best properties in terms of performance to animate:

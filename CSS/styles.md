@@ -1,5 +1,7 @@
 ---
 title: Styles
+scripts:
+- ../assets/CSS/styles.js
 styles:
 - ../assets/CSS/styles.css
 ---
@@ -19,6 +21,8 @@ styles:
 * `green`
 * `yellow`
 * ...
+
+<div id="css-color-names"></div>
 
 ### Hexadecimal notation
 
@@ -1048,6 +1052,8 @@ resize: horizontal;
 ```
 
 ### Touch action
+
+avoid confusion between browser behaviour for touch devices such as scrolling, zooming and interactive/draggable elements on screen.
 
 ```css
 section {

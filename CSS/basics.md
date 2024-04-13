@@ -134,6 +134,8 @@ JavaScript
 let flashlight = document.querySelector('.flashlight');
 flashlight.style.setProperty("--cursorX", e.offsetX + "px");
 flashlight.style.setProperty("--cursorY", e.offsetY + "px");
+
+flashlight.style.removeProperty("--cursorY");
 ```
 
 </section>

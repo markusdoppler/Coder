@@ -271,4 +271,9 @@ DELETE FROM student
 WHERE student_id = 5
 ```
 
+delete all table rows
+```sql
+DELETE * FROM table_name;
+```
+
 </section>

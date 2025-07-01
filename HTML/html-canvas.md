@@ -140,11 +140,16 @@ c.stroke();
 ```
 
 ### Arc and circle
-```
+```js
 c.beginPath();
 // c.arc(x,y,r,startAngle,endAngle,drawCounterClockwise);
 c.arc(100,100,30,0,Math.PI,false);
 c.stroke();
+```
+
+### Bezier curve
+```js
+c.bezierCurveTo(cp1x, cp1y, cp2x, cp2y, x, y)
 ```
 
 </section>

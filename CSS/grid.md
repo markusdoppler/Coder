@@ -115,15 +115,17 @@ Terms
 
 ## Grid Auto Flow
 
+automatic number of columns (all 100% width; overflow to the right)
 ```css
 display: grid;
 grid-auto-flow: column;
 grid-auto-columns: 100%;
 ```
 
+same thing but with gap
 ```css
 display: grid;
-grid-auto-flow: columns;
+grid-auto-flow: column;
 grid-auto-columns: 1fr;
 gap: 1em;
 ```

@@ -1079,6 +1079,13 @@ Module.function1()
 Module.function2()
 ```
 
+### JSON Module script
+
+```js
+import data from "./data.json" with { type: "json" };
+
+console.log(data);
+```
 
 ### Dynamic Module Loading
 

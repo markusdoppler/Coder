@@ -1328,6 +1328,33 @@ Pull to refresh
 
 <section>
 
+## Page Transitions
+
+global CSS
+```css
+@view-transition {
+  navigation: auto;
+}
+```
+
+Page 1 HTML
+
+```html
+&gt;a href="page-2" style="view-transition-name: beaver">Beaver&gt;/a>
+```
+
+Page 2 HTML
+
+```html
+&gt;h1 style="view-transition-name: beaver">Beaver&gt;/h1>
+```
+
+</section>
+
+---
+
+<section>
+
 ## Webkit specific styles
 
 * [Apple Developer: Customizing Style Sheets](https://developer.apple.com/library/archive/documentation/AppleApplications/Reference/SafariWebContent/AdjustingtheTextSize/AdjustingtheTextSize.html)

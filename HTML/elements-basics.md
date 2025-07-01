@@ -179,8 +179,20 @@ Simple Script that is runw when the HTML finished loading
 ```
 
 ### Paths
-relative path: "pages/about.html"
-absolute path: "https://markusdoppler.at"
+- relative path: "pages/about.html"
+- absolute path: "/pages/about.html"
+
+### URL Hash & query string
+- `#id`
+- `?query=123&query2=abc`
+
+### URL text fragments
+- `:~:text=[prefix-,]textStart[,textEnd][,-suffix]`
+- `#:~:text=<first word>,<last word>`
+- `example.com#:~:text=foo&text=bar&text=baz`
+[WICG | scroll to text fragment](https://github.com/WICG/scroll-to-text-fragment#target)
+
+Style with CSS via `:target` selector
 
 
 ### Linking to an email adress

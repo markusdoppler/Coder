@@ -492,12 +492,37 @@ const element = document.querySelector(".element");
 
 Sender
 ```js
-element.dispatchEvent(new CustomEvent("value", { detail: this.value }));
+element.dispatchEvent(new CustomEvent("somethingchanged", { detail: this.value }));
+element.dispatchEvent(new CustomEvent("somethingchanged", { bubbles: true, cancelable: true, detail: this.value }));
 ```
 
 Receiver
 ```js
-element.addEventListener("value", ({ detail }) => console.log(detail));
+element.addEventListener("somethingchanged", (e) => console.log(e.detail));
+element.addEventListener("somethingchanged", ({ detail }) => console.log(detail));
 ```
 
+</section>
+
+<section>
+
+## Simulate event
+
+```js
+function simulateClick() {
+  const event = new MouseEvent("click", {
+    view: window,
+    bubbles: true,
+    cancelable: true,
+  });
+  const cb = document.getElementById("checkbox");
+  const cancelled = !cb.dispatchEvent(event);
+
+  if (cancelled) {
+    console.log("cancelled: A handler called preventDefault.");
+  } else {
+    console.log("not cancelled: None of the handlers called preventDefault.");
+  }
+}
+```
 </section>

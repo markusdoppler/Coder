@@ -32,7 +32,7 @@ Intl.DateTimeFormat("de-AT", {
 }).format(new Date());
 ```
 
-<section>
+</section>
 
 ---
 

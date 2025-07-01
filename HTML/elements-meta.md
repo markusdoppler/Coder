@@ -44,6 +44,12 @@ Refresh document every 30 seconds
 <meta http-equiv="refresh" content="30">
 ```
 
+Avoid auto-parsing telefone numbers
+```html
+<meta name="format-detection" content="telephone=no">
+```
+
+
 </section>
 
 ---
